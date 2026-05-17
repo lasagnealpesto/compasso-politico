@@ -1,0 +1,195 @@
+[
+  {
+    "id": "giorgia-meloni",
+    "nome": "Giorgia Meloni",
+    "partito": "fdi",
+    "ruolo": "Presidente del Consiglio dei Ministri",
+    "foto": "/foto/giorgia-meloni.jpg",
+    "bio": "Nata a Roma il 15 gennaio 1977. È la prima donna nella storia italiana a ricoprire il ruolo di Presidente del Consiglio. Attivista politica sin dalla giovinezza, ha militato nel Fronte della Gioventù e poi in AN. Fondatrice di Fratelli d'Italia nel 2012, ha guidato il partito dalla marginalità al primo posto in Italia in dieci anni.",
+    "storiaPolit": [
+      { "partito": "Fronte della Gioventù (MSI)", "ruolo": "Militante", "dalAnno": 1992, "alAnno": 1996 },
+      { "partito": "Alleanza Nazionale", "ruolo": "Dirigente nazionale", "dalAnno": 1996, "alAnno": 2009 },
+      { "partito": "Popolo della Libertà", "ruolo": "Ministro della Gioventù", "dalAnno": 2009, "alAnno": 2012 },
+      { "partito": "Fratelli d'Italia", "ruolo": "Presidente e Segretaria", "dalAnno": 2012, "alAnno": null }
+    ],
+    "posizioniChiave": [
+      { "tema": "Immigrazione", "posizione": "Controllo rigido dei flussi, accordi con paesi nordafricani, blocco navale" },
+      { "tema": "Economia", "posizione": "Taglio del cuneo fiscale, flat tax, riduzione del debito" },
+      { "tema": "Esteri", "posizione": "Atlantismo convinto, sostegno all'Ucraina, presidio italiano in Africa" },
+      { "tema": "Famiglia", "posizione": "Sostegno alla famiglia tradizionale, incentivi alla natalità" }
+    ],
+    "wikipedia": "https://it.wikipedia.org/wiki/Giorgia_Meloni"
+  },
+  {
+    "id": "ignazio-la-russa",
+    "nome": "Ignazio La Russa",
+    "partito": "fdi",
+    "ruolo": "Presidente del Senato della Repubblica",
+    "foto": "/foto/ignazio-la-russa.jpg",
+    "bio": "Nato a Paternò (CT) il 18 luglio 1947. Avvocato e politico di lungo corso, è uno dei fondatori di Fratelli d'Italia. Considerato la seconda carica dello Stato come Presidente del Senato dal 2022.",
+    "storiaPolit": [
+      { "partito": "Movimento Sociale Italiano", "ruolo": "Dirigente", "dalAnno": 1968, "alAnno": 1995 },
+      { "partito": "Alleanza Nazionale", "ruolo": "Dirigente nazionale", "dalAnno": 1995, "alAnno": 2009 },
+      { "partito": "Popolo della Libertà", "ruolo": "Ministro della Difesa", "dalAnno": 2009, "alAnno": 2012 },
+      { "partito": "Fratelli d'Italia", "ruolo": "Co-fondatore e dirigente", "dalAnno": 2012, "alAnno": null }
+    ],
+    "posizioniChiave": [
+      { "tema": "Difesa", "posizione": "Rafforzamento delle Forze Armate, atlantismo" },
+      { "tema": "Istituzioni", "posizione": "Riforma presidenzialista" },
+      { "tema": "Identità", "posizione": "Difesa dei valori nazionali e tradizionali" }
+    ],
+    "wikipedia": "https://it.wikipedia.org/wiki/Ignazio_La_Russa"
+  },
+  {
+    "id": "elly-schlein",
+    "nome": "Elly Schlein",
+    "partito": "pd",
+    "ruolo": "Segretaria del Partito Democratico",
+    "foto": "/foto/elly-schlein.jpg",
+    "bio": "Nata a Lugano il 4 maggio 1985, cittadina italiana e americana. Ha studiato giurisprudenza a Bologna e si è impegnata nel movimento Occupy negli USA. Eletta al Parlamento Europeo nel 2014 con il PD. Nel 2019 abbandona il PD per 'Coraggiosa' con Schlein lista in Emilia-Romagna. Nel 2023 vince le primarie del PD portando il partito su posizioni più progressiste e di sinistra.",
+    "storiaPolit": [
+      { "partito": "Partito Democratico", "ruolo": "Europarlamentare", "dalAnno": 2014, "alAnno": 2019 },
+      { "partito": "Coraggiosa (lista regionale)", "ruolo": "Vicepresidente Emilia-Romagna", "dalAnno": 2020, "alAnno": 2023 },
+      { "partito": "Partito Democratico", "ruolo": "Segretaria", "dalAnno": 2023, "alAnno": null }
+    ],
+    "posizioniChiave": [
+      { "tema": "Lavoro", "posizione": "Salario minimo a 9€/ora, contrasto al lavoro precario" },
+      { "tema": "Diritti", "posizione": "Ius soli, diritti LGBTQ+, parità di genere" },
+      { "tema": "Welfare", "posizione": "Difesa del SSN, reddito minimo garantito" },
+      { "tema": "Clima", "posizione": "Transizione ecologica come priorità economica" }
+    ],
+    "wikipedia": "https://it.wikipedia.org/wiki/Elly_Schlein"
+  },
+  {
+    "id": "giuseppe-conte",
+    "nome": "Giuseppe Conte",
+    "partito": "m5s",
+    "ruolo": "Presidente del MoVimento 5 Stelle",
+    "foto": "/foto/giuseppe-conte.jpg",
+    "bio": "Nato a Volturara Appula (FG) il 8 agosto 1964. Avvocato e professore universitario. È stato Presidente del Consiglio due volte: nel governo Conte I (2018-2019, con Lega e M5S) e nel governo Conte II (2019-2021, con M5S e PD). Nel 2021 diventa presidente del M5S dopo la crisi del governo Draghi.",
+    "storiaPolit": [
+      { "partito": "Indipendente (tecnico)", "ruolo": "Presidente del Consiglio (Governo Conte I)", "dalAnno": 2018, "alAnno": 2019 },
+      { "partito": "Indipendente (tecnico)", "ruolo": "Presidente del Consiglio (Governo Conte II)", "dalAnno": 2019, "alAnno": 2021 },
+      { "partito": "MoVimento 5 Stelle", "ruolo": "Presidente", "dalAnno": 2021, "alAnno": null }
+    ],
+    "posizioniChiave": [
+      { "tema": "Welfare", "posizione": "Difesa del reddito di cittadinanza come misura anti-povertà" },
+      { "tema": "Ucraina", "posizione": "Priorità al negoziato, cautela sull'invio di armi" },
+      { "tema": "Economia", "posizione": "Superbonus, investimenti pubblici, no all'austerità" }
+    ],
+    "wikipedia": "https://it.wikipedia.org/wiki/Giuseppe_Conte"
+  },
+  {
+    "id": "matteo-salvini",
+    "nome": "Matteo Salvini",
+    "partito": "lega",
+    "ruolo": "Vicepresidente del Consiglio e Ministro delle Infrastrutture",
+    "foto": "/foto/matteo-salvini.jpg",
+    "bio": "Nato a Milano il 9 marzo 1973. Ha guidato la trasformazione della Lega Nord da partito autonomista nordista a movimento nazional-populista. Ministro dell'Interno nel governo Conte I (2018-2019), noto per la politica dei 'porti chiusi'. Dal 2022 è Vicepresidente del Consiglio e Ministro delle Infrastrutture nel governo Meloni.",
+    "storiaPolit": [
+      { "partito": "Lega Nord", "ruolo": "Segretario federale", "dalAnno": 2013, "alAnno": 2018 },
+      { "partito": "Lega", "ruolo": "Ministro dell'Interno e Vicepresidente (Governo Conte I)", "dalAnno": 2018, "alAnno": 2019 },
+      { "partito": "Lega", "ruolo": "Segretario e Vicepresidente del Consiglio", "dalAnno": 2022, "alAnno": null }
+    ],
+    "posizioniChiave": [
+      { "tema": "Immigrazione", "posizione": "Porti chiusi, blocco degli sbarchi, massima fermezza" },
+      { "tema": "Sicurezza", "posizione": "Più poteri alle forze dell'ordine, legittima difesa ampliata" },
+      { "tema": "Economia", "posizione": "Flat tax, pensione quota 41, meno tasse" },
+      { "tema": "Russia", "posizione": "Storicamente favorevole al dialogo con Mosca, posizione modificata dopo invasione 2022" }
+    ],
+    "wikipedia": "https://it.wikipedia.org/wiki/Matteo_Salvini"
+  },
+  {
+    "id": "antonio-tajani",
+    "nome": "Antonio Tajani",
+    "partito": "fi",
+    "ruolo": "Vicepresidente del Consiglio e Ministro degli Esteri",
+    "foto": "/foto/antonio-tajani.jpg",
+    "bio": "Nato a Roma il 4 agosto 1953. Ex presidente del Parlamento Europeo (2017-2019) e Commissario Europeo. Dopo la morte di Silvio Berlusconi nel giugno 2023 è diventato segretario di Forza Italia. È Vicepresidente del Consiglio e Ministro degli Esteri nel governo Meloni.",
+    "storiaPolit": [
+      { "partito": "Forza Italia", "ruolo": "Fondatore e dirigente", "dalAnno": 1994, "alAnno": 2009 },
+      { "partito": "Popolo della Libertà", "ruolo": "Commissario Europeo", "dalAnno": 2009, "alAnno": 2014 },
+      { "partito": "Forza Italia", "ruolo": "Presidente Parlamento Europeo", "dalAnno": 2017, "alAnno": 2019 },
+      { "partito": "Forza Italia", "ruolo": "Segretario e Vicepresidente del Consiglio", "dalAnno": 2023, "alAnno": null }
+    ],
+    "posizioniChiave": [
+      { "tema": "Esteri", "posizione": "Atlantismo, sostegno pieno all'Ucraina, ruolo dell'Italia nel Mediterraneo" },
+      { "tema": "Europa", "posizione": "Europeismo moderato, Partito Popolare Europeo" },
+      { "tema": "Economia", "posizione": "Liberalismo moderato, riduzione fiscale" }
+    ],
+    "wikipedia": "https://it.wikipedia.org/wiki/Antonio_Tajani"
+  },
+  {
+    "id": "carlo-calenda",
+    "nome": "Carlo Calenda",
+    "partito": "azione-iv",
+    "ruolo": "Segretario di Azione",
+    "foto": "/foto/carlo-calenda.jpg",
+    "bio": "Nato a Roma il 9 febbraio 1973. Manager e politico, ha lavorato in Ferrari e nel gruppo Fiat. Ministro dello Sviluppo Economico nel governo Gentiloni (2016-2018). Lascia il PD nel 2019 per fondare Azione, partito liberal-democratico di centro.",
+    "storiaPolit": [
+      { "partito": "Partito Democratico", "ruolo": "Ministro Sviluppo Economico", "dalAnno": 2016, "alAnno": 2019 },
+      { "partito": "Azione", "ruolo": "Fondatore e Segretario", "dalAnno": 2019, "alAnno": null }
+    ],
+    "posizioniChiave": [
+      { "tema": "Economia", "posizione": "Agenda Draghi, competitività, liberalizzazioni" },
+      { "tema": "Industria", "posizione": "Politica industriale attiva, difesa del made in Italy" },
+      { "tema": "Europa", "posizione": "Europeismo convinto, difesa comune" },
+      { "tema": "Nucleare", "posizione": "Favorevole al nucleare di nuova generazione" }
+    ],
+    "wikipedia": "https://it.wikipedia.org/wiki/Carlo_Calenda"
+  },
+  {
+    "id": "matteo-renzi",
+    "nome": "Matteo Renzi",
+    "partito": "azione-iv",
+    "ruolo": "Segretario di Italia Viva",
+    "foto": "/foto/matteo-renzi.jpg",
+    "bio": "Nato a Firenze il 11 gennaio 1975. Ex sindaco di Firenze, ha guidato il PD dal 2013 e Presidente del Consiglio dal 2014 al 2016. Noto per le riforme 'rottamazione' e il Jobs Act. Nel 2019 lascia il PD per fondare Italia Viva. Ha fatto cadere il governo Conte II nel 2021 aprendo la strada al governo Draghi.",
+    "storiaPolit": [
+      { "partito": "Partito Democratico", "ruolo": "Sindaco di Firenze, poi Segretario", "dalAnno": 2009, "alAnno": 2019 },
+      { "partito": "Partito Democratico", "ruolo": "Presidente del Consiglio", "dalAnno": 2014, "alAnno": 2016 },
+      { "partito": "Italia Viva", "ruolo": "Fondatore e Segretario", "dalAnno": 2019, "alAnno": null }
+    ],
+    "posizioniChiave": [
+      { "tema": "Economia", "posizione": "Agenda Draghi, liberalismo, crescita" },
+      { "tema": "Riforme", "posizione": "Riformismo pragmatico, rottamazione della vecchia politica" },
+      { "tema": "Europa", "posizione": "Europeismo, utilizzo pieno del PNRR" }
+    ],
+    "wikipedia": "https://it.wikipedia.org/wiki/Matteo_Renzi"
+  },
+  {
+    "id": "angelo-bonelli",
+    "nome": "Angelo Bonelli",
+    "partito": "avs",
+    "ruolo": "Co-portavoce di Europa Verde, Deputato",
+    "foto": "/foto/angelo-bonelli.jpg",
+    "bio": "Nato a Roma il 10 aprile 1966. Ambientalista e politico, è tra i fondatori del movimento verde italiano. Co-portavoce di Europa Verde e tra le figure di riferimento di Alleanza Verdi e Sinistra.",
+    "storiaPolit": [
+      { "partito": "Federazione dei Verdi", "ruolo": "Dirigente e portavoce", "dalAnno": 1995, "alAnno": 2015 },
+      { "partito": "Europa Verde", "ruolo": "Co-portavoce nazionale", "dalAnno": 2019, "alAnno": null }
+    ],
+    "posizioniChiave": [
+      { "tema": "Ambiente", "posizione": "Stop fossili, 100% rinnovabili, Green New Deal" },
+      { "tema": "Giustizia climatica", "posizione": "Azione legale contro lo Stato per inazione climatica" }
+    ],
+    "wikipedia": "https://it.wikipedia.org/wiki/Angelo_Bonelli"
+  },
+  {
+    "id": "nicola-fratoianni",
+    "nome": "Nicola Fratoianni",
+    "partito": "avs",
+    "ruolo": "Segretario di Sinistra Italiana, Deputato",
+    "foto": "/foto/nicola-fratoianni.jpg",
+    "bio": "Nato a Taranto il 29 settembre 1977. Segretario di Sinistra Italiana e figura di riferimento della sinistra radicale italiana. Figlio della tradizione di Rifondazione Comunista e SEL.",
+    "storiaPolit": [
+      { "partito": "Rifondazione Comunista / SEL", "ruolo": "Dirigente", "dalAnno": 2000, "alAnno": 2016 },
+      { "partito": "Sinistra Italiana", "ruolo": "Segretario", "dalAnno": 2017, "alAnno": null }
+    ],
+    "posizioniChiave": [
+      { "tema": "Lavoro", "posizione": "Settimana corta, salario minimo alto, diritti sindacali" },
+      { "tema": "Diritti", "posizione": "Ius soli, LGBTQ+, antirazzismo" },
+      { "tema": "Esteri", "posizione": "Contro l'invio di armi all'Ucraina, pacifismo" }
+    ],
+    "wikipedia": "https://it.wikipedia.org/wiki/Nicola_Fratoianni"
+  }
+]

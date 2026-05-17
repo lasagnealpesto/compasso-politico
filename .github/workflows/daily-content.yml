@@ -1,0 +1,39 @@
+name: Daily Political Content
+
+on:
+  schedule:
+    # Ogni giorno alle 6:00 UTC = 7:00 CET / 8:00 CEST
+    - cron: "0 6 * * *"
+  workflow_dispatch: # Permette esecuzione manuale dalla tab Actions
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate daily content
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/daily-content.mjs
+
+      - name: Commit and push new JSON
+        run: |
+          git config user.name "Compasso Politico Bot"
+          git config user.email "bot@compassopolitico.it"
+          git add data/daily/
+          git diff --staged --quiet || git commit -m "chore: daily content $(date +%Y-%m-%d)"
+          git push
