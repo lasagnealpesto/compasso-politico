@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import fs from "fs";
+import path from "path";
 import { getEsponente, getPartito, esponenti } from "@/lib/data";
 import PartitoLogo from "@/components/ui/PartitoLogo";
+
+function loadFotos(): Record<string, string> {
+  try {
+    const p = path.join(process.cwd(), "data", "foto-politici.json");
+    return JSON.parse(fs.readFileSync(p, "utf8")) as Record<string, string>;
+  } catch { return {}; }
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -24,6 +33,9 @@ export default async function EsponentePage({ params }: Props) {
   const esp = getEsponente(slug);
   if (!esp) notFound();
 
+  const fotos = loadFotos();
+  const fotoUrl = fotos[esp.id] ?? null;
+
   const partito = getPartito(esp.partito);
   const col = partito?.colore ?? "#666";
   const anniPolitica = new Date().getFullYear() - (esp.storiaPolit[0]?.dalAnno ?? new Date().getFullYear());
@@ -42,9 +54,18 @@ export default async function EsponentePage({ params }: Props) {
       {/* Header */}
       <div className="rounded-2xl border p-6 mb-8" style={{ background: "var(--surface)", borderColor: "var(--border)", borderTopWidth: 4, borderTopColor: col }}>
         <div className="flex items-start gap-4 mb-4">
-          <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={{ background: col }}>
-            {esp.nome.split(" ").map((n) => n[0]).slice(0, 2).join("")}
-          </div>
+          {fotoUrl ? (
+            <img
+              src={fotoUrl}
+              alt={esp.nome}
+              className="w-20 h-20 rounded-2xl flex-shrink-0"
+              style={{ objectFit: "cover", objectPosition: "top", border: `3px solid ${col}` }}
+            />
+          ) : (
+            <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={{ background: col }}>
+              {esp.nome.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+            </div>
+          )}
           <div className="flex-1">
             <h1 className="text-3xl font-bold">{esp.nome}</h1>
             <p className="mt-1 text-sm" style={{ color: "var(--muted)" }}>{esp.ruolo}</p>
@@ -221,7 +242,7 @@ export default async function EsponentePage({ params }: Props) {
                     <p className="text-xs" style={{ color: "var(--muted)" }}>{c.prima}</p>
                   </div>
                   <div className="rounded-lg p-3" style={{ background: "var(--surface-2)" }}>
-                    <div className="text-xs font-semibold mb-1" style={{ color: "#4ade80" }}>Dopo ({c.anno}+)</div>
+                    <div className="text-xs font-semibold mb-1" style={{ color: "var(--success)" }}>Dopo ({c.anno}+)</div>
                     <p className="text-xs" style={{ color: "var(--muted)" }}>{c.dopo}</p>
                   </div>
                 </div>
@@ -240,7 +261,7 @@ export default async function EsponentePage({ params }: Props) {
               <div key={i} className="rounded-xl border p-5" style={{ background: "var(--surface)", borderColor: "#ef4444", borderLeftWidth: 3 }}>
                 <div className="text-xs font-semibold mb-1" style={{ color: "#f87171" }}>❌ AFFERMAZIONE</div>
                 <p className="text-sm italic mb-3">&ldquo;{f.affermazione}&rdquo;</p>
-                <div className="text-xs font-semibold mb-1" style={{ color: "#4ade80" }}>✅ DEBUNK</div>
+                <div className="text-xs font-semibold mb-1" style={{ color: "var(--success)" }}>✅ DEBUNK</div>
                 <p className="text-sm mb-2" style={{ color: "var(--muted)" }}>{f.debunk}</p>
                 <div className="text-xs" style={{ color: "var(--muted)" }}>Fonte: {f.fonte}</div>
               </div>

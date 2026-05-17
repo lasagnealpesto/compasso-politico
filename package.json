@@ -6,15 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "oggi": "node scripts/daily-content.mjs",
+    "carosello": "node scripts/daily-carousel.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "@supabase/supabase-js": "^2.105.4",
     "better-sqlite3": "^12.10.0",
     "fuse.js": "^7.3.0",
     "next": "16.2.6",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "satori": "^0.26.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

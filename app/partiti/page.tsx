@@ -1,54 +1,70 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { partiti } from "@/lib/data";
-import MappaPolitica from "@/components/mappa/MappaPolitica";
+import PartitoLogo from "@/components/ui/PartitoLogo";
 
 export const metadata: Metadata = {
   title: "Partiti",
-  description: "Tutti i partiti politici italiani con programmi, storia e mappa ideologica.",
+  description: "Tutti i partiti politici italiani con programmi, storia ed esponenti.",
 };
 
+function PartitoCard({ p }: { p: (typeof partiti)[0] }) {
+  return (
+    <Link
+      href={`/partiti/${p.id}`}
+      className="card-hover rounded-xl border p-5 flex gap-4 items-start"
+      style={{ background: "var(--surface)", borderColor: "var(--border)", borderLeftWidth: 4, borderLeftColor: p.colore }}
+    >
+      <PartitoLogo nome={p.nome} nomeBreve={p.nomeBreve} colore={p.colore} logoUrl={p.logoUrl} size={48} />
+      <div className="min-w-0 flex-1">
+        <div className="flex items-start justify-between gap-2">
+          <div className="font-bold">{p.nome}</div>
+          <span className="text-xs flex-shrink-0" style={{ color: "var(--muted)" }}>{p.parlamentari} parlamentari</span>
+        </div>
+        <p className="text-sm mt-1 line-clamp-2" style={{ color: "var(--muted)" }}>{p.descrizione}</p>
+        <div className="mt-2 text-xs" style={{ color: "var(--muted)" }}>
+          Segretario: <span style={{ color: "var(--foreground)" }}>{p.segretario}</span>
+          {" · "}Fondato nel {p.fondazione}
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 export default function PartitiPage() {
+  const governo = partiti.filter((p) => p.coalizione === "governo");
+  const opposizione = partiti.filter((p) => p.coalizione === "opposizione");
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <h1 className="text-3xl font-bold mb-2">Partiti politici italiani</h1>
       <p className="mb-10" style={{ color: "var(--muted)" }}>
-        Clicca su un partito nella mappa o nella lista per scoprire programma, storia e esponenti.
+        Clicca su un partito per scoprire programma, storia e esponenti.
       </p>
 
-      {/* Mappa assi ideologici */}
-      <section className="mb-14">
-        <h2 className="text-lg font-semibold mb-4">Mappa ideologica</h2>
-        <MappaPolitica partiti={partiti} />
+      {/* Governo */}
+      <section className="mb-12">
+        <div className="flex items-center gap-3 mb-5">
+          <h2 className="text-xl font-bold">Governo</h2>
+          <span className="text-xs px-2.5 py-1 rounded-full font-semibold" style={{ background: "#dcfce7", color: "#15803d", border: "1px solid #86efac" }}>
+            🏛️ Al governo
+          </span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {governo.map((p) => <PartitoCard key={p.id} p={p} />)}
+        </div>
       </section>
 
-      {/* Lista completa */}
+      {/* Opposizione */}
       <section>
-        <h2 className="text-lg font-semibold mb-4">Tutti i partiti</h2>
+        <div className="flex items-center gap-3 mb-5">
+          <h2 className="text-xl font-bold">Opposizione</h2>
+          <span className="text-xs px-2.5 py-1 rounded-full font-semibold" style={{ background: "var(--surface-2)", color: "var(--muted)", border: "1px solid var(--border)" }}>
+            ⚡ Opposizione
+          </span>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {partiti.map((p) => (
-            <Link
-              key={p.id}
-              href={`/partiti/${p.id}`}
-              className="p-5 rounded-xl border transition-all hover:scale-[1.01]"
-              style={{ background: "var(--surface)", borderColor: "var(--border)", borderLeftWidth: 4, borderLeftColor: p.colore }}
-            >
-              <div className="flex items-start justify-between mb-2">
-                <div>
-                  <span className="font-bold">{p.nome}</span>
-                  <span className="ml-2 text-xs px-2 py-0.5 rounded-full" style={{ background: "var(--surface-2)", color: "var(--muted)" }}>
-                    {p.nomeBreve}
-                  </span>
-                </div>
-                <span className="text-xs" style={{ color: "var(--muted)" }}>{p.parlamentari} parlamentari</span>
-              </div>
-              <p className="text-sm line-clamp-2" style={{ color: "var(--muted)" }}>{p.descrizione}</p>
-              <div className="mt-3 text-xs" style={{ color: "var(--muted)" }}>
-                Segretario: <span style={{ color: "var(--foreground)" }}>{p.segretario}</span>
-                {" · "}Fondato nel {p.fondazione}
-              </div>
-            </Link>
-          ))}
+          {opposizione.map((p) => <PartitoCard key={p.id} p={p} />)}
         </div>
       </section>
     </div>

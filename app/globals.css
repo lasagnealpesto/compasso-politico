@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0f;
-  --foreground: #f0f0f4;
-  --surface: #13131a;
-  --surface-2: #1c1c26;
-  --border: #2a2a3a;
-  --muted: #6b6b80;
-  --accent: #4f6ef7;
-  --accent-hover: #3d5de8;
+  /* Paletta giornale — caldo, editoriale */
+  --background:  #f5f2ec;   /* carta ingiallita */
+  --foreground:  #1a1917;   /* inchiostro */
+  --surface:     #ffffff;
+  --surface-2:   #ede9e2;   /* grigio caldo */
+  --border:      #d0cac0;
+  --border-strong: #a09890;
+  --muted:       #7a7168;   /* grigio caldo medio */
+  --accent:      #c41230;   /* rosso giornale */
+  --accent-hover:#a00e26;
+  --success:     #0a6b3a;
+  --warning:     #b45309;
 }
 
 @theme inline {
@@ -16,18 +20,157 @@
   --color-foreground: var(--foreground);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--background); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+/* Titoli editoriali */
+h1, h2, h3 {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Divisore stile giornale */
+.divider-editorial {
+  border: none;
+  border-top: 3px double var(--border-strong);
+  margin: 2rem 0;
+}
+
+/* Tag sezione */
+.section-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Link */
+a { color: inherit; }
+
+/* Scrollbar sottile */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ── Motion system ─────────────────────────────────────────────────────── */
+
+/* Easing tokens — ease-out-quart for all interactive motion */
+:root {
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 350ms;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Hero entrance ─────────────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+.hero-badge   { animation: fade-up var(--duration-slow) var(--ease-out) 0ms    both; }
+.hero-title   { animation: fade-up var(--duration-slow) var(--ease-out) 80ms   both; }
+.hero-sub     { animation: fade-up var(--duration-slow) var(--ease-out) 160ms  both; }
+.hero-ctas    { animation: fade-up var(--duration-slow) var(--ease-out) 240ms  both; }
+.hero-scroll  { animation: fade-in var(--duration-slow) var(--ease-out) 500ms  both,
+                            scroll-bounce 2.2s var(--ease-in-out) 1200ms infinite; }
+
+/* ── Card hover system ─────────────────────────────────────────────────── */
+.card-hover {
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+  will-change: transform;
+}
+.card-hover:hover {
+  transform: translateY(-2px) scale(1.005);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Button press feedback ─────────────────────────────────────────────── */
+.btn-primary {
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+.btn-primary:hover {
+  background: var(--accent-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(196, 18, 48, 0.28);
+}
+.btn-primary:active { transform: translateY(0) scale(0.98); }
+
+.btn-secondary {
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+.btn-secondary:hover {
+  background: var(--surface-2) !important;
+  transform: translateY(-1px);
+}
+.btn-secondary:active { transform: translateY(0) scale(0.98); }
+
+/* ── Logo / image hover ────────────────────────────────────────────────── */
+.logo-hover {
+  transition: transform var(--duration-base) var(--ease-out), opacity var(--duration-fast) var(--ease-out);
+}
+.logo-hover:hover { transform: scale(1.08); opacity: 0.9; }
+
+/* ── Pill / tag hover ──────────────────────────────────────────────────── */
+.pill-hover {
+  transition: transform var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+}
+.pill-hover:hover { transform: scale(1.06); }
+
+/* ── Underline slide for text links ───────────────────────────────────── */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width var(--duration-base) var(--ease-out);
+}
+.link-underline:hover::after { width: 100%; }

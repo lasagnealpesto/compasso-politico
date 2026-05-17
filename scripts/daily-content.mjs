@@ -36,15 +36,18 @@ async function fetchRSS(url) {
     const itemRegex = /<item>([\s\S]*?)<\/item>/gi;
     const titleRegex = /<title><!\[CDATA\[(.*?)\]\]><\/title>|<title>(.*?)<\/title>/i;
     const descRegex = /<description><!\[CDATA\[(.*?)\]\]><\/description>|<description>(.*?)<\/description>/i;
+    const linkRegex = /<link>(.*?)<\/link>/i;
 
     let match;
     while ((match = itemRegex.exec(text)) !== null) {
       const block = match[1];
       const t = titleRegex.exec(block);
       const d = descRegex.exec(block);
+      const l = linkRegex.exec(block);
       const titolo = (t?.[1] ?? t?.[2] ?? "").trim();
       const desc = (d?.[1] ?? d?.[2] ?? "").replace(/<[^>]+>/g, "").trim().slice(0, 200);
-      if (titolo && titolo.length > 5) items.push({ titolo, desc });
+      const link = (l?.[1] ?? "").trim();
+      if (titolo && titolo.length > 5) items.push({ titolo, desc, link });
     }
     return items.slice(0, 15);
   } catch {
@@ -58,7 +61,7 @@ async function generateDailyContent(notizie) {
   const today = new Date().toISOString().split("T")[0];
 
   const newsText = notizie
-    .map((n, i) => `${i + 1}. [${n.fonte}] ${n.titolo}\n   ${n.desc}`)
+    .map((n, i) => `${i + 1}. [${n.fonte}] ${n.titolo}\n   ${n.desc}\n   link: ${n.link || ""}`)
     .join("\n\n");
 
   const response = await client.messages.create({
@@ -76,15 +79,15 @@ Rispondi con un JSON valido con questa struttura esatta:
 {
   "data": "${today}",
   "top3": [
-    { "titolo": "...", "spiegazione": "...", "perchéRilevante": "..." },
-    { "titolo": "...", "spiegazione": "...", "perchéRilevante": "..." },
-    { "titolo": "...", "spiegazione": "...", "perchéRilevante": "..." }
+    { "titolo": "...", "spiegazione": "...", "perchéRilevante": "...", "fonte": "Nome testata", "fonteUrl": "https://..." },
+    { "titolo": "...", "spiegazione": "...", "perchéRilevante": "...", "fonte": "Nome testata", "fonteUrl": "https://..." },
+    { "titolo": "...", "spiegazione": "...", "perchéRilevante": "...", "fonte": "Nome testata", "fonteUrl": "https://..." }
   ],
   "recap": "..."
 }
 
 Regole:
-- top3: le 3 notizie più importanti del giorno. Titolo max 8 parole. Spiegazione 2-3 frasi semplici. PerchéRilevante: 1 frase sul perché conta.
+- top3: le 3 notizie più importanti del giorno, ORDINATE dalla meno alla più importante (la più rilevante deve essere l'ultima, in posizione 3). Titolo max 8 parole. Spiegazione 2-3 frasi semplici. PerchéRilevante: 1 frase sul perché conta. Fonte e fonteUrl: usa il nome e il link originale della notizia (dal campo "link:" sopra).
 - recap: riassunto delle notizie del giorno in 250-300 parole. Tono giornalistico, imparziale, chiaro.
 - Rispondi SOLO con il JSON, nessun testo aggiuntivo.`,
       },

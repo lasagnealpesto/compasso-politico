@@ -1,0 +1,354 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+
+interface GovernoRow {
+  id: number;
+  nome: string;
+  premier: string;
+  coalizione: string;
+  partiti: string;
+  dal: string;
+  al: string | null;
+  motivo_fine: string | null;
+  note: string | null;
+  durata_giorni: number | null;
+}
+
+interface Props {
+  governi: GovernoRow[];
+  dalInizio: number;
+  totaleMs: number;
+}
+
+const COALIZIONE_COLORI: Record<string, string> = {
+  "Centrodestra": "#1A3A5C",
+  "Centrosinistra": "#E5001A",
+  "Governo tecnico": "#666",
+  "Grande coalizione": "#8b5cf6",
+  "Governo del cambiamento": "#C8A800",
+  "Unita nazionale": "#06b6d4",
+};
+
+function getCols(coalizione: string): string {
+  for (const [key, col] of Object.entries(COALIZIONE_COLORI)) {
+    if (coalizione.toLowerCase().includes(key.toLowerCase())) return col;
+  }
+  return "#555";
+}
+
+function formatData(iso: string): string {
+  return new Date(iso).toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
+}
+
+const LOGO_MAP: Record<string, { logoUrl: string; id: string; colore: string }> = {
+  "FdI":      { logoUrl: "/loghi/fdi.svg",    id: "fdi",        colore: "#1A3A5C" },
+  "Lega":     { logoUrl: "/loghi/lega.png",   id: "lega",       colore: "#008000" },
+  "Lega Nord":{ logoUrl: "/loghi/lega.png",   id: "lega",       colore: "#008000" },
+  "Lega Salvini Premier": { logoUrl: "/loghi/lega.png", id: "lega", colore: "#008000" },
+  "FI":       { logoUrl: "/loghi/fi.png",     id: "fi",         colore: "#0066CC" },
+  "Forza Italia": { logoUrl: "/loghi/fi.png", id: "fi",         colore: "#0066CC" },
+  "NM":       { logoUrl: "/loghi/nm.svg",     id: "nm",         colore: "#003087" },
+  "PD":       { logoUrl: "/loghi/pd.png",     id: "pd",         colore: "#E5001A" },
+  "M5S":      { logoUrl: "/loghi/m5s.png",    id: "m5s",        colore: "#C8A800" },
+  "MoVimento 5 Stelle": { logoUrl: "/loghi/m5s.png", id: "m5s", colore: "#C8A800" },
+  "IV":       { logoUrl: "/loghi/iv.svg",     id: "italiaviva", colore: "#E91B72" },
+  "Italia Viva": { logoUrl: "/loghi/iv.svg",  id: "italiaviva", colore: "#E91B72" },
+  "AVS":      { logoUrl: "/loghi/avs.png",    id: "avs",        colore: "#C0001A" },
+  "Az":       { logoUrl: "/loghi/azione.jpg", id: "azione",     colore: "#E05C00" },
+  "Azione":   { logoUrl: "/loghi/azione.jpg", id: "azione",     colore: "#E05C00" },
+};
+
+function GovernoModal({ governo, onClose }: { governo: GovernoRow; onClose: () => void }) {
+  const col = getCols(governo.coalizione);
+  const partitiList = JSON.parse(governo.partiti) as string[];
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }}
+      onClick={onClose}
+    >
+      <div
+        className="rounded-2xl border max-w-lg w-full max-h-[85vh] overflow-y-auto"
+        style={{ background: "var(--surface)", borderColor: "var(--border)", borderTopWidth: 4, borderTopColor: col }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="p-6">
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: col }}>{governo.coalizione}</div>
+              <h2 className="text-2xl font-bold">{governo.nome}</h2>
+              <div className="text-sm mt-1" style={{ color: "var(--muted)" }}>Premier: {governo.premier}</div>
+            </div>
+            <button
+              onClick={onClose}
+              className="text-2xl leading-none flex-shrink-0 mt-1"
+              style={{ color: "var(--muted)" }}
+              aria-label="Chiudi"
+            >
+              ×
+            </button>
+          </div>
+
+          {/* Date e durata */}
+          <div className="grid grid-cols-3 gap-3 mb-5">
+            <div className="rounded-xl p-3 text-center" style={{ background: "var(--surface-2)" }}>
+              <div className="text-xs font-semibold mb-0.5" style={{ color: "var(--muted)" }}>Inizio</div>
+              <div className="text-xs font-bold">{formatData(governo.dal)}</div>
+            </div>
+            <div className="rounded-xl p-3 text-center" style={{ background: "var(--surface-2)" }}>
+              <div className="text-xs font-semibold mb-0.5" style={{ color: "var(--muted)" }}>Fine</div>
+              <div className="text-xs font-bold">{governo.al ? formatData(governo.al) : "in carica"}</div>
+            </div>
+            <div className="rounded-xl p-3 text-center" style={{ background: "var(--surface-2)" }}>
+              <div className="text-xs font-semibold mb-0.5" style={{ color: "var(--muted)" }}>Durata</div>
+              <div className="text-xs font-bold" style={{ color: col }}>{governo.durata_giorni ?? "-"} giorni</div>
+            </div>
+          </div>
+
+          {/* Partiti */}
+          <div className="mb-4">
+            <div className="text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: "var(--muted)" }}>Partiti</div>
+            <div className="flex flex-wrap gap-2">
+              {partitiList.map((p) => {
+                const info = LOGO_MAP[p];
+                if (info) {
+                  return (
+                    <Link
+                      key={p}
+                      href={`/partiti/${info.id}`}
+                      className="flex items-center gap-1.5 px-2 py-1 rounded-lg border transition-all hover:scale-105"
+                      style={{ background: info.colore + "15", borderColor: info.colore + "40" }}
+                    >
+                      <img src={info.logoUrl} alt={p} style={{ width: 20, height: 20, objectFit: "contain" }} />
+                      <span className="text-xs font-medium" style={{ color: info.colore }}>{p}</span>
+                    </Link>
+                  );
+                }
+                return (
+                  <span key={p} className="px-2 py-1 rounded-lg text-xs" style={{ background: "var(--surface-2)", color: "var(--muted)" }}>{p}</span>
+                );
+              })}
+            </div>
+          </div>
+
+          {governo.note && (
+            <div className="mb-4">
+              <div className="text-xs font-semibold mb-1 uppercase tracking-wider" style={{ color: "var(--muted)" }}>Note</div>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>{governo.note}</p>
+            </div>
+          )}
+
+          {governo.motivo_fine && (
+            <div className="px-3 py-2 rounded-lg text-sm" style={{ background: "rgba(239,68,68,0.1)", color: "#ef4444" }}>
+              Fine: {governo.motivo_fine}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function GoverniTimeline({ governi, dalInizio, totaleMs }: Props) {
+  const [selected, setSelected] = useState<GovernoRow | null>(null);
+  const [hovered, setHovered] = useState<GovernoRow | null>(null);
+
+  const withWidths = governi.map((g) => {
+    const dal = new Date(g.dal).getTime();
+    const al = g.al ? new Date(g.al).getTime() : Date.now();
+    const pct = Math.max(((al - dal) / totaleMs) * 100, 0.8);
+    return { ...g, pct };
+  });
+
+  // Left offset for each governo
+  let cumulative = 0;
+  const withLeft = withWidths.map((g) => {
+    const left = cumulative;
+    cumulative += g.pct;
+    return { ...g, left };
+  });
+
+  return (
+    <>
+      {/* Wrapper relativo: contiene labels + barra + floating preview */}
+      <div className="relative">
+
+        {/* Nomi governi sopra la barra — staggered in 2 rows */}
+        <div className="relative overflow-hidden" style={{ height: 44, marginBottom: 2 }}>
+          {withLeft.map((g, i) => {
+            const col = getCols(g.coalizione);
+            const isTop = i % 2 === 0;
+            const surname = g.premier.split(" ").pop() ?? g.premier;
+            return (
+              <div
+                key={g.id}
+                className="absolute flex flex-col items-center"
+                style={{
+                  left: `${g.left + g.pct / 2}%`,
+                  transform: "translateX(-50%)",
+                  top: isTop ? 0 : 22,
+                  maxWidth: `${Math.max(g.pct, 4)}%`,
+                  zIndex: hovered?.id === g.id ? 20 : 10,
+                }}
+              >
+                <span
+                  className="font-semibold truncate w-full text-center"
+                  style={{ fontSize: 10, color: col, lineHeight: 1.2 }}
+                >
+                  {surname}
+                </span>
+                <div style={{ width: 1, height: 10, background: col + "60", flexShrink: 0 }} />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Timeline barra */}
+        <div className="rounded-xl overflow-hidden border" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+          <div className="flex h-10">
+            {withLeft.map((g) => {
+              const col = getCols(g.coalizione);
+              const isHov = hovered?.id === g.id;
+              return (
+                <div
+                  key={g.id}
+                  className="relative flex-shrink-0 flex items-center justify-center cursor-pointer transition-all"
+                  style={{
+                    width: `${g.pct}%`,
+                    background: isHov ? col + "dd" : col,
+                    borderRight: "1px solid rgba(255,255,255,0.15)",
+                    filter: isHov ? "brightness(1.15)" : "none",
+                  }}
+                  onClick={() => setSelected(g)}
+                  onMouseEnter={() => setHovered(g)}
+                  onMouseLeave={() => setHovered(null)}
+                  title={g.nome}
+                >
+                  {g.pct > 7 && (
+                    <span className="text-white font-bold truncate px-1 select-none" style={{ fontSize: 10 }}>
+                      {g.premier.split(" ").pop()}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Anno labels */}
+          <div className="relative overflow-hidden" style={{ background: "var(--surface-2)", height: 22 }}>
+            {[2000, 2004, 2008, 2012, 2016, 2020, 2024, 2026].map((anno) => {
+              const pct = Math.min(Math.max(((new Date(`${anno}-01-01`).getTime() - dalInizio) / totaleMs) * 100, 0), 99);
+              return (
+                <span
+                  key={anno}
+                  className="absolute text-xs"
+                  style={{ left: `${pct}%`, color: "var(--muted)", fontSize: 10, top: 4, transform: "translateX(-50%)", whiteSpace: "nowrap" }}
+                >
+                  {anno}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Floating preview — fuori dal overflow-hidden, overlay sulla lista */}
+        {hovered && (
+          <div
+            className="absolute right-0 z-30 rounded-xl border p-4 flex items-start gap-4 pointer-events-none"
+            style={{
+              top: "calc(100% + 4px)",
+              width: "min(420px, 100%)",
+              background: "var(--surface)",
+              borderColor: "var(--border)",
+              borderLeftWidth: 3,
+              borderLeftColor: getCols(hovered.coalizione),
+              boxShadow: "0 8px 32px rgba(0,0,0,0.14)",
+            }}
+          >
+            <div className="flex-1 min-w-0">
+              <div className="font-bold text-sm">{hovered.nome}</div>
+              <div className="text-xs mt-0.5" style={{ color: "var(--muted)" }}>{hovered.coalizione}</div>
+              <div className="flex flex-wrap gap-1 mt-2">
+                {(JSON.parse(hovered.partiti) as string[]).slice(0, 6).map((p) => {
+                  const info = LOGO_MAP[p];
+                  return info ? (
+                    <img key={p} src={info.logoUrl} alt={p} title={p} style={{ width: 20, height: 20, objectFit: "contain", borderRadius: 3 }} />
+                  ) : (
+                    <span key={p} className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--surface-2)", color: "var(--muted)" }}>{p}</span>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="text-right flex-shrink-0">
+              <div className="text-xs" style={{ color: "var(--muted)" }}>{formatData(hovered.dal)}</div>
+              <div className="text-xs" style={{ color: "var(--muted)" }}>{hovered.al ? formatData(hovered.al) : "in carica"}</div>
+              <div className="text-xs font-bold mt-1" style={{ color: getCols(hovered.coalizione) }}>{hovered.durata_giorni} giorni</div>
+            </div>
+          </div>
+        )}
+
+      </div>{/* fine wrapper relativo */}
+
+      {/* Lista governi — rimane ferma, il preview flotta sopra */}
+      <div className="space-y-3 mt-4">
+        {governi.map((g) => {
+          const col = getCols(g.coalizione);
+          const partitiList = JSON.parse(g.partiti) as string[];
+          return (
+            <button
+              key={g.id}
+              onClick={() => setSelected(g)}
+              className="w-full text-left rounded-xl border p-5 transition-all hover:shadow-md hover:scale-[1.005] cursor-pointer"
+              style={{ background: "var(--surface)", borderColor: "var(--border)", borderLeftWidth: 4, borderLeftColor: col }}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="font-bold">{g.nome}</div>
+                  <div className="text-sm mt-0.5" style={{ color: "var(--muted)" }}>{g.coalizione}</div>
+                  <div className="flex flex-wrap gap-1.5 mt-2">
+                    {partitiList.slice(0, 8).map((p) => {
+                      const info = LOGO_MAP[p];
+                      return info ? (
+                        <span
+                          key={p}
+                          className="flex items-center gap-1 px-1.5 py-0.5 rounded"
+                          style={{ background: info.colore + "18", border: `1px solid ${info.colore}40` }}
+                        >
+                          <img src={info.logoUrl} alt={p} style={{ width: 16, height: 16, objectFit: "contain" }} />
+                          <span className="text-xs font-medium" style={{ color: info.colore }}>{p}</span>
+                        </span>
+                      ) : (
+                        <span key={p} className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--surface-2)", color: "var(--muted)" }}>{p}</span>
+                      );
+                    })}
+                  </div>
+                  {g.note && <p className="text-xs mt-2 line-clamp-2" style={{ color: "var(--muted)" }}>{g.note}</p>}
+                  {g.motivo_fine && (
+                    <div className="mt-2 text-xs px-2 py-1 rounded-md inline-block" style={{ background: "rgba(239,68,68,0.1)", color: "#f87171" }}>
+                      Fine: {g.motivo_fine}
+                    </div>
+                  )}
+                </div>
+                <div className="text-right flex-shrink-0">
+                  <div className="text-sm font-mono">{formatData(g.dal)}</div>
+                  <div className="text-sm font-mono" style={{ color: "var(--muted)" }}>{g.al ? formatData(g.al) : "oggi"}</div>
+                  {g.durata_giorni && (
+                    <div className="text-xs mt-1 font-bold" style={{ color: col }}>{g.durata_giorni} giorni</div>
+                  )}
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Modal */}
+      {selected && (
+        <GovernoModal governo={selected} onClose={() => setSelected(null)} />
+      )}
+    </>
+  );
+}

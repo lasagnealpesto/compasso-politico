@@ -4,7 +4,7 @@
     "nome": "Fratelli d'Italia",
     "nomeBreve": "FdI",
     "colore": "#1A3A5C",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Logo_FratellIdItalia.svg/200px-Logo_FratellIdItalia.svg.png",
+    "logoUrl": "/loghi/fdi.svg",
     "coalizione": "governo",
     "fondazione": 2012,
     "segretario": "Giorgia Meloni",
@@ -15,6 +15,19 @@
     "asseVerticale": 0.75,
     "descrizione": "Partito di destra nazionale, erede del Movimento Sociale Italiano attraverso Alleanza Nazionale. Attualmente al governo con Giorgia Meloni Presidente del Consiglio.",
     "storia": "Fondato nel 2012 da Giorgia Meloni, Ignazio La Russa e Guido Crosetto dopo la dissoluzione del Popolo della Libertà. Le origini risalgono al MSI (1946), passato ad Alleanza Nazionale (1995) e poi confluito nel PDL di Berlusconi (2009). Alle elezioni del 2022 è diventato il primo partito italiano con il 26% dei voti.",
+    "fondatori": [
+      { "nome": "Giorgia Meloni", "fotoId": "giorgia-meloni", "wikiUrl": "https://it.wikipedia.org/wiki/Giorgia_Meloni" },
+      { "nome": "Ignazio La Russa", "fotoId": "ignazio-la-russa", "wikiUrl": "https://it.wikipedia.org/wiki/Ignazio_La_Russa" },
+      { "nome": "Guido Crosetto", "fotoId": "guido-crosetto", "wikiUrl": "https://it.wikipedia.org/wiki/Guido_Crosetto" }
+    ],
+    "milestones": [
+      { "anno": 2012, "evento": "Fondazione di FdI. Nasce dalla dissoluzione del PDL, guidato da Meloni, La Russa e Crosetto.", "tipo": "fondazione", "fonteUrl": "https://it.wikipedia.org/wiki/Fratelli_d%27Italia", "fonteLabel": "Wikipedia — Fratelli d'Italia" },
+      { "anno": 2014, "evento": "Prime elezioni europee: 3,7%. Partito minore ma con identità forte.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_europee_del_2014_in_Italia", "fonteLabel": "Wikipedia — Europee 2014" },
+      { "anno": 2018, "evento": "Elezioni politiche: 4,4%. L'unica forza di destra all'opposizione.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2018", "fonteLabel": "Wikipedia — Politiche 2018" },
+      { "anno": 2021, "evento": "FdI unico partito all'opposizione durante il governo Draghi. Meloni cresce nei sondaggi.", "tipo": "altro", "fonteUrl": "https://it.wikipedia.org/wiki/Governo_Draghi", "fonteLabel": "Wikipedia — Governo Draghi" },
+      { "anno": 2022, "evento": "Elezioni politiche: 26% — primo partito in Italia. Vittoria storica.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2022", "fonteLabel": "Wikipedia — Politiche 2022" },
+      { "anno": 2022, "evento": "Giorgia Meloni diventa la prima donna Presidente del Consiglio nella storia italiana.", "tipo": "governo", "fonteUrl": "https://it.wikipedia.org/wiki/Governo_Meloni", "fonteLabel": "Wikipedia — Governo Meloni" }
+    ],
     "programma": [
       { "tema": "Economia", "sintesi": "Riduzione fiscale, sostegno alle imprese, taglio del cuneo fiscale", "puntiChiave": ["Flat tax per partite IVA e PMI", "Riduzione tasse sul lavoro", "Sostegno alla famiglia", "Contrasto all'evasione fiscale"] },
       { "tema": "Immigrazione", "sintesi": "Controllo dei flussi migratori, accordi con paesi nordafricani, rimpatri", "puntiChiave": ["Blocco navale nel Mediterraneo", "Accordi bilaterali con paesi di origine", "Accelerazione rimpatri", "Piano Mattei per l'Africa"] },
@@ -29,7 +42,7 @@
     "nome": "Partito Democratico",
     "nomeBreve": "PD",
     "colore": "#E5001A",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/it/thumb/2/28/Partito_Democratico_-_Logo_2023.svg/200px-Partito_Democratico_-_Logo_2023.svg.png",
+    "logoUrl": "/loghi/pd.png",
     "coalizione": "opposizione",
     "fondazione": 2007,
     "segretario": "Elly Schlein",
@@ -40,6 +53,20 @@
     "asseVerticale": -0.4,
     "descrizione": "Principale partito di centrosinistra italiano, nato dalla fusione tra Democratici di Sinistra e la Margherita. Guidato da Elly Schlein dal 2023.",
     "storia": "Il PD nasce nel 2007 dalla fusione tra i DS (erede del PCI) e La Margherita. Ha espresso i governi di Romano Prodi, Enrico Letta, Matteo Renzi, Paolo Gentiloni e ha partecipato ai governi Conte II e Draghi. Nel 2023 Elly Schlein vince le primarie portando il partito su posizioni più progressiste.",
+    "fondatori": [
+      { "nome": "Walter Veltroni", "fotoId": "walter-veltroni", "wikiUrl": "https://it.wikipedia.org/wiki/Walter_Veltroni" },
+      { "nome": "Francesco Rutelli", "fotoId": "", "wikiUrl": "https://it.wikipedia.org/wiki/Francesco_Rutelli" }
+    ],
+    "milestones": [
+      { "anno": 2007, "evento": "Fondazione del PD dalla fusione DS + La Margherita. Veltroni primo segretario.", "tipo": "fondazione", "fonteUrl": "https://it.wikipedia.org/wiki/Partito_Democratico_(Italia)", "fonteLabel": "Wikipedia — Partito Democratico" },
+      { "anno": 2008, "evento": "Prime elezioni con il PD: 33,2%. Secondo posto dopo il PDL di Berlusconi.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2008", "fonteLabel": "Wikipedia — Politiche 2008" },
+      { "anno": 2013, "evento": "Bersani vince di misura. Impasse parlamentare, nasce il governo Letta.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2013", "fonteLabel": "Wikipedia — Politiche 2013" },
+      { "anno": 2014, "evento": "Renzi vince le primarie e diventa segretario, poi premier.", "tipo": "leader", "fonteUrl": "https://it.wikipedia.org/wiki/Matteo_Renzi", "fonteLabel": "Wikipedia — Matteo Renzi" },
+      { "anno": 2016, "evento": "Renzi perde il referendum costituzionale e si dimette da premier.", "tipo": "altro", "fonteUrl": "https://it.wikipedia.org/wiki/Referendum_costituzionale_italiano_del_2016", "fonteLabel": "Wikipedia — Referendum 2016" },
+      { "anno": 2017, "evento": "Scissione: D'Alema e Bersani fondano Mdp (poi LeU).", "tipo": "scissione", "fonteUrl": "https://it.wikipedia.org/wiki/Articolo_Uno_(partito_politico)", "fonteLabel": "Wikipedia — Articolo Uno" },
+      { "anno": 2022, "evento": "Elezioni con Letta segretario: 19%. Sconfitta netta.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2022", "fonteLabel": "Wikipedia — Politiche 2022" },
+      { "anno": 2023, "evento": "Elly Schlein vince le primarie aperte. Il PD vira a sinistra.", "tipo": "leader", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_primarie_del_Partito_Democratico_del_2023", "fonteLabel": "Wikipedia — Primarie PD 2023" }
+    ],
     "programma": [
       { "tema": "Economia", "sintesi": "Fiscalità progressiva, salario minimo, investimenti pubblici", "puntiChiave": ["Salario minimo legale (9€/ora)", "Riforma fiscale progressiva", "Investimenti in green economy"] },
       { "tema": "Lavoro", "sintesi": "Tutele lavorative, contrasto alla precarietà", "puntiChiave": ["Salario minimo a 9€/ora", "Riduzione lavoro precario", "Congedo parentale paritario"] },
@@ -54,7 +81,7 @@
     "nome": "MoVimento 5 Stelle",
     "nomeBreve": "M5S",
     "colore": "#C8A800",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/MoVimento_5_Stelle_Logo.svg/200px-MoVimento_5_Stelle_Logo.svg.png",
+    "logoUrl": "/loghi/m5s.png",
     "coalizione": "opposizione",
     "fondazione": 2009,
     "segretario": "Giuseppe Conte",
@@ -65,6 +92,21 @@
     "asseVerticale": 0.1,
     "descrizione": "Movimento populista fondato da Beppe Grillo e Gianroberto Casaleggio. Dal 2021 guidato da Giuseppe Conte.",
     "storia": "Il M5S nasce nel 2009 da Beppe Grillo e Casaleggio. Alle elezioni 2018 raggiunge il 33%. Ha partecipato al governo Conte I (con Lega), Conte II (con PD) e Draghi. Dal 2021 Giuseppe Conte è presidente. Alle elezioni 2022 scende al 15%.",
+    "fondatori": [
+      { "nome": "Beppe Grillo", "fotoId": "beppe-grillo", "wikiUrl": "https://it.wikipedia.org/wiki/Beppe_Grillo" },
+      { "nome": "Gianroberto Casaleggio", "fotoId": "gianroberto-casaleggio", "wikiUrl": "https://it.wikipedia.org/wiki/Gianroberto_Casaleggio" }
+    ],
+    "milestones": [
+      { "anno": 2009, "evento": "Fondazione del MoVimento 5 Stelle da Beppe Grillo e Casaleggio.", "tipo": "fondazione", "fonteUrl": "https://it.wikipedia.org/wiki/MoVimento_5_Stelle", "fonteLabel": "Wikipedia — MoVimento 5 Stelle" },
+      { "anno": 2013, "evento": "Elezioni politiche: 25,5% a sorpresa. Terza forza in parlamento.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2013", "fonteLabel": "Wikipedia — Politiche 2013" },
+      { "anno": 2016, "evento": "Raggi sindaca di Roma, Appendino sindaca di Torino. M5S conquista le grandi città.", "tipo": "governo", "fonteUrl": "https://it.wikipedia.org/wiki/Virginia_Raggi", "fonteLabel": "Wikipedia — Virginia Raggi" },
+      { "anno": 2018, "evento": "Elezioni politiche: 33% — primo partito in assoluto.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2018", "fonteLabel": "Wikipedia — Politiche 2018" },
+      { "anno": 2018, "evento": "Governo Conte I con la Lega. Nasce il 'contratto di governo'.", "tipo": "governo", "fonteUrl": "https://it.wikipedia.org/wiki/Governo_Conte_I", "fonteLabel": "Wikipedia — Governo Conte I" },
+      { "anno": 2019, "evento": "Governo Conte II con il PD. Cambio di alleanza dopo la crisi estiva.", "tipo": "governo", "fonteUrl": "https://it.wikipedia.org/wiki/Governo_Conte_II", "fonteLabel": "Wikipedia — Governo Conte II" },
+      { "anno": 2021, "evento": "Giuseppe Conte eletto presidente del M5S.", "tipo": "leader", "fonteUrl": "https://it.wikipedia.org/wiki/Giuseppe_Conte", "fonteLabel": "Wikipedia — Giuseppe Conte" },
+      { "anno": 2021, "evento": "Scissione: Di Maio fonda Insieme per il Futuro. Il M5S perde una parte dei parlamentari.", "tipo": "scissione", "fonteUrl": "https://it.wikipedia.org/wiki/Insieme_per_il_Futuro", "fonteLabel": "Wikipedia — Insieme per il Futuro" },
+      { "anno": 2022, "evento": "Elezioni politiche: 15,4%. Calo significativo rispetto al 2018.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2022", "fonteLabel": "Wikipedia — Politiche 2022" }
+    ],
     "programma": [
       { "tema": "Economia", "sintesi": "Sostegno al reddito, contrasto alle disuguaglianze", "puntiChiave": ["Difesa del reddito di cittadinanza", "Superbonus e incentivi edilizi", "Salario minimo"] },
       { "tema": "Ambiente", "sintesi": "Transizione ecologica, no trivelle, energie rinnovabili", "puntiChiave": ["Stop a nuove trivellazioni", "Investimenti in rinnovabili", "Mobilità sostenibile"] },
@@ -79,7 +121,7 @@
     "nome": "Lega",
     "nomeBreve": "Lega",
     "colore": "#008000",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Lega_-_Salvini_Premier_logo.svg/200px-Lega_-_Salvini_Premier_logo.svg.png",
+    "logoUrl": "/loghi/lega.png",
     "coalizione": "governo",
     "fondazione": 1991,
     "segretario": "Matteo Salvini",
@@ -90,6 +132,19 @@
     "asseVerticale": 0.6,
     "descrizione": "Partito di destra nazionalista nato come Lega Nord. Con Salvini si è trasformato in movimento nazionale sovranista.",
     "storia": "La Lega Nord nasce nel 1991 da Umberto Bossi. Con Salvini alla guida dal 2013 diventa 'Lega', un partito nazionale. Alle europee 2019 tocca il 34%. Partecipa al governo Conte I e al governo Draghi. Alle elezioni 2022 scende all'8,9%.",
+    "fondatori": [
+      { "nome": "Umberto Bossi", "fotoId": "umberto-bossi", "wikiUrl": "https://it.wikipedia.org/wiki/Umberto_Bossi" }
+    ],
+    "milestones": [
+      { "anno": 1991, "evento": "Fondazione della Lega Nord da Umberto Bossi. Il progetto: federalismo e autonomia del Nord.", "tipo": "fondazione", "fonteUrl": "https://it.wikipedia.org/wiki/Lega_Nord", "fonteLabel": "Wikipedia — Lega Nord" },
+      { "anno": 1994, "evento": "Primo governo Berlusconi: la Lega partecipa, poi si ritira dopo 7 mesi.", "tipo": "governo", "fonteUrl": "https://it.wikipedia.org/wiki/Governo_Berlusconi_I", "fonteLabel": "Wikipedia — Governo Berlusconi I" },
+      { "anno": 2013, "evento": "Matteo Salvini vince il congresso e diventa segretario federale. Nasce la Lega nazionale.", "tipo": "leader", "fonteUrl": "https://it.wikipedia.org/wiki/Matteo_Salvini", "fonteLabel": "Wikipedia — Matteo Salvini" },
+      { "anno": 2018, "evento": "Elezioni: 17,4%. Salvini Ministro dell'Interno nel governo Conte I.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2018", "fonteLabel": "Wikipedia — Politiche 2018" },
+      { "anno": 2019, "evento": "Europee: 34,3% — il picco storico. Salvini è l'uomo politico più popolare d'Italia.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_europee_del_2019_in_Italia", "fonteLabel": "Wikipedia — Europee 2019" },
+      { "anno": 2019, "evento": "Crisi di governo al Papeete Beach. Salvini ritira la fiducia al governo Conte I.", "tipo": "altro", "fonteUrl": "https://it.wikipedia.org/wiki/Crisi_del_governo_Conte_I", "fonteLabel": "Wikipedia — Crisi Governo Conte I" },
+      { "anno": 2021, "evento": "Lega partecipa al governo Draghi. Giorgetti ministro dello Sviluppo Economico.", "tipo": "governo", "fonteUrl": "https://it.wikipedia.org/wiki/Governo_Draghi", "fonteLabel": "Wikipedia — Governo Draghi" },
+      { "anno": 2022, "evento": "Elezioni: 8,9%. Netta sconfitta rispetto al 34% del 2019.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2022", "fonteLabel": "Wikipedia — Politiche 2022" }
+    ],
     "programma": [
       { "tema": "Immigrazione", "sintesi": "Controllo dei flussi, sicurezza, rimpatri", "puntiChiave": ["Chiusura dei porti alle ONG", "Accordi di rimpatrio", "Contrasto immigrazione irregolare"] },
       { "tema": "Economia", "sintesi": "Flat tax, autonomia differenziata, meno tasse", "puntiChiave": ["Flat tax al 15%", "Autonomia differenziata regionale", "Pensione anticipata (quota 41)"] },
@@ -104,7 +159,7 @@
     "nome": "Forza Italia",
     "nomeBreve": "FI",
     "colore": "#0066CC",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Forza_Italia_logo_2013.svg/200px-Forza_Italia_logo_2013.svg.png",
+    "logoUrl": "/loghi/fi.png",
     "coalizione": "governo",
     "fondazione": 1994,
     "segretario": "Antonio Tajani",
@@ -115,6 +170,19 @@
     "asseVerticale": 0.2,
     "descrizione": "Partito liberaldemocratico di centrodestra fondato da Silvio Berlusconi nel 1994. Dopo la morte di Berlusconi nel 2023, guidato da Antonio Tajani.",
     "storia": "FI nasce nel 1994 quando Silvio Berlusconi entra in politica. Berlusconi è stato quattro volte Presidente del Consiglio. Nel 2023 muore e Antonio Tajani assume la guida. FI fa parte della coalizione di centrodestra al governo.",
+    "fondatori": [
+      { "nome": "Silvio Berlusconi", "fotoId": "silvio-berlusconi", "wikiUrl": "https://it.wikipedia.org/wiki/Silvio_Berlusconi" }
+    ],
+    "milestones": [
+      { "anno": 1994, "evento": "Berlusconi entra in politica e fonda Forza Italia in soli 2 mesi. Vince le elezioni.", "tipo": "fondazione", "fonteUrl": "https://it.wikipedia.org/wiki/Forza_Italia_(1994)", "fonteLabel": "Wikipedia — Forza Italia (1994)" },
+      { "anno": 1994, "evento": "Primo governo Berlusconi. Dura 7 mesi, poi cade per la defezione della Lega Nord.", "tipo": "governo", "fonteUrl": "https://it.wikipedia.org/wiki/Governo_Berlusconi_I", "fonteLabel": "Wikipedia — Governo Berlusconi I" },
+      { "anno": 2001, "evento": "Governo Berlusconi II. Prima legislatura di 5 anni portata a termine dal centrodestra.", "tipo": "governo", "fonteUrl": "https://it.wikipedia.org/wiki/Governo_Berlusconi_II", "fonteLabel": "Wikipedia — Governo Berlusconi II" },
+      { "anno": 2008, "evento": "Governo Berlusconi IV. Crisi dello spread nel 2011 costringe alle dimissioni.", "tipo": "governo", "fonteUrl": "https://it.wikipedia.org/wiki/Governo_Berlusconi_IV", "fonteLabel": "Wikipedia — Governo Berlusconi IV" },
+      { "anno": 2011, "evento": "Spread BTP-Bund tocca 575 punti base. Berlusconi si dimette, Monti premier tecnico.", "tipo": "altro", "fonteUrl": "https://it.wikipedia.org/wiki/Crisi_del_debito_pubblico_italiano_(2011)", "fonteLabel": "Wikipedia — Crisi spread 2011" },
+      { "anno": 2013, "evento": "Berlusconi condannato per frode fiscale (caso Mediaset). Decade dal Senato.", "tipo": "altro", "fonteUrl": "https://it.wikipedia.org/wiki/Processo_Mediaset", "fonteLabel": "Wikipedia — Processo Mediaset" },
+      { "anno": 2022, "evento": "Elezioni: 8,1%. FI nella coalizione di governo con Meloni e Salvini.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2022", "fonteLabel": "Wikipedia — Politiche 2022" },
+      { "anno": 2023, "evento": "Muore Silvio Berlusconi. Antonio Tajani diventa segretario e guida il partito.", "tipo": "leader", "fonteUrl": "https://it.wikipedia.org/wiki/Silvio_Berlusconi", "fonteLabel": "Wikipedia — Silvio Berlusconi" }
+    ],
     "programma": [
       { "tema": "Economia", "sintesi": "Liberalismo economico, taglio tasse", "puntiChiave": ["Riduzione pressione fiscale", "Privatizzazioni selettive", "Sostegno alle PMI"] },
       { "tema": "Esteri", "sintesi": "Atlantismo, europeismo moderato", "puntiChiave": ["Rapporti speciali con USA", "Sostegno all'Ucraina", "Ruolo italiano in Europa"] },
@@ -128,7 +196,7 @@
     "nome": "Azione",
     "nomeBreve": "Az",
     "colore": "#E05C00",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Azione_logo.svg/200px-Azione_logo.svg.png",
+    "logoUrl": "/loghi/azione.jpg",
     "coalizione": "opposizione",
     "fondazione": 2019,
     "segretario": "Carlo Calenda",
@@ -139,9 +207,19 @@
     "asseVerticale": -0.55,
     "descrizione": "Partito liberal-democratico fondato da Carlo Calenda nel 2019. Posizionamento centrista, liberale e riformista.",
     "storia": "Azione nasce nel 2019 da Carlo Calenda, ex ministro dello Sviluppo Economico nel governo Gentiloni, dopo la sua uscita dal PD. Alle elezioni 2022 si allea con Italia Viva nel 'Terzo Polo' ottenendo il 7,8% complessivo. Dopo le elezioni il sodalizio si deteriora.",
+    "fondatori": [
+      { "nome": "Carlo Calenda", "fotoId": "carlo-calenda", "wikiUrl": "https://it.wikipedia.org/wiki/Carlo_Calenda" }
+    ],
+    "milestones": [
+      { "anno": 2019, "evento": "Fondazione di Azione da Carlo Calenda dopo l'uscita dal PD.", "tipo": "fondazione", "fonteUrl": "https://it.wikipedia.org/wiki/Azione_(partito_politico_italiano)", "fonteLabel": "Wikipedia — Azione" },
+      { "anno": 2021, "evento": "Calenda candidato sindaco di Roma: ottiene il 19,8%, risultato sorprendente.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_amministrative_italiane_del_2021", "fonteLabel": "Wikipedia — Comunali 2021" },
+      { "anno": 2022, "evento": "Accordo con Italia Viva. Nasce il Terzo Polo: 'né destra né sinistra'.", "tipo": "altro", "fonteUrl": "https://it.wikipedia.org/wiki/Azione_-_Italia_Viva", "fonteLabel": "Wikipedia — Terzo Polo" },
+      { "anno": 2022, "evento": "Elezioni: 7,8% col Terzo Polo. Buon risultato per l'area centrista.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2022", "fonteLabel": "Wikipedia — Politiche 2022" },
+      { "anno": 2022, "evento": "Rottura con Italia Viva. Calenda e Renzi si separano dopo le elezioni.", "tipo": "scissione", "fonteUrl": "https://it.wikipedia.org/wiki/Azione_(partito_politico_italiano)", "fonteLabel": "Wikipedia — Azione" }
+    ],
     "programma": [
       { "tema": "Economia", "sintesi": "Agenda Draghi, competitività, liberalizzazioni", "puntiChiave": ["Continuazione agenda Draghi", "Liberalizzazioni nei servizi", "Riduzione debito pubblico"] },
-      { "tema": "Europa", "sintesi": "Europeismo convinto, difesa comune", "puntiChiave": ["Difesa comune europea", "Completamento mercato unico"] },
+      { "tema": "Esteri", "sintesi": "Europeismo convinto, difesa comune", "puntiChiave": ["Difesa comune europea", "Completamento mercato unico"] },
       { "tema": "Ambiente", "sintesi": "Transizione energetica pragmatica, nucleare", "puntiChiave": ["Nucleare di nuova generazione", "Investimenti in rinnovabili"] }
     ],
     "esponenti": ["carlo-calenda", "benedetto-della-vedova"]
@@ -151,7 +229,7 @@
     "nome": "Italia Viva",
     "nomeBreve": "IV",
     "colore": "#E91B72",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Italia_Viva_logo_%282022%29.svg/200px-Italia_Viva_logo_%282022%29.svg.png",
+    "logoUrl": "/loghi/iv.svg",
     "coalizione": "opposizione",
     "fondazione": 2019,
     "segretario": "Matteo Renzi",
@@ -162,9 +240,20 @@
     "asseVerticale": -0.45,
     "descrizione": "Partito centrista fondato da Matteo Renzi nel 2019 dopo la scissione dal PD. Posizionamento liberal-riformista.",
     "storia": "Italia Viva nasce nel 2019 da Matteo Renzi, ex premier e segretario PD. Ha fatto cadere il governo Conte II nel 2021, aprendo la strada al governo Draghi. Alle elezioni 2022 si allea con Azione nel Terzo Polo.",
+    "fondatori": [
+      { "nome": "Matteo Renzi", "fotoId": "matteo-renzi", "wikiUrl": "https://it.wikipedia.org/wiki/Matteo_Renzi" }
+    ],
+    "milestones": [
+      { "anno": 2019, "evento": "Fondazione di Italia Viva. Renzi esce dal PD dopo tensioni con Zingaretti.", "tipo": "fondazione", "fonteUrl": "https://it.wikipedia.org/wiki/Italia_Viva", "fonteLabel": "Wikipedia — Italia Viva" },
+      { "anno": 2021, "evento": "IV ritira i ministri dal governo Conte II. Crisi di governo in piena pandemia.", "tipo": "altro", "fonteUrl": "https://it.wikipedia.org/wiki/Crisi_del_governo_Conte_II", "fonteLabel": "Wikipedia — Crisi Governo Conte II" },
+      { "anno": 2021, "evento": "Nasce il governo Draghi con l'appoggio determinante di Italia Viva.", "tipo": "governo", "fonteUrl": "https://it.wikipedia.org/wiki/Governo_Draghi", "fonteLabel": "Wikipedia — Governo Draghi" },
+      { "anno": 2022, "evento": "Accordo con Azione. Nasce il Terzo Polo con Calenda.", "tipo": "altro", "fonteUrl": "https://it.wikipedia.org/wiki/Azione_-_Italia_Viva", "fonteLabel": "Wikipedia — Terzo Polo" },
+      { "anno": 2022, "evento": "Elezioni: 7,8% col Terzo Polo.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2022", "fonteLabel": "Wikipedia — Politiche 2022" },
+      { "anno": 2022, "evento": "Rottura con Azione dopo le elezioni. Calenda accusa Renzi di scarso impegno.", "tipo": "scissione", "fonteUrl": "https://it.wikipedia.org/wiki/Italia_Viva", "fonteLabel": "Wikipedia — Italia Viva" }
+    ],
     "programma": [
       { "tema": "Economia", "sintesi": "Riformismo, crescita, agenda Draghi", "puntiChiave": ["Agenda Draghi", "Liberalismo economico", "Utilizzo pieno del PNRR"] },
-      { "tema": "Europa", "sintesi": "Europeismo convinto", "puntiChiave": ["Integrazione europea", "Difesa comune"] },
+      { "tema": "Esteri", "sintesi": "Europeismo convinto", "puntiChiave": ["Integrazione europea", "Difesa comune"] },
       { "tema": "Giustizia", "sintesi": "Efficienza della giustizia, durata dei processi", "puntiChiave": ["Riduzione durata processi", "Digitalizzazione della giustizia"] }
     ],
     "esponenti": ["matteo-renzi", "maria-elena-boschi"]
@@ -174,7 +263,7 @@
     "nome": "Alleanza Verdi e Sinistra",
     "nomeBreve": "AVS",
     "colore": "#C0001A",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Alleanza_Verdi_e_Sinistra_-_logo.svg/200px-Alleanza_Verdi_e_Sinistra_-_logo.svg.png",
+    "logoUrl": "/loghi/avs.png",
     "coalizione": "opposizione",
     "fondazione": 2022,
     "segretario": "Angelo Bonelli / Nicola Fratoianni",
@@ -185,6 +274,16 @@
     "asseVerticale": -0.3,
     "descrizione": "Alleanza tra Europa Verde e Sinistra Italiana. Rappresenta la sinistra ecologista.",
     "storia": "AVS nasce nel 2022 tra Europa Verde e Sinistra Italiana per superare la soglia del 3%. Insieme ottengono il 3,6% alle elezioni 2022.",
+    "fondatori": [
+      { "nome": "Angelo Bonelli", "fotoId": "", "wikiUrl": "https://it.wikipedia.org/wiki/Angelo_Bonelli_(politico_italiano)" },
+      { "nome": "Nicola Fratoianni", "fotoId": "nicola-fratoianni", "wikiUrl": "https://it.wikipedia.org/wiki/Nicola_Fratoianni" }
+    ],
+    "milestones": [
+      { "anno": 2022, "evento": "Fondazione di AVS dalla fusione Europa Verde + Sinistra Italiana per superare il 3%.", "tipo": "fondazione", "fonteUrl": "https://it.wikipedia.org/wiki/Alleanza_Verdi_e_Sinistra", "fonteLabel": "Wikipedia — Alleanza Verdi e Sinistra" },
+      { "anno": 2022, "evento": "Elezioni: 3,6% — supera la soglia di sbarramento grazie all'alleanza.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2022", "fonteLabel": "Wikipedia — Politiche 2022" },
+      { "anno": 2024, "evento": "Europee: 6,7% — sorpresa positiva, quasi il doppio del risultato del 2022.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_europee_del_2024_in_Italia", "fonteLabel": "Wikipedia — Europee 2024" },
+      { "anno": 2024, "evento": "Ilaria Salis eletta europarlamentare grazie alla lista AVS.", "tipo": "altro", "fonteUrl": "https://it.wikipedia.org/wiki/Ilaria_Salis", "fonteLabel": "Wikipedia — Ilaria Salis" }
+    ],
     "programma": [
       { "tema": "Ambiente", "sintesi": "Green New Deal, stop fossili, 100% rinnovabili", "puntiChiave": ["Uscita dal carbone entro 2025", "100% rinnovabili entro 2035"] },
       { "tema": "Lavoro", "sintesi": "Settimana corta, salario minimo alto", "puntiChiave": ["Settimana di 4 giorni", "Salario minimo a 10€/ora"] },
@@ -197,7 +296,7 @@
     "nome": "Noi Moderati",
     "nomeBreve": "NM",
     "colore": "#003087",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Noi_Moderati_logo.svg/200px-Noi_Moderati_logo.svg.png",
+    "logoUrl": "/loghi/nm.svg",
     "coalizione": "governo",
     "fondazione": 2022,
     "segretario": "Maurizio Lupi",
@@ -208,6 +307,13 @@
     "asseVerticale": 0.4,
     "descrizione": "Partito di centrodestra moderato, erede dell'UDC. Parte della coalizione di governo.",
     "storia": "Noi Moderati nasce nel 2022 dalla fusione di Noi con l'Italia, Coraggio Italia, UDC e Cambiamo!. Alle elezioni 2022 ottiene l'1%.",
+    "fondatori": [
+      { "nome": "Maurizio Lupi", "fotoId": "maurizio-lupi", "wikiUrl": "https://it.wikipedia.org/wiki/Maurizio_Lupi" }
+    ],
+    "milestones": [
+      { "anno": 2022, "evento": "Fondazione di NM dalla fusione Noi con l'Italia, Coraggio Italia, UDC e Cambiamo!", "tipo": "fondazione", "fonteUrl": "https://it.wikipedia.org/wiki/Noi_Moderati", "fonteLabel": "Wikipedia — Noi Moderati" },
+      { "anno": 2022, "evento": "Elezioni: 1% — NM nella coalizione di centrodestra al governo con Meloni.", "tipo": "elezione", "fonteUrl": "https://it.wikipedia.org/wiki/Elezioni_politiche_italiane_del_2022", "fonteLabel": "Wikipedia — Politiche 2022" }
+    ],
     "programma": [
       { "tema": "Economia", "sintesi": "Economia sociale di mercato, sussidiarietà", "puntiChiave": ["Economia sociale di mercato", "Sostegno al terzo settore"] },
       { "tema": "Famiglia", "sintesi": "Famiglia tradizionale, natalità, valori cattolici", "puntiChiave": ["Sostegno alla famiglia", "Politiche per la natalità", "Scuola paritaria"] }

@@ -54,6 +54,20 @@ export interface ProgrammaTema {
   puntiChiave: string[];
 }
 
+export interface Fondatore {
+  nome: string;
+  fotoId: string;
+  wikiUrl: string;
+}
+
+export interface Milestone {
+  anno: number;
+  evento: string;
+  tipo: "fondazione" | "elezione" | "governo" | "scissione" | "leader" | "altro";
+  fonteUrl: string;
+  fonteLabel: string;
+}
+
 export interface Partito {
   id: string;
   nome: string;
@@ -72,6 +86,8 @@ export interface Partito {
   storia: string;
   programma: ProgrammaTema[];
   esponenti: string[];
+  fondatori: Fondatore[];
+  milestones: Milestone[];
 }
 
 export interface DailyContent {
@@ -80,6 +96,8 @@ export interface DailyContent {
     titolo: string;
     spiegazione: string;
     perchéRilevante: string;
+    fonte?: string;
+    fonteUrl?: string;
   }[];
   recap: string;
 }

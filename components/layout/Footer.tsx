@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t mt-20" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+    <footer className="mt-20" style={{ borderTop: "3px double var(--border-strong)", background: "var(--surface)" }}>
       <div className="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row justify-between gap-6">
         <div>
-          <div className="font-bold text-lg mb-1">🧭 Compasso Politico</div>
+          <div className="mb-1" style={{ fontFamily: "Georgia, serif", fontSize: 20, fontWeight: 700, letterSpacing: "-0.02em" }}>Compasso Politico</div>
           <p className="text-sm" style={{ color: "var(--muted)" }}>
             La politica italiana spiegata bene.
           </p>

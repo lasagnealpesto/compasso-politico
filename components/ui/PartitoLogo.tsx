@@ -16,16 +16,20 @@ export default function PartitoLogo({ nome, nomeBreve, colore, logoUrl, size = 4
 
   if (!error && logoUrl) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={logoUrl}
-        alt={`Logo ${nome}`}
-        width={size}
-        height={size}
-        onError={() => setError(true)}
-        className={className}
-        style={{ objectFit: "contain", width: size, height: size }}
-      />
+      <div
+        className={`flex items-center justify-center rounded-lg flex-shrink-0 ${className}`}
+        style={{ width: size, height: size, background: "#fff", border: "1px solid var(--border)", padding: 3 }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logoUrl}
+          alt={`Logo ${nome}`}
+          width={size - 6}
+          height={size - 6}
+          onError={() => setError(true)}
+          style={{ objectFit: "contain", width: "100%", height: "100%" }}
+        />
+      </div>
     );
   }
 

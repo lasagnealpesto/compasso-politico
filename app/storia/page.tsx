@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getDb, type GovernoRow, type ElezioneRow, type EventoRow, type LeggeRow } from "@/lib/db";
 import InfoTooltip from "@/components/ui/InfoTooltip";
+import GoverniTimeline from "@/components/storia/GoverniTimeline";
+import EventiTimeline from "@/components/storia/EventiTimeline";
 
 export const metadata: Metadata = {
   title: "Storia Politica",
@@ -45,9 +47,6 @@ export default function StoriaPage() {
   const eventi = db.prepare("SELECT * FROM eventi ORDER BY data ASC").all() as EventoRow[];
   const leggi = db.prepare("SELECT * FROM leggi ORDER BY anno ASC").all() as LeggeRow[];
 
-  // Anni unici per il filtro
-  const anni = [...new Set(eventi.map((e) => e.anno))].sort();
-
   // Durata totale per scala
   const dalInizio = new Date("2000-01-01").getTime();
   const adOggi = Date.now();
@@ -60,21 +59,6 @@ export default function StoriaPage() {
         Dal 2000 ad oggi: 14 governi, 12 elezioni, 49 eventi storici, 15 leggi chiave.
       </p>
 
-      {/* Stat header */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
-        {[
-          { n: governi.length, label: "Governi", icon: "🏛️" },
-          { n: elezioni.length, label: "Elezioni", icon: "🗳️" },
-          { n: eventi.length, label: "Eventi chiave", icon: "📌" },
-          { n: leggi.length, label: "Leggi storiche", icon: "📜" },
-        ].map(({ n, label, icon }) => (
-          <div key={label} className="rounded-xl border p-4 text-center" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-            <div className="text-2xl mb-1">{icon}</div>
-            <div className="text-2xl font-bold" style={{ color: "var(--accent)" }}>{n}</div>
-            <div className="text-xs" style={{ color: "var(--muted)" }}>{label}</div>
-          </div>
-        ))}
-      </div>
 
       {/* GOVERNI — visual timeline */}
       <section className="mb-16">
@@ -84,83 +68,7 @@ export default function StoriaPage() {
         </div>
         <p className="text-sm mb-6" style={{ color: "var(--muted)" }}>Larghezza proporzionale alla durata del governo.</p>
 
-        {/* Timeline barra */}
-        <div className="rounded-xl overflow-hidden border mb-4" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-          <div className="flex h-12">
-            {governi.map((g) => {
-              const dal = new Date(g.dal).getTime();
-              const al = g.al ? new Date(g.al).getTime() : Date.now();
-              const pct = ((al - dal) / totaleMs) * 100;
-              const col = getCols(g.coalizione);
-              return (
-                <div
-                  key={g.id}
-                  className="relative group flex-shrink-0 flex items-center justify-center border-r border-white/10 overflow-hidden"
-                  style={{ width: `${Math.max(pct, 1)}%`, background: col }}
-                  title={`${g.nome} (${g.durata_giorni} giorni)`}
-                >
-                  {pct > 6 && (
-                    <span className="text-white font-bold text-xs px-1 truncate" style={{ fontSize: 10 }}>
-                      {g.premier.split(" ").pop()}
-                    </span>
-                  )}
-                  <div
-                    className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none"
-                    style={{ background: "var(--surface-2)", color: "var(--foreground)", border: "1px solid var(--border)" }}
-                  >
-                    {g.nome} · {g.durata_giorni} giorni
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          {/* Etichette anni */}
-          <div className="flex px-2 py-1" style={{ background: "var(--surface-2)" }}>
-            {[2000, 2004, 2008, 2012, 2016, 2020, 2024, 2026].map((anno) => {
-              const pct = ((new Date(`${anno}-01-01`).getTime() - dalInizio) / totaleMs) * 100;
-              return (
-                <div key={anno} className="absolute text-xs" style={{ left: `${pct}%`, color: "var(--muted)", fontSize: 10 }}>
-                  {anno}
-                </div>
-              );
-            })}
-            <span className="text-xs" style={{ color: "var(--muted)", fontSize: 10 }}>2000 ──────────────────────── 2026</span>
-          </div>
-        </div>
-
-        {/* Lista governi */}
-        <div className="space-y-3">
-          {governi.map((g) => {
-            const col = getCols(g.coalizione);
-            const partiti = JSON.parse(g.partiti) as string[];
-            return (
-              <div key={g.id} className="rounded-xl border p-5" style={{ background: "var(--surface)", borderColor: "var(--border)", borderLeftWidth: 4, borderLeftColor: col }}>
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="font-bold">{g.nome}</div>
-                    <div className="text-sm mt-0.5" style={{ color: "var(--muted)" }}>{g.coalizione}</div>
-                    <div className="flex flex-wrap gap-1 mt-2">
-                      {partiti.slice(0, 6).map((p) => (
-                        <span key={p} className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--surface-2)", color: "var(--muted)" }}>{p}</span>
-                      ))}
-                    </div>
-                    {g.note && <p className="text-xs mt-3" style={{ color: "var(--muted)" }}>{g.note}</p>}
-                    {g.motivo_fine && (
-                      <div className="mt-2 text-xs px-2 py-1 rounded-md inline-block" style={{ background: "rgba(239,68,68,0.1)", color: "#f87171" }}>
-                        Fine: {g.motivo_fine}
-                      </div>
-                    )}
-                  </div>
-                  <div className="text-right flex-shrink-0">
-                    <div className="text-sm font-mono">{formatData(g.dal)}</div>
-                    <div className="text-sm font-mono" style={{ color: "var(--muted)" }}>{g.al ? formatData(g.al) : "oggi"}</div>
-                    <div className="text-xs mt-1 font-bold" style={{ color: col }}>{g.durata_giorni} giorni</div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <GoverniTimeline governi={governi} dalInizio={dalInizio} totaleMs={totaleMs} />
       </section>
 
       {/* ELEZIONI */}
@@ -177,7 +85,7 @@ export default function StoriaPage() {
               <div key={e.id} className="rounded-xl border p-5" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <div className="font-bold">{e.anno} — {e.tipo.charAt(0).toUpperCase() + e.tipo.slice(1)}</div>
+                    <div className="font-bold">{e.anno} - {e.tipo.charAt(0).toUpperCase() + e.tipo.slice(1)}</div>
                     <div className="text-xs mt-0.5" style={{ color: "var(--muted)" }}>{formatData(e.data)} {e.affluenza && `· Affluenza: ${e.affluenza}%`}</div>
                   </div>
                 </div>
@@ -222,52 +130,7 @@ export default function StoriaPage() {
           ))}
         </div>
 
-        {/* Timeline verticale per anno */}
-        <div className="relative">
-          <div className="absolute left-4 top-0 bottom-0 w-0.5" style={{ background: "var(--border)" }} />
-          <div className="pl-12 space-y-0">
-            {anni.map((anno) => {
-              const eventiAnno = eventi.filter((e) => e.anno === anno);
-              return (
-                <div key={anno} className="relative mb-8">
-                  {/* Anno marker */}
-                  <div className="absolute -left-8 top-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white z-10" style={{ background: "var(--accent)" }}>
-                    {anno.toString().slice(2)}
-                  </div>
-                  <div className="text-sm font-bold mb-3" style={{ color: "var(--accent)" }}>{anno}</div>
-
-                  <div className="space-y-3">
-                    {eventiAnno.map((ev) => {
-                      const col = CATEGORIA_COLORI[ev.categoria] ?? "#666";
-                      const coinvolti = ev.partiti_coinvolti ? JSON.parse(ev.partiti_coinvolti) as string[] : [];
-                      return (
-                        <div key={ev.id} className="rounded-xl border p-4" style={{ background: "var(--surface)", borderColor: "var(--border)", borderLeftWidth: 3, borderLeftColor: col }}>
-                          <div className="flex items-start gap-2 mb-1.5">
-                            <span className="text-xs px-1.5 py-0.5 rounded-full font-medium flex-shrink-0" style={{ background: col + "25", color: col }}>
-                              {ev.categoria}
-                            </span>
-                            {ev.impatto === "alto" && (
-                              <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: "#f59e0b20", color: "#f59e0b" }}>⚡ alto impatto</span>
-                            )}
-                          </div>
-                          <div className="font-semibold text-sm mb-1">{ev.titolo}</div>
-                          <p className="text-xs leading-relaxed" style={{ color: "var(--muted)" }}>{ev.descrizione}</p>
-                          {coinvolti.length > 0 && (
-                            <div className="flex flex-wrap gap-1 mt-2">
-                              {coinvolti.slice(0, 3).map((p) => (
-                                <span key={p} className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--surface-2)", color: "var(--muted)" }}>{p}</span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <EventiTimeline eventi={eventi} categoriaColori={CATEGORIA_COLORI} />
       </section>
 
       {/* LEGGI */}

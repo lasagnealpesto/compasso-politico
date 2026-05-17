@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# SQLite WAL temp files (il .db stesso va in git per la build)
+*.db-shm
+*.db-wal
+
+# Skills cache (installate localmente, non vanno in git)
+.claude/
+.agents/
