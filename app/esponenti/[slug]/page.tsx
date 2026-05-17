@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getEsponente, getPartito, esponenti } from "@/lib/data";
+import PartitoLogo from "@/components/ui/PartitoLogo";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -15,10 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const esp = getEsponente(slug);
   if (!esp) return {};
-  return {
-    title: esp.nome,
-    description: esp.bio.slice(0, 160),
-  };
+  return { title: esp.nome, description: esp.bio.slice(0, 160) };
 }
 
 export default async function EsponentePage({ params }: Props) {
@@ -27,9 +25,13 @@ export default async function EsponentePage({ params }: Props) {
   if (!esp) notFound();
 
   const partito = getPartito(esp.partito);
+  const col = partito?.colore ?? "#666";
+  const anniPolitica = new Date().getFullYear() - (esp.storiaPolit[0]?.dalAnno ?? new Date().getFullYear());
+  const totaleAnni = esp.storiaPolit.reduce((acc, s) => acc + ((s.alAnno ?? new Date().getFullYear()) - s.dalAnno), 0);
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
+
       {/* Breadcrumb */}
       <div className="text-sm mb-8" style={{ color: "var(--muted)" }}>
         <Link href="/esponenti" className="hover:underline">Esponenti</Link>
@@ -38,62 +40,118 @@ export default async function EsponentePage({ params }: Props) {
       </div>
 
       {/* Header */}
-      <div className="rounded-2xl border p-8 mb-8" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-        <div className="flex items-start gap-5 mb-5">
-          <div
-            className="w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0"
-            style={{ background: partito?.colore ?? "#666" }}
-          >
+      <div className="rounded-2xl border p-6 mb-8" style={{ background: "var(--surface)", borderColor: "var(--border)", borderTopWidth: 4, borderTopColor: col }}>
+        <div className="flex items-start gap-4 mb-4">
+          <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={{ background: col }}>
             {esp.nome.split(" ").map((n) => n[0]).slice(0, 2).join("")}
           </div>
-          <div>
+          <div className="flex-1">
             <h1 className="text-3xl font-bold">{esp.nome}</h1>
-            <p className="mt-1" style={{ color: "var(--muted)" }}>{esp.ruolo}</p>
+            <p className="mt-1 text-sm" style={{ color: "var(--muted)" }}>{esp.ruolo}</p>
             {partito && (
-              <Link
-                href={`/partiti/${partito.id}`}
-                className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full text-sm font-medium text-white"
-                style={{ background: partito.colore }}
-              >
-                {partito.nome}
-              </Link>
+              <div className="flex items-center gap-2 mt-2">
+                <PartitoLogo nome={partito.nome} nomeBreve={partito.nomeBreve} colore={partito.colore} logoUrl={partito.logoUrl} size={22} className="rounded" />
+                <Link href={`/partiti/${partito.id}`} className="text-sm font-medium hover:underline" style={{ color: col }}>{partito.nome}</Link>
+              </div>
             )}
           </div>
         </div>
-        <p className="leading-relaxed" style={{ color: "var(--muted)" }}>{esp.bio}</p>
+
+        {/* Stat rapide */}
+        <div className="grid grid-cols-3 gap-3 mt-4">
+          {[
+            { v: anniPolitica, label: "anni in politica" },
+            { v: esp.governi.length, label: esp.governi.length === 1 ? "governo" : "governi" },
+            { v: esp.storiaPolit.length, label: esp.storiaPolit.length === 1 ? "partito" : "partiti" },
+          ].map(({ v, label }) => (
+            <div key={label} className="text-center p-3 rounded-xl" style={{ background: "var(--surface-2)" }}>
+              <div className="text-2xl font-bold" style={{ color: col }}>{v}</div>
+              <div className="text-xs" style={{ color: "var(--muted)" }}>{label}</div>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-4 leading-relaxed text-sm" style={{ color: "var(--muted)" }}>{esp.bio}</p>
 
         {esp.wikipedia && (
-          <a
-            href={esp.wikipedia}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-4 text-sm"
-            style={{ color: "var(--accent)" }}
-          >
-            Leggi su Wikipedia →
+          <a href={esp.wikipedia} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-sm" style={{ color: "var(--accent)" }}>
+            Wikipedia →
           </a>
         )}
       </div>
 
-      {/* Timeline storia politica */}
+      {/* Timeline carriera — barra orizzontale */}
       <section className="mb-10">
-        <h2 className="text-xl font-bold mb-6">Storia politica</h2>
-        <div className="relative pl-6">
-          {/* Linea verticale */}
-          <div className="absolute left-2 top-0 bottom-0 w-0.5" style={{ background: "var(--border)" }} />
+        <h2 className="text-xl font-bold mb-5">Carriera politica</h2>
 
+        {/* Barra colori proporzionale agli anni */}
+        <div className="rounded-xl overflow-hidden mb-2" style={{ height: 28 }}>
+          <div className="flex h-full">
+            {esp.storiaPolit.map((s, i) => {
+              const durata = (s.alAnno ?? new Date().getFullYear()) - s.dalAnno;
+              const pct = totaleAnni ? (durata / totaleAnni) * 100 : 100 / esp.storiaPolit.length;
+              const opacity = 0.35 + (i / (esp.storiaPolit.length || 1)) * 0.65;
+              return (
+                <div
+                  key={i}
+                  className="relative group flex items-center justify-center text-white text-xs font-bold"
+                  style={{ width: `${pct}%`, background: col, opacity, minWidth: 6 }}
+                  title={`${s.partito}: ${durata} anni`}
+                >
+                  {pct > 12 && <span style={{ fontSize: 10 }}>{s.dalAnno}</span>}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Legenda anni */}
+        <div className="flex justify-between text-xs mb-6" style={{ color: "var(--muted)" }}>
+          <span>{esp.storiaPolit[0]?.dalAnno}</span>
+          <span>oggi ({new Date().getFullYear()})</span>
+        </div>
+
+        {/* Dettaglio: barre anni per partito */}
+        <div className="rounded-xl border p-5 mb-6" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+          <div className="text-sm font-semibold mb-4">Anni per partito</div>
+          <div className="space-y-3">
+            {esp.storiaPolit.map((s, i) => {
+              const durata = (s.alAnno ?? new Date().getFullYear()) - s.dalAnno;
+              const pct = totaleAnni ? (durata / totaleAnni) * 100 : 100;
+              const opacity = 0.35 + (i / (esp.storiaPolit.length || 1)) * 0.65;
+              return (
+                <div key={i}>
+                  <div className="flex items-center justify-between text-xs mb-1" style={{ color: "var(--muted)" }}>
+                    <span className="font-medium" style={{ color: "var(--foreground)" }}>{s.partito}</span>
+                    <span>{s.dalAnno}–{s.alAnno ?? "oggi"} ({durata} {durata === 1 ? "anno" : "anni"})</span>
+                  </div>
+                  <div className="h-4 rounded-full overflow-hidden" style={{ background: "var(--surface-2)" }}>
+                    <div
+                      className="h-full rounded-full transition-all"
+                      style={{ width: `${pct}%`, background: col, opacity }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Timeline verticale dettagliata */}
+        <div className="relative pl-6">
+          <div className="absolute left-2 top-0 bottom-0 w-0.5" style={{ background: "var(--border)" }} />
           {esp.storiaPolit.map((s, i) => (
-            <div key={i} className="relative mb-6 last:mb-0">
-              {/* Punto sulla linea */}
-              <div
-                className="absolute -left-4 top-1.5 w-3 h-3 rounded-full border-2"
-                style={{ background: partito?.colore ?? "var(--accent)", borderColor: "var(--background)" }}
-              />
+            <div key={i} className="relative mb-5 last:mb-0">
+              <div className="absolute -left-4 top-2 w-3 h-3 rounded-full border-2" style={{ background: col, borderColor: "var(--background)" }} />
               <div className="rounded-xl border p-4" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-                <div className="font-semibold">{s.partito}</div>
-                <div className="text-sm mt-0.5" style={{ color: "var(--muted)" }}>{s.ruolo}</div>
-                <div className="text-xs mt-2 font-mono" style={{ color: "var(--muted)" }}>
-                  {s.dalAnno} — {s.alAnno ?? "oggi"}
+                <div className="flex items-start justify-between">
+                  <div>
+                    <div className="font-semibold text-sm">{s.partito}</div>
+                    <div className="text-xs mt-0.5" style={{ color: "var(--muted)" }}>{s.ruolo}</div>
+                  </div>
+                  <div className="text-xs font-mono" style={{ color: "var(--muted)" }}>
+                    {s.dalAnno}–{s.alAnno ?? "oggi"}
+                  </div>
                 </div>
               </div>
             </div>
@@ -101,17 +159,90 @@ export default async function EsponentePage({ params }: Props) {
         </div>
       </section>
 
+      {/* Governi */}
+      {esp.governi.length > 0 && (
+        <section className="mb-10">
+          <h2 className="text-xl font-bold mb-4">Governi</h2>
+          <div className="space-y-3">
+            {esp.governi.map((g, i) => (
+              <div key={i} className="rounded-xl border p-4 flex items-center justify-between" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+                <div>
+                  <div className="font-semibold text-sm">{g.nome}</div>
+                  <div className="text-xs mt-0.5" style={{ color: "var(--muted)" }}>{g.ruolo}</div>
+                </div>
+                <div className="text-xs px-2 py-1 rounded-lg" style={{ background: "var(--surface-2)", color: "var(--muted)" }}>{g.anni}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Posizioni chiave */}
       {esp.posizioniChiave.length > 0 && (
-        <section>
+        <section className="mb-10">
           <h2 className="text-xl font-bold mb-4">Posizioni chiave</h2>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {esp.posizioniChiave.map((pos) => (
               <div key={pos.tema} className="rounded-xl border p-4 flex gap-4" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-                <div className="text-sm font-semibold min-w-[90px]" style={{ color: partito?.colore ?? "var(--accent)" }}>
-                  {pos.tema}
-                </div>
+                <div className="text-sm font-semibold min-w-[90px]" style={{ color: col }}>{pos.tema}</div>
                 <p className="text-sm" style={{ color: "var(--muted)" }}>{pos.posizione}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Dichiarazioni notevoli */}
+      {esp.dichiarazioni.length > 0 && (
+        <section className="mb-10">
+          <h2 className="text-xl font-bold mb-4">💬 Dichiarazioni notevoli</h2>
+          <div className="space-y-3">
+            {esp.dichiarazioni.map((d, i) => (
+              <div key={i} className="rounded-xl border p-5" style={{ background: "var(--surface)", borderColor: "var(--border)", borderLeftWidth: 3, borderLeftColor: col }}>
+                <p className="italic text-sm mb-2">&ldquo;{d.testo}&rdquo;</p>
+                <div className="text-xs" style={{ color: "var(--muted)" }}>{d.contesto} — {d.anno}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Cambi di rotta */}
+      {esp.cambiRotta.length > 0 && (
+        <section className="mb-10">
+          <h2 className="text-xl font-bold mb-4">⚡ Cambi di rotta</h2>
+          <div className="space-y-3">
+            {esp.cambiRotta.map((c, i) => (
+              <div key={i} className="rounded-xl border p-5" style={{ background: "var(--surface)", borderColor: "#f59e0b", borderLeftWidth: 3 }}>
+                <div className="font-semibold text-sm mb-3">{c.descrizione}</div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="rounded-lg p-3" style={{ background: "var(--surface-2)" }}>
+                    <div className="text-xs font-semibold mb-1" style={{ color: "#f87171" }}>Prima ({c.anno - 1 || "prima"})</div>
+                    <p className="text-xs" style={{ color: "var(--muted)" }}>{c.prima}</p>
+                  </div>
+                  <div className="rounded-lg p-3" style={{ background: "var(--surface-2)" }}>
+                    <div className="text-xs font-semibold mb-1" style={{ color: "#4ade80" }}>Dopo ({c.anno}+)</div>
+                    <p className="text-xs" style={{ color: "var(--muted)" }}>{c.dopo}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Falsità e debunk */}
+      {esp.falsita.length > 0 && (
+        <section className="mb-10">
+          <h2 className="text-xl font-bold mb-4">🔍 Fact-check</h2>
+          <div className="space-y-3">
+            {esp.falsita.map((f, i) => (
+              <div key={i} className="rounded-xl border p-5" style={{ background: "var(--surface)", borderColor: "#ef4444", borderLeftWidth: 3 }}>
+                <div className="text-xs font-semibold mb-1" style={{ color: "#f87171" }}>❌ AFFERMAZIONE</div>
+                <p className="text-sm italic mb-3">&ldquo;{f.affermazione}&rdquo;</p>
+                <div className="text-xs font-semibold mb-1" style={{ color: "#4ade80" }}>✅ DEBUNK</div>
+                <p className="text-sm mb-2" style={{ color: "var(--muted)" }}>{f.debunk}</p>
+                <div className="text-xs" style={{ color: "var(--muted)" }}>Fonte: {f.fonte}</div>
               </div>
             ))}
           </div>

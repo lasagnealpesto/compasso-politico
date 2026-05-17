@@ -2,8 +2,8 @@ import partitiData from '@/data/partiti.json';
 import esponentiData from '@/data/esponenti.json';
 import type { Partito, Esponente } from '@/types';
 
-export const partiti: Partito[] = partitiData as Partito[];
-export const esponenti: Esponente[] = esponentiData as Esponente[];
+export const partiti: Partito[] = partitiData as unknown as Partito[];
+export const esponenti: Esponente[] = esponentiData as unknown as Esponente[];
 
 export function getPartito(id: string): Partito | undefined {
   return partiti.find((p) => p.id === id);

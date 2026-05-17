@@ -2,18 +2,49 @@ export interface StoriaPoltica {
   partito: string;
   ruolo: string;
   dalAnno: number;
-  alAnno: number | null; // null = ancora in carica
+  alAnno: number | null;
+}
+
+export interface Governo {
+  nome: string;
+  ruolo: string;
+  anni: string;
+}
+
+export interface Dichiarazione {
+  testo: string;
+  contesto: string;
+  anno: number;
+}
+
+export interface CambioRotta {
+  descrizione: string;
+  prima: string;
+  dopo: string;
+  anno: number;
+}
+
+export interface Falsita {
+  affermazione: string;
+  debunk: string;
+  fonte: string;
 }
 
 export interface Esponente {
   id: string;
   nome: string;
-  partito: string; // riferimento a Partito.id
+  partito: string;
   ruolo: string;
   foto: string;
   bio: string;
+  asseOrizzontale: number;
+  asseVerticale: number;
   storiaPolit: StoriaPoltica[];
+  governi: Governo[];
   posizioniChiave: { tema: string; posizione: string }[];
+  dichiarazioni: Dichiarazione[];
+  cambiRotta: CambioRotta[];
+  falsita: Falsita[];
   wikipedia?: string;
 }
 
@@ -28,21 +59,23 @@ export interface Partito {
   nome: string;
   nomeBreve: string;
   colore: string;
-  logo: string;
+  logoUrl: string;
+  coalizione: "governo" | "opposizione";
   fondazione: number;
   segretario: string;
   parlamentari: number;
-  // Assi ideologici: -1 (estrema sinistra / molto liberale) a +1 (estrema destra / molto conservatore)
-  asseOrizzontale: number; // sinistra (-1) ↔ destra (+1)
-  asseVerticale: number;   // liberale (-1) ↔ conservatore (+1)
+  seggiCamera: number;
+  seggiSenato: number;
+  asseOrizzontale: number;
+  asseVerticale: number;
   descrizione: string;
   storia: string;
   programma: ProgrammaTema[];
-  esponenti: string[]; // array di Esponente.id
+  esponenti: string[];
 }
 
 export interface DailyContent {
-  data: string; // YYYY-MM-DD
+  data: string;
   top3: {
     titolo: string;
     spiegazione: string;

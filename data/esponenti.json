@@ -4,19 +4,36 @@
     "nome": "Giorgia Meloni",
     "partito": "fdi",
     "ruolo": "Presidente del Consiglio dei Ministri",
-    "foto": "/foto/giorgia-meloni.jpg",
-    "bio": "Nata a Roma il 15 gennaio 1977. È la prima donna nella storia italiana a ricoprire il ruolo di Presidente del Consiglio. Attivista politica sin dalla giovinezza, ha militato nel Fronte della Gioventù e poi in AN. Fondatrice di Fratelli d'Italia nel 2012, ha guidato il partito dalla marginalità al primo posto in Italia in dieci anni.",
+    "foto": "",
+    "asseOrizzontale": 0.85,
+    "asseVerticale": 0.72,
+    "bio": "Nata a Roma il 15 gennaio 1977. Prima donna Presidente del Consiglio nella storia italiana. Attivista politica sin dalla giovinezza, ha guidato FdI dalla marginalità al primo posto in Italia.",
     "storiaPolit": [
       { "partito": "Fronte della Gioventù (MSI)", "ruolo": "Militante", "dalAnno": 1992, "alAnno": 1996 },
       { "partito": "Alleanza Nazionale", "ruolo": "Dirigente nazionale", "dalAnno": 1996, "alAnno": 2009 },
       { "partito": "Popolo della Libertà", "ruolo": "Ministro della Gioventù", "dalAnno": 2009, "alAnno": 2012 },
       { "partito": "Fratelli d'Italia", "ruolo": "Presidente e Segretaria", "dalAnno": 2012, "alAnno": null }
     ],
+    "governi": [
+      { "nome": "Governo Berlusconi IV", "ruolo": "Ministro della Gioventù", "anni": "2008–2011" },
+      { "nome": "Governo Meloni", "ruolo": "Presidente del Consiglio", "anni": "2022–oggi" }
+    ],
     "posizioniChiave": [
-      { "tema": "Immigrazione", "posizione": "Controllo rigido dei flussi, accordi con paesi nordafricani, blocco navale" },
+      { "tema": "Immigrazione", "posizione": "Controllo rigido dei flussi, accordi con paesi nordafricani" },
       { "tema": "Economia", "posizione": "Taglio del cuneo fiscale, flat tax, riduzione del debito" },
-      { "tema": "Esteri", "posizione": "Atlantismo convinto, sostegno all'Ucraina, presidio italiano in Africa" },
+      { "tema": "Esteri", "posizione": "Atlantismo convinto, sostegno all'Ucraina, Piano Mattei per l'Africa" },
       { "tema": "Famiglia", "posizione": "Sostegno alla famiglia tradizionale, incentivi alla natalità" }
+    ],
+    "dichiarazioni": [
+      { "testo": "Sono Giorgia, sono una donna, sono una madre, sono italiana, sono cristiana.", "contesto": "Discorso a un comizio, diventato virale", "anno": 2022 },
+      { "testo": "Non toccheremo le pensioni, lo prometto agli italiani.", "contesto": "Campagna elettorale 2022", "anno": 2022 }
+    ],
+    "cambiRotta": [
+      { "descrizione": "Da euroscettica a premier atlantista", "prima": "Critica all'euro e all'UE fino al 2018", "dopo": "Pieno sostegno a NATO e UE da quando è al governo", "anno": 2022 },
+      { "descrizione": "Sul sostegno all'Ucraina", "prima": "Posizioni ambigue nel 2021", "dopo": "Pieno sostegno militare e politico all'Ucraina dal 2022", "anno": 2022 }
+    ],
+    "falsita": [
+      { "affermazione": "Il reddito di cittadinanza viene usato dai camorristi", "debunk": "I dati INPS mostrano frodi minoritarie rispetto al totale dei percettori. La criminalità organizzata è una fetta piccola dei percettori.", "fonte": "INPS, 2022" }
     ],
     "wikipedia": "https://it.wikipedia.org/wiki/Giorgia_Meloni"
   },
@@ -25,171 +42,562 @@
     "nome": "Ignazio La Russa",
     "partito": "fdi",
     "ruolo": "Presidente del Senato della Repubblica",
-    "foto": "/foto/ignazio-la-russa.jpg",
-    "bio": "Nato a Paternò (CT) il 18 luglio 1947. Avvocato e politico di lungo corso, è uno dei fondatori di Fratelli d'Italia. Considerato la seconda carica dello Stato come Presidente del Senato dal 2022.",
+    "foto": "",
+    "asseOrizzontale": 0.92,
+    "asseVerticale": 0.82,
+    "bio": "Nato a Paternò (CT) il 18 luglio 1947. Avvocato, co-fondatore di FdI, seconda carica dello Stato dal 2022.",
     "storiaPolit": [
       { "partito": "Movimento Sociale Italiano", "ruolo": "Dirigente", "dalAnno": 1968, "alAnno": 1995 },
       { "partito": "Alleanza Nazionale", "ruolo": "Dirigente nazionale", "dalAnno": 1995, "alAnno": 2009 },
       { "partito": "Popolo della Libertà", "ruolo": "Ministro della Difesa", "dalAnno": 2009, "alAnno": 2012 },
       { "partito": "Fratelli d'Italia", "ruolo": "Co-fondatore e dirigente", "dalAnno": 2012, "alAnno": null }
     ],
+    "governi": [
+      { "nome": "Governo Berlusconi IV", "ruolo": "Ministro della Difesa", "anni": "2008–2011" }
+    ],
     "posizioniChiave": [
       { "tema": "Difesa", "posizione": "Rafforzamento delle Forze Armate, atlantismo" },
-      { "tema": "Istituzioni", "posizione": "Riforma presidenzialista" },
-      { "tema": "Identità", "posizione": "Difesa dei valori nazionali e tradizionali" }
+      { "tema": "Istituzioni", "posizione": "Riforma presidenzialista" }
     ],
+    "dichiarazioni": [
+      { "testo": "Nelle mie case c'è un busto di Mussolini. È un pezzo di storia.", "contesto": "Intervista televisiva", "anno": 2023 }
+    ],
+    "cambiRotta": [],
+    "falsita": [],
     "wikipedia": "https://it.wikipedia.org/wiki/Ignazio_La_Russa"
+  },
+  {
+    "id": "giovanni-donzelli",
+    "nome": "Giovanni Donzelli",
+    "partito": "fdi",
+    "ruolo": "Responsabile organizzazione di FdI",
+    "foto": "",
+    "asseOrizzontale": 0.88,
+    "asseVerticale": 0.7,
+    "bio": "Nato a Firenze nel 1977. Uno degli organizzatori chiave di FdI, noto per le battaglie in Parlamento e sui social media.",
+    "storiaPolit": [
+      { "partito": "Alleanza Nazionale", "ruolo": "Militante", "dalAnno": 1995, "alAnno": 2009 },
+      { "partito": "Fratelli d'Italia", "ruolo": "Responsabile organizzazione", "dalAnno": 2012, "alAnno": null }
+    ],
+    "governi": [],
+    "posizioniChiave": [
+      { "tema": "Sicurezza", "posizione": "Linea dura su sicurezza e immigrazione" },
+      { "tema": "Organizzazione", "posizione": "Costruzione del partito sul territorio" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Giovanni_Donzelli"
   },
   {
     "id": "elly-schlein",
     "nome": "Elly Schlein",
     "partito": "pd",
     "ruolo": "Segretaria del Partito Democratico",
-    "foto": "/foto/elly-schlein.jpg",
-    "bio": "Nata a Lugano il 4 maggio 1985, cittadina italiana e americana. Ha studiato giurisprudenza a Bologna e si è impegnata nel movimento Occupy negli USA. Eletta al Parlamento Europeo nel 2014 con il PD. Nel 2019 abbandona il PD per 'Coraggiosa' con Schlein lista in Emilia-Romagna. Nel 2023 vince le primarie del PD portando il partito su posizioni più progressiste e di sinistra.",
+    "foto": "",
+    "asseOrizzontale": -0.68,
+    "asseVerticale": -0.5,
+    "bio": "Nata a Lugano il 4 maggio 1985. Cittadina italiana e americana. Ha studiato a Bologna, si è impegnata nel movimento Occupy negli USA. Nel 2023 vince le primarie del PD.",
     "storiaPolit": [
       { "partito": "Partito Democratico", "ruolo": "Europarlamentare", "dalAnno": 2014, "alAnno": 2019 },
       { "partito": "Coraggiosa (lista regionale)", "ruolo": "Vicepresidente Emilia-Romagna", "dalAnno": 2020, "alAnno": 2023 },
       { "partito": "Partito Democratico", "ruolo": "Segretaria", "dalAnno": 2023, "alAnno": null }
     ],
+    "governi": [],
     "posizioniChiave": [
       { "tema": "Lavoro", "posizione": "Salario minimo a 9€/ora, contrasto al lavoro precario" },
       { "tema": "Diritti", "posizione": "Ius soli, diritti LGBTQ+, parità di genere" },
-      { "tema": "Welfare", "posizione": "Difesa del SSN, reddito minimo garantito" },
-      { "tema": "Clima", "posizione": "Transizione ecologica come priorità economica" }
+      { "tema": "Welfare", "posizione": "Difesa del SSN, reddito minimo garantito" }
     ],
+    "dichiarazioni": [
+      { "testo": "Io sono lesbica e fiera di esserlo.", "contesto": "Discorso al congresso PD", "anno": 2023 },
+      { "testo": "Voglio un PD che torni dalla parte dei lavoratori, non delle élite.", "contesto": "Campagna per le primarie", "anno": 2023 }
+    ],
+    "cambiRotta": [
+      { "descrizione": "Dal PD 'renziano' al PD di sinistra", "prima": "Europarlamentare PD, linea Renzi", "dopo": "Leader con posizioni più a sinistra, critica del Jobs Act renziano", "anno": 2023 }
+    ],
+    "falsita": [],
     "wikipedia": "https://it.wikipedia.org/wiki/Elly_Schlein"
+  },
+  {
+    "id": "stefano-bonaccini",
+    "nome": "Stefano Bonaccini",
+    "partito": "pd",
+    "ruolo": "Eurodeputato, ex Presidente Emilia-Romagna",
+    "foto": "",
+    "asseOrizzontale": -0.4,
+    "asseVerticale": -0.2,
+    "bio": "Nato a Campogalliano nel 1967. Presidente dell'Emilia-Romagna dal 2014 al 2024. Ha perso le primarie del PD 2023 contro Schlein.",
+    "storiaPolit": [
+      { "partito": "PDS/DS/PD", "ruolo": "Dirigente locale e regionale", "dalAnno": 1990, "alAnno": null }
+    ],
+    "governi": [],
+    "posizioniChiave": [
+      { "tema": "Economia", "posizione": "Pragmatismo economico, attrattività per le imprese" },
+      { "tema": "Territorio", "posizione": "Buona gestione regionale come modello" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Stefano_Bonaccini"
+  },
+  {
+    "id": "andrea-orlando",
+    "nome": "Andrea Orlando",
+    "partito": "pd",
+    "ruolo": "Deputato, ex Ministro del Lavoro",
+    "foto": "",
+    "asseOrizzontale": -0.5,
+    "asseVerticale": -0.35,
+    "bio": "Nato a La Spezia nel 1969. Ex Ministro del Lavoro nel governo Draghi, ex Ministro della Giustizia nel governo Renzi e Gentiloni.",
+    "storiaPolit": [
+      { "partito": "PDS/DS/PD", "ruolo": "Dirigente e Ministro", "dalAnno": 1992, "alAnno": null }
+    ],
+    "governi": [
+      { "nome": "Governo Renzi", "ruolo": "Ministro della Giustizia", "anni": "2014–2016" },
+      { "nome": "Governo Gentiloni", "ruolo": "Ministro dell'Ambiente", "anni": "2016–2018" },
+      { "nome": "Governo Draghi", "ruolo": "Ministro del Lavoro", "anni": "2021–2022" }
+    ],
+    "posizioniChiave": [
+      { "tema": "Lavoro", "posizione": "Salario minimo, tutele lavorative" },
+      { "tema": "Giustizia", "posizione": "Riforma della giustizia penale" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Andrea_Orlando"
   },
   {
     "id": "giuseppe-conte",
     "nome": "Giuseppe Conte",
     "partito": "m5s",
     "ruolo": "Presidente del MoVimento 5 Stelle",
-    "foto": "/foto/giuseppe-conte.jpg",
-    "bio": "Nato a Volturara Appula (FG) il 8 agosto 1964. Avvocato e professore universitario. È stato Presidente del Consiglio due volte: nel governo Conte I (2018-2019, con Lega e M5S) e nel governo Conte II (2019-2021, con M5S e PD). Nel 2021 diventa presidente del M5S dopo la crisi del governo Draghi.",
+    "foto": "",
+    "asseOrizzontale": -0.2,
+    "asseVerticale": 0.15,
+    "bio": "Nato a Volturara Appula (FG) l'8 agosto 1964. Avvocato e professore universitario. Due volte Presidente del Consiglio.",
     "storiaPolit": [
       { "partito": "Indipendente (tecnico)", "ruolo": "Presidente del Consiglio (Governo Conte I)", "dalAnno": 2018, "alAnno": 2019 },
       { "partito": "Indipendente (tecnico)", "ruolo": "Presidente del Consiglio (Governo Conte II)", "dalAnno": 2019, "alAnno": 2021 },
       { "partito": "MoVimento 5 Stelle", "ruolo": "Presidente", "dalAnno": 2021, "alAnno": null }
     ],
+    "governi": [
+      { "nome": "Governo Conte I", "ruolo": "Presidente del Consiglio (M5S + Lega)", "anni": "2018–2019" },
+      { "nome": "Governo Conte II", "ruolo": "Presidente del Consiglio (M5S + PD)", "anni": "2019–2021" }
+    ],
     "posizioniChiave": [
-      { "tema": "Welfare", "posizione": "Difesa del reddito di cittadinanza come misura anti-povertà" },
+      { "tema": "Welfare", "posizione": "Difesa del reddito di cittadinanza" },
       { "tema": "Ucraina", "posizione": "Priorità al negoziato, cautela sull'invio di armi" },
       { "tema": "Economia", "posizione": "Superbonus, investimenti pubblici, no all'austerità" }
     ],
+    "dichiarazioni": [
+      { "testo": "Il reddito di cittadinanza è una misura di civiltà.", "contesto": "Annuncio del RdC, Camera dei Deputati", "anno": 2019 },
+      { "testo": "Draghi ci ha messo in ginocchio con la sua arroganza.", "contesto": "Dopo la crisi del governo Draghi", "anno": 2022 }
+    ],
+    "cambiRotta": [
+      { "descrizione": "Da alleato della Lega a alleato del PD", "prima": "Governo Conte I con Salvini (2018)", "dopo": "Governo Conte II con il PD (2019)", "anno": 2019 },
+      { "descrizione": "Sul superbonus", "prima": "Lo ha introdotto come grande misura", "dopo": "Ancora lo difende nonostante i costi lievitati a oltre 100 miliardi", "anno": 2023 }
+    ],
+    "falsita": [
+      { "affermazione": "Il governo Draghi ci ha fatto perdere i fondi del PNRR", "debunk": "Falso. L'Italia ha ricevuto regolarmente le rate del PNRR anche dopo la crisi Conte/Draghi.", "fonte": "Commissione Europea, 2022" }
+    ],
     "wikipedia": "https://it.wikipedia.org/wiki/Giuseppe_Conte"
+  },
+  {
+    "id": "virginia-raggi",
+    "nome": "Virginia Raggi",
+    "partito": "m5s",
+    "ruolo": "Ex Sindaca di Roma, Deputata",
+    "foto": "",
+    "asseOrizzontale": -0.05,
+    "asseVerticale": 0.2,
+    "bio": "Nata a Roma il 18 luglio 1978. Avvocata. Sindaca di Roma dal 2016 al 2021. Prima donna a guidare la Capitale.",
+    "storiaPolit": [
+      { "partito": "MoVimento 5 Stelle", "ruolo": "Consigliera comunale, Sindaca, Deputata", "dalAnno": 2013, "alAnno": null }
+    ],
+    "governi": [
+      { "nome": "Comune di Roma", "ruolo": "Sindaca", "anni": "2016–2021" }
+    ],
+    "posizioniChiave": [
+      { "tema": "Rifiuti", "posizione": "Contraria ai termovalorizzatori, poi più aperta" },
+      { "tema": "Trasporti", "posizione": "Ammodernamento TPL Roma" }
+    ],
+    "dichiarazioni": [
+      { "testo": "Roma sarà la città più bella del mondo.", "contesto": "Discorso di insediamento come Sindaca", "anno": 2016 }
+    ],
+    "cambiRotta": [
+      { "descrizione": "Sui termovalorizzatori", "prima": "Contraria come da linea M5S", "dopo": "Più aperta dopo le difficoltà nella gestione rifiuti di Roma", "anno": 2021 }
+    ],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Virginia_Raggi"
+  },
+  {
+    "id": "chiara-appendino",
+    "nome": "Chiara Appendino",
+    "partito": "m5s",
+    "ruolo": "Vicepresidente M5S, ex Sindaca di Torino",
+    "foto": "",
+    "asseOrizzontale": -0.15,
+    "asseVerticale": 0.05,
+    "bio": "Nata a Moncalieri (TO) nel 1984. Sindaca di Torino dal 2016 al 2021. Oggi vicepresidente del M5S.",
+    "storiaPolit": [
+      { "partito": "MoVimento 5 Stelle", "ruolo": "Sindaca di Torino, poi Vicepresidente M5S", "dalAnno": 2016, "alAnno": null }
+    ],
+    "governi": [
+      { "nome": "Comune di Torino", "ruolo": "Sindaca", "anni": "2016–2021" }
+    ],
+    "posizioniChiave": [
+      { "tema": "Mobilità", "posizione": "Ciclabilità, mobilità elettrica" },
+      { "tema": "Economia locale", "posizione": "Sostegno alle PMI torinesi" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Chiara_Appendino"
   },
   {
     "id": "matteo-salvini",
     "nome": "Matteo Salvini",
     "partito": "lega",
     "ruolo": "Vicepresidente del Consiglio e Ministro delle Infrastrutture",
-    "foto": "/foto/matteo-salvini.jpg",
-    "bio": "Nato a Milano il 9 marzo 1973. Ha guidato la trasformazione della Lega Nord da partito autonomista nordista a movimento nazional-populista. Ministro dell'Interno nel governo Conte I (2018-2019), noto per la politica dei 'porti chiusi'. Dal 2022 è Vicepresidente del Consiglio e Ministro delle Infrastrutture nel governo Meloni.",
+    "foto": "",
+    "asseOrizzontale": 0.87,
+    "asseVerticale": 0.65,
+    "bio": "Nato a Milano il 9 marzo 1973. Ha trasformato la Lega Nord in movimento nazional-sovranista. Ministro dell'Interno nel Conte I con la politica dei 'porti chiusi'.",
     "storiaPolit": [
-      { "partito": "Lega Nord", "ruolo": "Segretario federale", "dalAnno": 2013, "alAnno": 2018 },
-      { "partito": "Lega", "ruolo": "Ministro dell'Interno e Vicepresidente (Governo Conte I)", "dalAnno": 2018, "alAnno": 2019 },
+      { "partito": "Lega Nord", "ruolo": "Eurodeputato, poi Segretario federale", "dalAnno": 2004, "alAnno": 2018 },
+      { "partito": "Lega", "ruolo": "Ministro dell'Interno e Vicepresidente", "dalAnno": 2018, "alAnno": 2019 },
       { "partito": "Lega", "ruolo": "Segretario e Vicepresidente del Consiglio", "dalAnno": 2022, "alAnno": null }
     ],
+    "governi": [
+      { "nome": "Governo Conte I", "ruolo": "Ministro dell'Interno e Vicepresidente", "anni": "2018–2019" },
+      { "nome": "Governo Meloni", "ruolo": "Vicepresidente e Ministro Infrastrutture", "anni": "2022–oggi" }
+    ],
     "posizioniChiave": [
-      { "tema": "Immigrazione", "posizione": "Porti chiusi, blocco degli sbarchi, massima fermezza" },
+      { "tema": "Immigrazione", "posizione": "Porti chiusi, blocco degli sbarchi" },
       { "tema": "Sicurezza", "posizione": "Più poteri alle forze dell'ordine, legittima difesa ampliata" },
-      { "tema": "Economia", "posizione": "Flat tax, pensione quota 41, meno tasse" },
-      { "tema": "Russia", "posizione": "Storicamente favorevole al dialogo con Mosca, posizione modificata dopo invasione 2022" }
+      { "tema": "Economia", "posizione": "Flat tax, pensione quota 41" }
+    ],
+    "dichiarazioni": [
+      { "testo": "Prima gli italiani.", "contesto": "Slogan della campagna elettorale", "anno": 2018 },
+      { "testo": "Sono pronto. Aprite tutto.", "contesto": "Dopo il lockdown Covid-19", "anno": 2020 }
+    ],
+    "cambiRotta": [
+      { "descrizione": "Da nordista separatista a sovranista nazionale", "prima": "Lega Nord con slogan 'Roma ladrona'", "dopo": "Lega nazionale con 'Prima gli italiani'", "anno": 2013 },
+      { "descrizione": "Dal governo con M5S al governo con FdI", "prima": "Alleanza con M5S e Conte (2018-2019)", "dopo": "Alleanza con Meloni e centrodestra (2022)", "anno": 2019 },
+      { "descrizione": "Sulla Russia", "prima": "Molto vicino a Putin, indossava la maglietta con Putin (2015)", "dopo": "Posizione più cauta dopo invasione Ucraina 2022", "anno": 2022 }
+    ],
+    "falsita": [
+      { "affermazione": "L'80% dei reati a Milano è commesso da stranieri", "debunk": "I dati del Ministero dell'Interno mostrano cifre significativamente diverse. La percentuale di reati attribuiti a stranieri varia per tipo di reato.", "fonte": "Ministero dell'Interno, Rapporto sulla criminalità 2019" }
     ],
     "wikipedia": "https://it.wikipedia.org/wiki/Matteo_Salvini"
+  },
+  {
+    "id": "luca-zaia",
+    "nome": "Luca Zaia",
+    "partito": "lega",
+    "ruolo": "Presidente della Regione Veneto",
+    "foto": "",
+    "asseOrizzontale": 0.7,
+    "asseVerticale": 0.45,
+    "bio": "Nato a Conegliano nel 1968. Presidente del Veneto dal 2010. Uno dei governatori più popolari d'Italia.",
+    "storiaPolit": [
+      { "partito": "Lega Nord", "ruolo": "Ministro dell'Agricoltura, poi Governatore Veneto", "dalAnno": 2000, "alAnno": null }
+    ],
+    "governi": [
+      { "nome": "Governo Berlusconi IV", "ruolo": "Ministro delle Politiche Agricole", "anni": "2008–2010" },
+      { "nome": "Regione Veneto", "ruolo": "Presidente", "anni": "2010–oggi" }
+    ],
+    "posizioniChiave": [
+      { "tema": "Autonomia", "posizione": "Autonomia differenziata del Veneto, referendum 2017" },
+      { "tema": "Economia", "posizione": "Difesa del modello produttivo nordestino" }
+    ],
+    "dichiarazioni": [
+      { "testo": "Il Veneto deve essere libero di gestire le proprie tasse.", "contesto": "Campagna per il referendum sull'autonomia", "anno": 2017 }
+    ],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Luca_Zaia"
+  },
+  {
+    "id": "giancarlo-giorgetti",
+    "nome": "Giancarlo Giorgetti",
+    "partito": "lega",
+    "ruolo": "Ministro dell'Economia e delle Finanze",
+    "foto": "",
+    "asseOrizzontale": 0.6,
+    "asseVerticale": 0.3,
+    "bio": "Nato a Cazzago Brabbia (VA) nel 1966. Considerato l'anima pragmatica e moderata della Lega.",
+    "storiaPolit": [
+      { "partito": "Lega Nord / Lega", "ruolo": "Sottosegretario alla Presidenza, poi Ministro", "dalAnno": 1996, "alAnno": null }
+    ],
+    "governi": [
+      { "nome": "Governo Conte I", "ruolo": "Sottosegretario alla Presidenza del Consiglio", "anni": "2018–2019" },
+      { "nome": "Governo Draghi", "ruolo": "Ministro dello Sviluppo Economico", "anni": "2021–2022" },
+      { "nome": "Governo Meloni", "ruolo": "Ministro dell'Economia", "anni": "2022–oggi" }
+    ],
+    "posizioniChiave": [
+      { "tema": "Economia", "posizione": "Rigore fiscale, rispetto dei conti pubblici" },
+      { "tema": "Europa", "posizione": "Più aperto all'Europa rispetto ad altri della Lega" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Giancarlo_Giorgetti"
   },
   {
     "id": "antonio-tajani",
     "nome": "Antonio Tajani",
     "partito": "fi",
     "ruolo": "Vicepresidente del Consiglio e Ministro degli Esteri",
-    "foto": "/foto/antonio-tajani.jpg",
-    "bio": "Nato a Roma il 4 agosto 1953. Ex presidente del Parlamento Europeo (2017-2019) e Commissario Europeo. Dopo la morte di Silvio Berlusconi nel giugno 2023 è diventato segretario di Forza Italia. È Vicepresidente del Consiglio e Ministro degli Esteri nel governo Meloni.",
+    "foto": "",
+    "asseOrizzontale": 0.45,
+    "asseVerticale": 0.18,
+    "bio": "Nato a Roma il 4 agosto 1953. Ex presidente del Parlamento Europeo (2017-2019). Dal 2023 segretario di FI dopo la morte di Berlusconi.",
     "storiaPolit": [
-      { "partito": "Forza Italia", "ruolo": "Fondatore e dirigente", "dalAnno": 1994, "alAnno": 2009 },
-      { "partito": "Popolo della Libertà", "ruolo": "Commissario Europeo", "dalAnno": 2009, "alAnno": 2014 },
-      { "partito": "Forza Italia", "ruolo": "Presidente Parlamento Europeo", "dalAnno": 2017, "alAnno": 2019 },
-      { "partito": "Forza Italia", "ruolo": "Segretario e Vicepresidente del Consiglio", "dalAnno": 2023, "alAnno": null }
+      { "partito": "Forza Italia", "ruolo": "Fondatore e dirigente, poi Commissario Europeo", "dalAnno": 1994, "alAnno": 2014 },
+      { "partito": "Forza Italia", "ruolo": "Presidente Parlamento Europeo, poi Segretario", "dalAnno": 2017, "alAnno": null }
+    ],
+    "governi": [
+      { "nome": "Commissione Europea Barroso II", "ruolo": "Commissario Europeo (Trasporti, poi Industria)", "anni": "2008–2014" },
+      { "nome": "Governo Meloni", "ruolo": "Vicepresidente e Ministro degli Esteri", "anni": "2022–oggi" }
     ],
     "posizioniChiave": [
-      { "tema": "Esteri", "posizione": "Atlantismo, sostegno pieno all'Ucraina, ruolo dell'Italia nel Mediterraneo" },
-      { "tema": "Europa", "posizione": "Europeismo moderato, Partito Popolare Europeo" },
-      { "tema": "Economia", "posizione": "Liberalismo moderato, riduzione fiscale" }
+      { "tema": "Esteri", "posizione": "Atlantismo, sostegno pieno all'Ucraina" },
+      { "tema": "Europa", "posizione": "Europeismo moderato, Partito Popolare Europeo" }
     ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
     "wikipedia": "https://it.wikipedia.org/wiki/Antonio_Tajani"
+  },
+  {
+    "id": "licia-ronzulli",
+    "nome": "Licia Ronzulli",
+    "partito": "fi",
+    "ruolo": "Senatrice, capogruppo FI al Senato",
+    "foto": "",
+    "asseOrizzontale": 0.5,
+    "asseVerticale": 0.25,
+    "bio": "Nata a Milano nel 1975. Senatrice e capogruppo di FI al Senato. Nota per il rapporto stretto con Berlusconi.",
+    "storiaPolit": [
+      { "partito": "Forza Italia", "ruolo": "Europarlamentare, poi Senatrice", "dalAnno": 2009, "alAnno": null }
+    ],
+    "governi": [],
+    "posizioniChiave": [
+      { "tema": "Sanità", "posizione": "Miglioramento sanità pubblica e privata" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Licia_Ronzulli"
+  },
+  {
+    "id": "maurizio-gasparri",
+    "nome": "Maurizio Gasparri",
+    "partito": "fi",
+    "ruolo": "Senatore, vice presidente del Senato",
+    "foto": "",
+    "asseOrizzontale": 0.6,
+    "asseVerticale": 0.4,
+    "bio": "Nato a Roma nel 1956. Politico di lungo corso, ex Ministro delle Comunicazioni. Noto per le battaglie su media e giustizia.",
+    "storiaPolit": [
+      { "partito": "MSI/AN", "ruolo": "Dirigente", "dalAnno": 1980, "alAnno": 1994 },
+      { "partito": "Forza Italia/PDL", "ruolo": "Ministro, Senatore", "dalAnno": 1994, "alAnno": null }
+    ],
+    "governi": [
+      { "nome": "Governo Berlusconi II", "ruolo": "Ministro delle Comunicazioni", "anni": "2001–2006" }
+    ],
+    "posizioniChiave": [
+      { "tema": "Media", "posizione": "Difesa del pluralismo mediatico (legge Gasparri)" },
+      { "tema": "Giustizia", "posizione": "Riforma della magistratura" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Maurizio_Gasparri"
   },
   {
     "id": "carlo-calenda",
     "nome": "Carlo Calenda",
-    "partito": "azione-iv",
-    "ruolo": "Segretario di Azione",
-    "foto": "/foto/carlo-calenda.jpg",
-    "bio": "Nato a Roma il 9 febbraio 1973. Manager e politico, ha lavorato in Ferrari e nel gruppo Fiat. Ministro dello Sviluppo Economico nel governo Gentiloni (2016-2018). Lascia il PD nel 2019 per fondare Azione, partito liberal-democratico di centro.",
+    "partito": "azione",
+    "ruolo": "Segretario di Azione, Deputato",
+    "foto": "",
+    "asseOrizzontale": 0.12,
+    "asseVerticale": -0.55,
+    "bio": "Nato a Roma il 9 febbraio 1973. Manager e politico. Ministro dello Sviluppo Economico nel governo Gentiloni. Fondatore di Azione nel 2019.",
     "storiaPolit": [
       { "partito": "Partito Democratico", "ruolo": "Ministro Sviluppo Economico", "dalAnno": 2016, "alAnno": 2019 },
       { "partito": "Azione", "ruolo": "Fondatore e Segretario", "dalAnno": 2019, "alAnno": null }
     ],
+    "governi": [
+      { "nome": "Governo Gentiloni", "ruolo": "Ministro dello Sviluppo Economico", "anni": "2016–2018" }
+    ],
     "posizioniChiave": [
       { "tema": "Economia", "posizione": "Agenda Draghi, competitività, liberalizzazioni" },
-      { "tema": "Industria", "posizione": "Politica industriale attiva, difesa del made in Italy" },
-      { "tema": "Europa", "posizione": "Europeismo convinto, difesa comune" },
       { "tema": "Nucleare", "posizione": "Favorevole al nucleare di nuova generazione" }
     ],
+    "dichiarazioni": [
+      { "testo": "Il populismo è il nemico della democrazia, sia a destra che a sinistra.", "contesto": "Intervista a La Repubblica", "anno": 2022 }
+    ],
+    "cambiRotta": [
+      { "descrizione": "Dal PD ad Azione", "prima": "Ministro nel governo Gentiloni (PD)", "dopo": "Fondatore di partito autonomo, critico del PD", "anno": 2019 },
+      { "descrizione": "Alleanza e rottura con Renzi", "prima": "Terzo Polo con Italia Viva alle elezioni 2022", "dopo": "Separazione da IV dopo le elezioni per divergenze strategiche", "anno": 2023 }
+    ],
+    "falsita": [],
     "wikipedia": "https://it.wikipedia.org/wiki/Carlo_Calenda"
+  },
+  {
+    "id": "benedetto-della-vedova",
+    "nome": "Benedetto Della Vedova",
+    "partito": "azione",
+    "ruolo": "Deputato, ex Sottosegretario agli Esteri",
+    "foto": "",
+    "asseOrizzontale": 0.1,
+    "asseVerticale": -0.5,
+    "bio": "Nato a Gorizia nel 1962. Ex Sottosegretario agli Affari Esteri nel governo Draghi. Parlamentare di lungo corso.",
+    "storiaPolit": [
+      { "partito": "FI/PDL/NCD", "ruolo": "Deputato e Sottosegretario", "dalAnno": 2001, "alAnno": 2019 },
+      { "partito": "Azione", "ruolo": "Deputato", "dalAnno": 2019, "alAnno": null }
+    ],
+    "governi": [
+      { "nome": "Governo Draghi", "ruolo": "Sottosegretario agli Affari Esteri", "anni": "2021–2022" }
+    ],
+    "posizioniChiave": [
+      { "tema": "Esteri", "posizione": "Atlantismo, relazioni internazionali" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Benedetto_Della_Vedova"
   },
   {
     "id": "matteo-renzi",
     "nome": "Matteo Renzi",
-    "partito": "azione-iv",
-    "ruolo": "Segretario di Italia Viva",
-    "foto": "/foto/matteo-renzi.jpg",
-    "bio": "Nato a Firenze il 11 gennaio 1975. Ex sindaco di Firenze, ha guidato il PD dal 2013 e Presidente del Consiglio dal 2014 al 2016. Noto per le riforme 'rottamazione' e il Jobs Act. Nel 2019 lascia il PD per fondare Italia Viva. Ha fatto cadere il governo Conte II nel 2021 aprendo la strada al governo Draghi.",
+    "partito": "italiaviva",
+    "ruolo": "Segretario di Italia Viva, Senatore",
+    "foto": "",
+    "asseOrizzontale": 0.08,
+    "asseVerticale": -0.42,
+    "bio": "Nato a Firenze il 11 gennaio 1975. Ex sindaco di Firenze, ex segretario PD, Presidente del Consiglio 2014-2016. Nel 2019 fonda Italia Viva.",
     "storiaPolit": [
-      { "partito": "Partito Democratico", "ruolo": "Sindaco di Firenze, poi Segretario", "dalAnno": 2009, "alAnno": 2019 },
-      { "partito": "Partito Democratico", "ruolo": "Presidente del Consiglio", "dalAnno": 2014, "alAnno": 2016 },
+      { "partito": "Partito Democratico", "ruolo": "Sindaco di Firenze, poi Segretario e Premier", "dalAnno": 2009, "alAnno": 2019 },
       { "partito": "Italia Viva", "ruolo": "Fondatore e Segretario", "dalAnno": 2019, "alAnno": null }
     ],
+    "governi": [
+      { "nome": "Governo Renzi", "ruolo": "Presidente del Consiglio", "anni": "2014–2016" }
+    ],
     "posizioniChiave": [
-      { "tema": "Economia", "posizione": "Agenda Draghi, liberalismo, crescita" },
-      { "tema": "Riforme", "posizione": "Riformismo pragmatico, rottamazione della vecchia politica" },
-      { "tema": "Europa", "posizione": "Europeismo, utilizzo pieno del PNRR" }
+      { "tema": "Economia", "posizione": "Riformismo pragmatico, Jobs Act, liberalismo" },
+      { "tema": "Riforme", "posizione": "Rottamazione della vecchia politica" }
+    ],
+    "dichiarazioni": [
+      { "testo": "Se il Jobs Act funziona, me ne vado. Se non funziona, me ne vado lo stesso.", "contesto": "Intervista televisiva", "anno": 2014 },
+      { "testo": "Draghi è la persona giusta per guidare l'Italia.", "contesto": "Dopo la caduta del governo Conte II, da lui provocata", "anno": 2021 }
+    ],
+    "cambiRotta": [
+      { "descrizione": "Ha fatto cadere Conte II per aprire a Draghi", "prima": "Partecipazione al governo Conte II (2019-2021)", "dopo": "Ritiro ministri IV, crisi di governo, governo Draghi", "anno": 2021 },
+      { "descrizione": "Dal centrosinistra al centro puro", "prima": "Segretario del PD, partito del centrosinistra", "dopo": "Leader di partito centrista, collabora anche con il centrodestra", "anno": 2019 },
+      { "descrizione": "Sull'Arabia Saudita", "prima": "Leader progressista sui diritti umani", "dopo": "Consulente del governo saudita (MBS), criticato da tutti i partiti", "anno": 2020 }
+    ],
+    "falsita": [
+      { "affermazione": "Con la scuola La Buona Scuola ho assunto 100.000 insegnanti precari", "debunk": "Le stabilizzazioni sono state parziali e contestate. Migliaia di insegnanti hanno fatto ricorso contro le modalità di assunzione.", "fonte": "Corte dei Conti, 2016; CGIL Scuola" }
     ],
     "wikipedia": "https://it.wikipedia.org/wiki/Matteo_Renzi"
+  },
+  {
+    "id": "maria-elena-boschi",
+    "nome": "Maria Elena Boschi",
+    "partito": "italiaviva",
+    "ruolo": "Deputata, capogruppo IV alla Camera",
+    "foto": "",
+    "asseOrizzontale": 0.05,
+    "asseVerticale": -0.38,
+    "bio": "Nata ad Arezzo nel 1981. Ministra per le Riforme Costituzionali nel governo Renzi. Capogruppo di Italia Viva alla Camera.",
+    "storiaPolit": [
+      { "partito": "Partito Democratico", "ruolo": "Ministra per le Riforme", "dalAnno": 2013, "alAnno": 2019 },
+      { "partito": "Italia Viva", "ruolo": "Capogruppo Camera", "dalAnno": 2019, "alAnno": null }
+    ],
+    "governi": [
+      { "nome": "Governo Renzi", "ruolo": "Ministra per le Riforme Costituzionali e i Rapporti con il Parlamento", "anni": "2014–2016" },
+      { "nome": "Governo Gentiloni", "ruolo": "Ministra per i Rapporti con il Parlamento", "anni": "2016–2018" }
+    ],
+    "posizioniChiave": [
+      { "tema": "Riforme", "posizione": "Riforma costituzionale (bocciata nel referendum 2016)" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Maria_Elena_Boschi"
   },
   {
     "id": "angelo-bonelli",
     "nome": "Angelo Bonelli",
     "partito": "avs",
-    "ruolo": "Co-portavoce di Europa Verde, Deputato",
-    "foto": "/foto/angelo-bonelli.jpg",
-    "bio": "Nato a Roma il 10 aprile 1966. Ambientalista e politico, è tra i fondatori del movimento verde italiano. Co-portavoce di Europa Verde e tra le figure di riferimento di Alleanza Verdi e Sinistra.",
+    "ruolo": "Co-portavoce Europa Verde, Deputato",
+    "foto": "",
+    "asseOrizzontale": -0.82,
+    "asseVerticale": -0.32,
+    "bio": "Nato a Roma nel 1966. Ambientalista storico, tra i fondatori del movimento verde italiano.",
     "storiaPolit": [
       { "partito": "Federazione dei Verdi", "ruolo": "Dirigente e portavoce", "dalAnno": 1995, "alAnno": 2015 },
       { "partito": "Europa Verde", "ruolo": "Co-portavoce nazionale", "dalAnno": 2019, "alAnno": null }
     ],
+    "governi": [],
     "posizioniChiave": [
-      { "tema": "Ambiente", "posizione": "Stop fossili, 100% rinnovabili, Green New Deal" },
-      { "tema": "Giustizia climatica", "posizione": "Azione legale contro lo Stato per inazione climatica" }
+      { "tema": "Ambiente", "posizione": "Stop fossili, 100% rinnovabili, Green New Deal" }
     ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
     "wikipedia": "https://it.wikipedia.org/wiki/Angelo_Bonelli"
   },
   {
     "id": "nicola-fratoianni",
     "nome": "Nicola Fratoianni",
     "partito": "avs",
-    "ruolo": "Segretario di Sinistra Italiana, Deputato",
-    "foto": "/foto/nicola-fratoianni.jpg",
-    "bio": "Nato a Taranto il 29 settembre 1977. Segretario di Sinistra Italiana e figura di riferimento della sinistra radicale italiana. Figlio della tradizione di Rifondazione Comunista e SEL.",
+    "ruolo": "Segretario Sinistra Italiana, Deputato",
+    "foto": "",
+    "asseOrizzontale": -0.88,
+    "asseVerticale": -0.28,
+    "bio": "Nato a Taranto nel 1977. Segretario di Sinistra Italiana e figura della sinistra radicale italiana.",
     "storiaPolit": [
       { "partito": "Rifondazione Comunista / SEL", "ruolo": "Dirigente", "dalAnno": 2000, "alAnno": 2016 },
       { "partito": "Sinistra Italiana", "ruolo": "Segretario", "dalAnno": 2017, "alAnno": null }
     ],
+    "governi": [],
     "posizioniChiave": [
       { "tema": "Lavoro", "posizione": "Settimana corta, salario minimo alto, diritti sindacali" },
-      { "tema": "Diritti", "posizione": "Ius soli, LGBTQ+, antirazzismo" },
       { "tema": "Esteri", "posizione": "Contro l'invio di armi all'Ucraina, pacifismo" }
     ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
     "wikipedia": "https://it.wikipedia.org/wiki/Nicola_Fratoianni"
+  },
+  {
+    "id": "maurizio-lupi",
+    "nome": "Maurizio Lupi",
+    "partito": "nm",
+    "ruolo": "Segretario di Noi Moderati, Deputato",
+    "foto": "",
+    "asseOrizzontale": 0.55,
+    "asseVerticale": 0.42,
+    "bio": "Nato a Milano nel 1959. Ingegnere e politico. Segretario di Noi Moderati. Parte della coalizione di governo.",
+    "storiaPolit": [
+      { "partito": "CL/DC/UDC/NCI", "ruolo": "Viceministro, Ministro, Deputato", "dalAnno": 1994, "alAnno": null }
+    ],
+    "governi": [
+      { "nome": "Governo Letta", "ruolo": "Ministro delle Infrastrutture", "anni": "2013–2014" },
+      { "nome": "Governo Renzi", "ruolo": "Ministro delle Infrastrutture", "anni": "2014–2015" }
+    ],
+    "posizioniChiave": [
+      { "tema": "Famiglia", "posizione": "Valori cattolici, politiche familiari" },
+      { "tema": "Infrastrutture", "posizione": "Investimenti infrastrutturali" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Maurizio_Lupi"
   }
 ]

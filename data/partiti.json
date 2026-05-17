@@ -4,315 +4,214 @@
     "nome": "Fratelli d'Italia",
     "nomeBreve": "FdI",
     "colore": "#1A3A5C",
-    "logo": "/loghi/fdi.svg",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Logo_FratellIdItalia.svg/200px-Logo_FratellIdItalia.svg.png",
+    "coalizione": "governo",
     "fondazione": 2012,
     "segretario": "Giorgia Meloni",
-    "parlamentari": 236,
+    "parlamentari": 174,
+    "seggiCamera": 119,
+    "seggiSenato": 55,
     "asseOrizzontale": 0.85,
     "asseVerticale": 0.75,
     "descrizione": "Partito di destra nazionale, erede del Movimento Sociale Italiano attraverso Alleanza Nazionale. Attualmente al governo con Giorgia Meloni Presidente del Consiglio.",
-    "storia": "Fondato nel 2012 da Giorgia Meloni, Ignazio La Russa e Guido Crosetto dopo la dissoluzione del Popolo della Libertà. Le origini risalgono al Movimento Sociale Italiano (MSI, 1946), passato ad Alleanza Nazionale (1995) e poi confluito nel PDL di Berlusconi (2009). FdI ha mantenuto il simbolo della fiamma tricolore. Alle elezioni del 2022 è diventato il primo partito italiano con il 26% dei voti, permettendo a Meloni di diventare la prima donna Presidente del Consiglio d'Italia.",
+    "storia": "Fondato nel 2012 da Giorgia Meloni, Ignazio La Russa e Guido Crosetto dopo la dissoluzione del Popolo della Libertà. Le origini risalgono al MSI (1946), passato ad Alleanza Nazionale (1995) e poi confluito nel PDL di Berlusconi (2009). Alle elezioni del 2022 è diventato il primo partito italiano con il 26% dei voti.",
     "programma": [
-      {
-        "tema": "Economia",
-        "sintesi": "Riduzione fiscale, sostegno alle imprese, taglio del cuneo fiscale",
-        "puntiChiave": ["Flat tax per partite IVA e PMI", "Riduzione tasse sul lavoro", "Sostegno alla famiglia con bonus e detrazioni", "Contrasto all'evasione fiscale"]
-      },
-      {
-        "tema": "Immigrazione",
-        "sintesi": "Controllo dei flussi migratori, accordi con paesi nordafricani, rimpatri",
-        "puntiChiave": ["Blocco navale nel Mediterraneo", "Accordi bilaterali con paesi di origine", "Accelerazione rimpatri", "Piano Mattei per l'Africa"]
-      },
-      {
-        "tema": "Welfare",
-        "sintesi": "Sostegno alla natalità, riforma del reddito di cittadinanza",
-        "puntiChiave": ["Assegno unico per i figli", "Abolizione reddito di cittadinanza (sostituito con Supporto Formazione e Lavoro)", "Sostegno alle famiglie numerose"]
-      },
-      {
-        "tema": "Esteri",
-        "sintesi": "Atlantismo, sostegno all'Ucraina, difesa degli interessi nazionali in UE",
-        "puntiChiave": ["Pieno sostegno NATO e USA", "Aiuti militari all'Ucraina", "Revisione del Patto di stabilità UE", "Presidio italiano in Africa (Piano Mattei)"]
-      },
-      {
-        "tema": "Giustizia",
-        "sintesi": "Riforma della magistratura, separazione delle carriere",
-        "puntiChiave": ["Separazione carriere magistratura", "Riforma del CSM", "Certezza della pena", "Contrasto alla criminalità organizzata"]
-      }
+      { "tema": "Economia", "sintesi": "Riduzione fiscale, sostegno alle imprese, taglio del cuneo fiscale", "puntiChiave": ["Flat tax per partite IVA e PMI", "Riduzione tasse sul lavoro", "Sostegno alla famiglia", "Contrasto all'evasione fiscale"] },
+      { "tema": "Immigrazione", "sintesi": "Controllo dei flussi migratori, accordi con paesi nordafricani, rimpatri", "puntiChiave": ["Blocco navale nel Mediterraneo", "Accordi bilaterali con paesi di origine", "Accelerazione rimpatri", "Piano Mattei per l'Africa"] },
+      { "tema": "Welfare", "sintesi": "Sostegno alla natalità, riforma del reddito di cittadinanza", "puntiChiave": ["Assegno unico per i figli", "Abolizione reddito di cittadinanza", "Sostegno alle famiglie numerose"] },
+      { "tema": "Esteri", "sintesi": "Atlantismo, sostegno all'Ucraina, difesa degli interessi nazionali in UE", "puntiChiave": ["Pieno sostegno NATO e USA", "Aiuti militari all'Ucraina", "Revisione Patto di stabilità UE"] },
+      { "tema": "Giustizia", "sintesi": "Riforma della magistratura, separazione delle carriere", "puntiChiave": ["Separazione carriere magistratura", "Riforma del CSM", "Certezza della pena"] }
     ],
-    "esponenti": ["giorgia-meloni", "ignazio-la-russa", "francesco-lollobrigida", "giancarlo-giorgetti-fdi", "giovanni-donzelli"]
+    "esponenti": ["giorgia-meloni", "ignazio-la-russa", "giovanni-donzelli"]
   },
   {
     "id": "pd",
     "nome": "Partito Democratico",
     "nomeBreve": "PD",
     "colore": "#E5001A",
-    "logo": "/loghi/pd.svg",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/it/thumb/2/28/Partito_Democratico_-_Logo_2023.svg/200px-Partito_Democratico_-_Logo_2023.svg.png",
+    "coalizione": "opposizione",
     "fondazione": 2007,
     "segretario": "Elly Schlein",
-    "parlamentari": 157,
+    "parlamentari": 106,
+    "seggiCamera": 69,
+    "seggiSenato": 37,
     "asseOrizzontale": -0.55,
     "asseVerticale": -0.4,
-    "descrizione": "Principale partito di centrosinistra italiano, nato dalla fusione tra i Democratici di Sinistra e la Margherita. Guidato da Elly Schlein dal 2023.",
-    "storia": "Il PD nasce nel 2007 dalla fusione tra i Democratici di Sinistra (DS, erede del PCI attraverso il PDS) e La Margherita (partito di centrosinistra cattolico). Ha espresso i governi di Romano Prodi (2006-2008), Enrico Letta (2013-2014), Matteo Renzi (2014-2016), Paolo Gentiloni (2016-2018) e ha partecipato ai governi Conte II e Draghi. Nel 2023, dopo la sconfitta alle politiche, Elly Schlein ha vinto le primarie portando il partito su posizioni più a sinistra.",
+    "descrizione": "Principale partito di centrosinistra italiano, nato dalla fusione tra Democratici di Sinistra e la Margherita. Guidato da Elly Schlein dal 2023.",
+    "storia": "Il PD nasce nel 2007 dalla fusione tra i DS (erede del PCI) e La Margherita. Ha espresso i governi di Romano Prodi, Enrico Letta, Matteo Renzi, Paolo Gentiloni e ha partecipato ai governi Conte II e Draghi. Nel 2023 Elly Schlein vince le primarie portando il partito su posizioni più progressiste.",
     "programma": [
-      {
-        "tema": "Economia",
-        "sintesi": "Maggiore progressività fiscale, salario minimo, investimenti pubblici",
-        "puntiChiave": ["Introduzione salario minimo legale (9€/ora)", "Riforma fiscale progressiva", "Investimenti in green economy", "Contrasto alle disuguaglianze"]
-      },
-      {
-        "tema": "Lavoro",
-        "sintesi": "Tutele lavorative, contrasto alla precarietà, salario minimo",
-        "puntiChiave": ["Salario minimo a 9€/ora", "Riduzione lavoro precario", "Rafforzamento sindacati", "Congedo parentale paritario"]
-      },
-      {
-        "tema": "Welfare",
-        "sintesi": "Difesa del welfare universale, sanità pubblica, reddito di base",
-        "puntiChiave": ["Difesa e rafforzamento SSN", "Reddito di base per i più fragili", "Accesso universale all'istruzione", "Sostegno alle politiche abitative"]
-      },
-      {
-        "tema": "Esteri",
-        "sintesi": "Europeismo convinto, sostegno all'Ucraina, multilateralismo",
-        "puntiChiave": ["Approfondimento integrazione europea", "Sostegno all'Ucraina", "Politica estera multilaterale", "Difesa comune europea"]
-      },
-      {
-        "tema": "Diritti",
-        "sintesi": "Riconoscimento diritti civili, cittadinanza, parità di genere",
-        "puntiChiave": ["Approvazione legge sullo ius soli/scholae", "Riconoscimento coppie omosessuali", "Parità di genere e quote", "Tutela minoranze"]
-      }
+      { "tema": "Economia", "sintesi": "Fiscalità progressiva, salario minimo, investimenti pubblici", "puntiChiave": ["Salario minimo legale (9€/ora)", "Riforma fiscale progressiva", "Investimenti in green economy"] },
+      { "tema": "Lavoro", "sintesi": "Tutele lavorative, contrasto alla precarietà", "puntiChiave": ["Salario minimo a 9€/ora", "Riduzione lavoro precario", "Congedo parentale paritario"] },
+      { "tema": "Welfare", "sintesi": "Difesa del welfare universale, sanità pubblica", "puntiChiave": ["Difesa e rafforzamento SSN", "Reddito di base per i fragili", "Accesso universale all'istruzione"] },
+      { "tema": "Esteri", "sintesi": "Europeismo convinto, sostegno all'Ucraina", "puntiChiave": ["Integrazione europea", "Sostegno all'Ucraina", "Difesa comune europea"] },
+      { "tema": "Diritti", "sintesi": "Diritti civili, cittadinanza, parità di genere", "puntiChiave": ["Legge sullo ius soli", "Riconoscimento coppie omosessuali", "Parità di genere"] }
     ],
-    "esponenti": ["elly-schlein", "stefano-bonaccini", "andrea-orlando", "piero-fassino", "debora-serracchiani"]
+    "esponenti": ["elly-schlein", "stefano-bonaccini", "andrea-orlando"]
   },
   {
     "id": "m5s",
     "nome": "MoVimento 5 Stelle",
     "nomeBreve": "M5S",
-    "colore": "#E6AF00",
-    "logo": "/loghi/m5s.svg",
+    "colore": "#C8A800",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/MoVimento_5_Stelle_Logo.svg/200px-MoVimento_5_Stelle_Logo.svg.png",
+    "coalizione": "opposizione",
     "fondazione": 2009,
     "segretario": "Giuseppe Conte",
-    "parlamentari": 98,
+    "parlamentari": 77,
+    "seggiCamera": 52,
+    "seggiSenato": 25,
     "asseOrizzontale": -0.1,
     "asseVerticale": 0.1,
-    "descrizione": "Movimento populista fondato da Beppe Grillo e Gianroberto Casaleggio. Nato dal blog di Grillo, ha cambiato profondamente il panorama politico italiano. Dal 2021 guidato da Giuseppe Conte.",
-    "storia": "Il M5S nasce nel 2009 da Beppe Grillo e Gianroberto Casaleggio. Alle elezioni 2013 ottiene il 25% diventando primo partito. Alle elezioni 2018 raggiunge il 33%, il miglior risultato. Ha partecipato al governo Conte I (con Lega), Conte II (con PD) e Draghi. Dal 2021 Giuseppe Conte ne è presidente. Nel 2022 la scissione di Luigi Di Maio porta alla formazione di 'Impegno Civico'. Alle elezioni 2022 il M5S scende al 15% ma rimane terza forza politica. Il movimento è noto per il reddito di cittadinanza, il taglio dei parlamentari e la democrazia diretta via piattaforma Rousseau (ora SkyVote).",
+    "descrizione": "Movimento populista fondato da Beppe Grillo e Gianroberto Casaleggio. Dal 2021 guidato da Giuseppe Conte.",
+    "storia": "Il M5S nasce nel 2009 da Beppe Grillo e Casaleggio. Alle elezioni 2018 raggiunge il 33%. Ha partecipato al governo Conte I (con Lega), Conte II (con PD) e Draghi. Dal 2021 Giuseppe Conte è presidente. Alle elezioni 2022 scende al 15%.",
     "programma": [
-      {
-        "tema": "Economia",
-        "sintesi": "Sostegno al reddito, contrasto alle disuguaglianze, superbonus edilizio",
-        "puntiChiave": ["Difesa del reddito di cittadinanza", "Superbonus e incentivi edilizi", "Salario minimo", "Lotta all'evasione fiscale"]
-      },
-      {
-        "tema": "Ambiente",
-        "sintesi": "Transizione ecologica, no trivelle, energie rinnovabili",
-        "puntiChiave": ["Stop a nuove trivellazioni", "Investimenti in rinnovabili", "Mobilità sostenibile", "Economia circolare"]
-      },
-      {
-        "tema": "Democrazia",
-        "sintesi": "Democrazia diretta, trasparenza, taglio privilegi della casta",
-        "puntiChiave": ["Democrazia partecipativa digitale", "Taglio degli stipendi dei parlamentari", "Legge anticorruzione", "Accesso agli atti pubblici"]
-      },
-      {
-        "tema": "Esteri",
-        "sintesi": "Posizione più cauta sull'Ucraina, dialogo diplomatico",
-        "puntiChiave": ["Priorità al negoziato in Ucraina", "No all'escalation militare", "Riduzione spese militari", "Rafforzamento ONU"]
-      },
-      {
-        "tema": "Welfare",
-        "sintesi": "Reddito di cittadinanza, sanità pubblica, istruzione gratuita",
-        "puntiChiave": ["Mantenimento reddito di cittadinanza", "Rafforzamento SSN", "Asili nido gratuiti", "Diritto allo studio universitario"]
-      }
+      { "tema": "Economia", "sintesi": "Sostegno al reddito, contrasto alle disuguaglianze", "puntiChiave": ["Difesa del reddito di cittadinanza", "Superbonus e incentivi edilizi", "Salario minimo"] },
+      { "tema": "Ambiente", "sintesi": "Transizione ecologica, no trivelle, energie rinnovabili", "puntiChiave": ["Stop a nuove trivellazioni", "Investimenti in rinnovabili", "Mobilità sostenibile"] },
+      { "tema": "Democrazia", "sintesi": "Democrazia diretta, trasparenza", "puntiChiave": ["Democrazia partecipativa digitale", "Taglio stipendi parlamentari", "Legge anticorruzione"] },
+      { "tema": "Esteri", "sintesi": "Posizione cauta sull'Ucraina, dialogo diplomatico", "puntiChiave": ["Priorità al negoziato", "No all'escalation militare", "Riduzione spese militari"] },
+      { "tema": "Welfare", "sintesi": "Reddito di cittadinanza, sanità pubblica", "puntiChiave": ["Mantenimento RdC", "Rafforzamento SSN", "Asili nido gratuiti"] }
     ],
-    "esponenti": ["giuseppe-conte", "roberto-fico", "virginia-raggi", "chiara-appendino", "paola-taverna"]
+    "esponenti": ["giuseppe-conte", "virginia-raggi", "chiara-appendino"]
   },
   {
     "id": "lega",
     "nome": "Lega",
     "nomeBreve": "Lega",
-    "colore": "#009933",
-    "logo": "/loghi/lega.svg",
+    "colore": "#008000",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Lega_-_Salvini_Premier_logo.svg/200px-Lega_-_Salvini_Premier_logo.svg.png",
+    "coalizione": "governo",
     "fondazione": 1991,
     "segretario": "Matteo Salvini",
-    "parlamentari": 135,
+    "parlamentari": 95,
+    "seggiCamera": 66,
+    "seggiSenato": 29,
     "asseOrizzontale": 0.8,
     "asseVerticale": 0.6,
-    "descrizione": "Partito di destra nazionalista e populista, nato come Lega Nord. Con Salvini si è trasformato da partito regionalista nordista a movimento nazionale sovranista.",
-    "storia": "La Lega Nord nasce nel 1991 dall'unione di movimenti autonomisti del Nord Italia, guidata da Umberto Bossi. Per anni ha puntato sull'autonomia e talvolta l'indipendenza del Nord ('Padania'). Con l'avvento di Matteo Salvini alla guida nel 2013, il partito si trasforma: abbandona il nordismo e diventa 'Lega', un partito nazionale sovranista e anti-immigrazione. Alle europee 2019 tocca il 34%, diventando primo partito. Partecipa al governo Conte I (2018-2019) e al governo Draghi (2021-2022). Alle elezioni 2022 scende al 8,9%.",
+    "descrizione": "Partito di destra nazionalista nato come Lega Nord. Con Salvini si è trasformato in movimento nazionale sovranista.",
+    "storia": "La Lega Nord nasce nel 1991 da Umberto Bossi. Con Salvini alla guida dal 2013 diventa 'Lega', un partito nazionale. Alle europee 2019 tocca il 34%. Partecipa al governo Conte I e al governo Draghi. Alle elezioni 2022 scende all'8,9%.",
     "programma": [
-      {
-        "tema": "Immigrazione",
-        "sintesi": "Controllo dei flussi, sicurezza, rimpatri",
-        "puntiChiave": ["Chiusura dei porti alle ONG", "Accordi di rimpatrio", "Sicurezza nelle città", "Contrasto all'immigrazione irregolare"]
-      },
-      {
-        "tema": "Economia",
-        "sintesi": "Flat tax, autonomia differenziata, meno tasse",
-        "puntiChiave": ["Flat tax al 15% per tutti", "Autonomia differenziata regionale", "Pensione anticipata (quota 41)", "Meno burocrazia per le imprese"]
-      },
-      {
-        "tema": "Sicurezza",
-        "sintesi": "Più poteri alle forze dell'ordine, legittima difesa",
-        "puntiChiave": ["Ampliamento legittima difesa", "Più risorse alla polizia", "Inasprimento pene", "Contrasto alla criminalità straniera"]
-      },
-      {
-        "tema": "Esteri",
-        "sintesi": "Dialogo con Russia, scetticismo verso UE, sovranismo",
-        "puntiChiave": ["Revisione sanzioni alla Russia", "Riforma dell'Unione Europea", "Difesa degli interessi nazionali", "No agli eurobond"]
-      },
-      {
-        "tema": "Territorio",
-        "sintesi": "Autonomia differenziata, poteri alle regioni, federalismo",
-        "puntiChiave": ["Autonomia differenziata (legge Calderoli)", "Più poteri alle regioni del Nord", "Federalismo fiscale", "Riduzione del centralismo romano"]
-      }
+      { "tema": "Immigrazione", "sintesi": "Controllo dei flussi, sicurezza, rimpatri", "puntiChiave": ["Chiusura dei porti alle ONG", "Accordi di rimpatrio", "Contrasto immigrazione irregolare"] },
+      { "tema": "Economia", "sintesi": "Flat tax, autonomia differenziata, meno tasse", "puntiChiave": ["Flat tax al 15%", "Autonomia differenziata regionale", "Pensione anticipata (quota 41)"] },
+      { "tema": "Sicurezza", "sintesi": "Più poteri alle forze dell'ordine, legittima difesa", "puntiChiave": ["Ampliamento legittima difesa", "Più risorse alla polizia", "Inasprimento pene"] },
+      { "tema": "Esteri", "sintesi": "Sovranismo, scetticismo verso UE", "puntiChiave": ["Revisione sanzioni alla Russia", "Riforma dell'UE", "Difesa degli interessi nazionali"] },
+      { "tema": "Territorio", "sintesi": "Autonomia differenziata, poteri alle regioni", "puntiChiave": ["Autonomia differenziata (legge Calderoli)", "Federalismo fiscale"] }
     ],
-    "esponenti": ["matteo-salvini", "roberto-calderoli", "luca-zaia", "giancarlo-giorgetti", "lorenzo-fontana"]
+    "esponenti": ["matteo-salvini", "luca-zaia", "giancarlo-giorgetti"]
   },
   {
     "id": "fi",
     "nome": "Forza Italia",
     "nomeBreve": "FI",
     "colore": "#0066CC",
-    "logo": "/loghi/fi.svg",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Forza_Italia_logo_2013.svg/200px-Forza_Italia_logo_2013.svg.png",
+    "coalizione": "governo",
     "fondazione": 1994,
     "segretario": "Antonio Tajani",
-    "parlamentari": 79,
+    "parlamentari": 73,
+    "seggiCamera": 45,
+    "seggiSenato": 28,
     "asseOrizzontale": 0.5,
     "asseVerticale": 0.2,
-    "descrizione": "Partito liberaldemocratico di centrodestra fondato da Silvio Berlusconi nel 1994. Dopo la morte di Berlusconi nel 2023, è guidato da Antonio Tajani.",
-    "storia": "Forza Italia nasce nel 1994 quando Silvio Berlusconi, imprenditore e proprietario di Mediaset, entra in politica. Vince le elezioni del 1994, 2001 e 2008 (con il PDL). Nel 2009 confluisce nel Popolo della Libertà (PDL) con AN e altri, per poi riformarsi come FI nel 2013. Berlusconi è stato quattro volte Presidente del Consiglio. Nel 2023 Berlusconi muore e Antonio Tajani, ex presidente del Parlamento Europeo, assume la guida del partito. FI fa parte della coalizione di centrodestra al governo con FdI e Lega.",
+    "descrizione": "Partito liberaldemocratico di centrodestra fondato da Silvio Berlusconi nel 1994. Dopo la morte di Berlusconi nel 2023, guidato da Antonio Tajani.",
+    "storia": "FI nasce nel 1994 quando Silvio Berlusconi entra in politica. Berlusconi è stato quattro volte Presidente del Consiglio. Nel 2023 muore e Antonio Tajani assume la guida. FI fa parte della coalizione di centrodestra al governo.",
     "programma": [
-      {
-        "tema": "Economia",
-        "sintesi": "Liberalismo economico, taglio tasse, meno Stato nell'economia",
-        "puntiChiave": ["Riduzione pressione fiscale", "Privatizzazioni selettive", "Sostegno alle PMI", "Riduzione burocrazia"]
-      },
-      {
-        "tema": "Esteri",
-        "sintesi": "Atlantismo, europeismo moderato, dialogo con Russia",
-        "puntiChiave": ["Rapporti speciali con USA", "Sostegno all'Ucraina", "Ruolo italiano in Europa", "Mediazione per la pace in Ucraina"]
-      },
-      {
-        "tema": "Giustizia",
-        "sintesi": "Riforma della magistratura, garanzie per gli imputati, separazione carriere",
-        "puntiChiave": ["Separazione carriere magistratura", "Riforma del CSM", "Presunzione d'innocenza", "Limiti alla custodia cautelare"]
-      },
-      {
-        "tema": "Welfare",
-        "sintesi": "Sostegno alla famiglia, pensioni, sanità",
-        "puntiChiave": ["Pensione minima a 1000€", "Sostegno alle famiglie", "Detrazioni per anziani non autosufficienti", "Rafforzamento sanità privata convenzionata"]
-      },
-      {
-        "tema": "Lavoro",
-        "sintesi": "Flessibilità del mercato del lavoro, meno oneri per le imprese",
-        "puntiChiave": ["Riduzione cuneo fiscale", "Incentivi all'assunzione", "Formazione professionale", "Sostegno all'imprenditoria giovanile"]
-      }
+      { "tema": "Economia", "sintesi": "Liberalismo economico, taglio tasse", "puntiChiave": ["Riduzione pressione fiscale", "Privatizzazioni selettive", "Sostegno alle PMI"] },
+      { "tema": "Esteri", "sintesi": "Atlantismo, europeismo moderato", "puntiChiave": ["Rapporti speciali con USA", "Sostegno all'Ucraina", "Ruolo italiano in Europa"] },
+      { "tema": "Giustizia", "sintesi": "Riforma della magistratura, garanzie per gli imputati", "puntiChiave": ["Separazione carriere magistratura", "Presunzione d'innocenza"] },
+      { "tema": "Welfare", "sintesi": "Sostegno alla famiglia, pensioni, sanità", "puntiChiave": ["Pensione minima a 1000€", "Sostegno alle famiglie"] }
     ],
-    "esponenti": ["antonio-tajani", "licia-ronzulli", "maurizio-gasparri", "paolo-barelli", "silvio-berlusconi"]
+    "esponenti": ["antonio-tajani", "licia-ronzulli", "maurizio-gasparri"]
   },
   {
-    "id": "azione-iv",
-    "nome": "Azione / Italia Viva",
-    "nomeBreve": "Az-IV",
-    "colore": "#FF6600",
-    "logo": "/loghi/azione.svg",
+    "id": "azione",
+    "nome": "Azione",
+    "nomeBreve": "Az",
+    "colore": "#E05C00",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Azione_logo.svg/200px-Azione_logo.svg.png",
+    "coalizione": "opposizione",
     "fondazione": 2019,
-    "segretario": "Carlo Calenda / Matteo Renzi",
-    "parlamentari": 34,
-    "asseOrizzontale": 0.1,
-    "asseVerticale": -0.6,
-    "descrizione": "Alleanza tra Azione (Carlo Calenda) e Italia Viva (Matteo Renzi). Partiti liberali di centro, spesso in tensione tra loro nonostante la coalizione.",
-    "storia": "Azione nasce nel 2019 da Carlo Calenda, ex ministro dello Sviluppo Economico nel governo Gentiloni, dopo la sua fuoriuscita dal PD. Italia Viva nasce nello stesso anno da Matteo Renzi, che lascia il PD dopo la sua segreteria (2013-2018) e il periodo da Presidente del Consiglio (2014-2016). Le due forze si alleano alle elezioni 2022 nel 'Terzo Polo', ottenendo il 7,8%. Dopo le elezioni il rapporto si deteriora; Calenda e Renzi mantengono una posizione autonoma.",
+    "segretario": "Carlo Calenda",
+    "parlamentari": 19,
+    "seggiCamera": 13,
+    "seggiSenato": 6,
+    "asseOrizzontale": 0.15,
+    "asseVerticale": -0.55,
+    "descrizione": "Partito liberal-democratico fondato da Carlo Calenda nel 2019. Posizionamento centrista, liberale e riformista.",
+    "storia": "Azione nasce nel 2019 da Carlo Calenda, ex ministro dello Sviluppo Economico nel governo Gentiloni, dopo la sua uscita dal PD. Alle elezioni 2022 si allea con Italia Viva nel 'Terzo Polo' ottenendo il 7,8% complessivo. Dopo le elezioni il sodalizio si deteriora.",
     "programma": [
-      {
-        "tema": "Economia",
-        "sintesi": "Liberalismo, agenda Draghi, efficienza pubblica",
-        "puntiChiave": ["Continuazione dell'agenda Draghi", "Liberalizzazioni nei servizi", "Riduzione debito pubblico", "Investimenti in tecnologia e innovazione"]
-      },
-      {
-        "tema": "Europa",
-        "sintesi": "Europeismo convinto, difesa comune, mercato unico",
-        "puntiChiave": ["Difesa comune europea", "Completamento mercato unico", "Riforme della governance UE", "Utilizzo pieno dei fondi europei"]
-      },
-      {
-        "tema": "Lavoro",
-        "sintesi": "Flessibilità, merito, formazione continua",
-        "puntiChiave": ["Salario minimo basato su CCNL", "Formazione continua obbligatoria", "Merit-based career advancement", "Riduzione del precariato giovanile"]
-      },
-      {
-        "tema": "Giustizia",
-        "sintesi": "Efficienza della giustizia, durata dei processi",
-        "puntiChiave": ["Riduzione durata processi civili e penali", "Riforma degli uffici giudiziari", "Digitalizzazione della giustizia"]
-      },
-      {
-        "tema": "Ambiente",
-        "sintesi": "Transizione energetica pragmatica, nucleare di nuova generazione",
-        "puntiChiave": ["Ritorno al nucleare (fissione e fusione)", "Investimenti in rinnovabili", "Carbon pricing", "Efficienza energetica edifici"]
-      }
+      { "tema": "Economia", "sintesi": "Agenda Draghi, competitività, liberalizzazioni", "puntiChiave": ["Continuazione agenda Draghi", "Liberalizzazioni nei servizi", "Riduzione debito pubblico"] },
+      { "tema": "Europa", "sintesi": "Europeismo convinto, difesa comune", "puntiChiave": ["Difesa comune europea", "Completamento mercato unico"] },
+      { "tema": "Ambiente", "sintesi": "Transizione energetica pragmatica, nucleare", "puntiChiave": ["Nucleare di nuova generazione", "Investimenti in rinnovabili"] }
     ],
-    "esponenti": ["carlo-calenda", "matteo-renzi", "benedetto-della-vedova", "maria-elena-boschi", "ettore-rosato"]
+    "esponenti": ["carlo-calenda", "benedetto-della-vedova"]
+  },
+  {
+    "id": "italiaviva",
+    "nome": "Italia Viva",
+    "nomeBreve": "IV",
+    "colore": "#E91B72",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Italia_Viva_logo_%282022%29.svg/200px-Italia_Viva_logo_%282022%29.svg.png",
+    "coalizione": "opposizione",
+    "fondazione": 2019,
+    "segretario": "Matteo Renzi",
+    "parlamentari": 14,
+    "seggiCamera": 8,
+    "seggiSenato": 6,
+    "asseOrizzontale": 0.05,
+    "asseVerticale": -0.45,
+    "descrizione": "Partito centrista fondato da Matteo Renzi nel 2019 dopo la scissione dal PD. Posizionamento liberal-riformista.",
+    "storia": "Italia Viva nasce nel 2019 da Matteo Renzi, ex premier e segretario PD. Ha fatto cadere il governo Conte II nel 2021, aprendo la strada al governo Draghi. Alle elezioni 2022 si allea con Azione nel Terzo Polo.",
+    "programma": [
+      { "tema": "Economia", "sintesi": "Riformismo, crescita, agenda Draghi", "puntiChiave": ["Agenda Draghi", "Liberalismo economico", "Utilizzo pieno del PNRR"] },
+      { "tema": "Europa", "sintesi": "Europeismo convinto", "puntiChiave": ["Integrazione europea", "Difesa comune"] },
+      { "tema": "Giustizia", "sintesi": "Efficienza della giustizia, durata dei processi", "puntiChiave": ["Riduzione durata processi", "Digitalizzazione della giustizia"] }
+    ],
+    "esponenti": ["matteo-renzi", "maria-elena-boschi"]
   },
   {
     "id": "avs",
     "nome": "Alleanza Verdi e Sinistra",
     "nomeBreve": "AVS",
-    "colore": "#E30016",
-    "logo": "/loghi/avs.svg",
+    "colore": "#C0001A",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Alleanza_Verdi_e_Sinistra_-_logo.svg/200px-Alleanza_Verdi_e_Sinistra_-_logo.svg.png",
+    "coalizione": "opposizione",
     "fondazione": 2022,
     "segretario": "Angelo Bonelli / Nicola Fratoianni",
-    "parlamentari": 25,
+    "parlamentari": 21,
+    "seggiCamera": 12,
+    "seggiSenato": 9,
     "asseOrizzontale": -0.8,
     "asseVerticale": -0.3,
-    "descrizione": "Alleanza tra Europa Verde (Angelo Bonelli) e Sinistra Italiana (Nicola Fratoianni). Rappresenta la sinistra ecologista nel panorama politico italiano.",
-    "storia": "AVS nasce come alleanza elettorale nel 2022 tra Europa Verde e Sinistra Italiana per superare la soglia di sbarramento del 3%. Europa Verde è la costola italiana dei Verdi europei; Sinistra Italiana è l'erede di Rifondazione Comunista e SEL. Insieme ottengono il 3,6% alle elezioni 2022. In parlamento supportano il centrosinistra pur mantenendo posizioni più radicali del PD.",
+    "descrizione": "Alleanza tra Europa Verde e Sinistra Italiana. Rappresenta la sinistra ecologista.",
+    "storia": "AVS nasce nel 2022 tra Europa Verde e Sinistra Italiana per superare la soglia del 3%. Insieme ottengono il 3,6% alle elezioni 2022.",
     "programma": [
-      {
-        "tema": "Ambiente",
-        "sintesi": "Green New Deal italiano, stop fossili, rinnovabili al 100%",
-        "puntiChiave": ["Uscita dal carbone entro 2025", "100% rinnovabili entro 2035", "Tassa sulle grandi fortune", "Stop sussidi ai combustibili fossili"]
-      },
-      {
-        "tema": "Lavoro",
-        "sintesi": "Riduzione orario di lavoro, salario minimo alto, tutele forti",
-        "puntiChiave": ["Settimana lavorativa di 4 giorni", "Salario minimo a 10€/ora", "Reddito universale di base", "Rafforzamento diritti sindacali"]
-      },
-      {
-        "tema": "Diritti",
-        "sintesi": "Diritti civili, antirazzismo, inclusione",
-        "puntiChiave": ["Ius soli", "Diritti LGBTQ+", "Antirazzismo istituzionale", "Parità salariale uomo-donna"]
-      },
-      {
-        "tema": "Welfare",
-        "sintesi": "Stato sociale forte, università gratuita, sanità pubblica",
-        "puntiChiave": ["Università pubblica e gratuita", "Difesa e potenziamento SSN", "Casa come diritto", "Reddito universale di base"]
-      }
+      { "tema": "Ambiente", "sintesi": "Green New Deal, stop fossili, 100% rinnovabili", "puntiChiave": ["Uscita dal carbone entro 2025", "100% rinnovabili entro 2035"] },
+      { "tema": "Lavoro", "sintesi": "Settimana corta, salario minimo alto", "puntiChiave": ["Settimana di 4 giorni", "Salario minimo a 10€/ora"] },
+      { "tema": "Diritti", "sintesi": "Diritti civili, antirazzismo, inclusione", "puntiChiave": ["Ius soli", "Diritti LGBTQ+", "Parità salariale"] }
     ],
-    "esponenti": ["angelo-bonelli", "nicola-fratoianni", "eleonora-evi", "peppe-provenzano"]
+    "esponenti": ["angelo-bonelli", "nicola-fratoianni"]
   },
   {
     "id": "nm",
     "nome": "Noi Moderati",
     "nomeBreve": "NM",
     "colore": "#003087",
-    "logo": "/loghi/nm.svg",
+    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Noi_Moderati_logo.svg/200px-Noi_Moderati_logo.svg.png",
+    "coalizione": "governo",
     "fondazione": 2022,
     "segretario": "Maurizio Lupi",
-    "parlamentari": 16,
+    "parlamentari": 13,
+    "seggiCamera": 9,
+    "seggiSenato": 4,
     "asseOrizzontale": 0.55,
     "asseVerticale": 0.4,
-    "descrizione": "Partito di centrodestra moderato, erede dell'UDC e NCI. Parte della coalizione di governo con FdI, Lega e FI.",
-    "storia": "Noi Moderati nasce nel 2022 dalla fusione di Noi con l'Italia (NCI), Coraggio Italia, UDC e Cambiamo!. L'obiettivo è rappresentare il centrodestra moderato e cattolico. Alle elezioni 2022 ottiene il 1,0%, entrando in parlamento grazie alla soglia del 1% per le liste nella coalizione. Fa parte del governo Meloni.",
+    "descrizione": "Partito di centrodestra moderato, erede dell'UDC. Parte della coalizione di governo.",
+    "storia": "Noi Moderati nasce nel 2022 dalla fusione di Noi con l'Italia, Coraggio Italia, UDC e Cambiamo!. Alle elezioni 2022 ottiene l'1%.",
     "programma": [
-      {
-        "tema": "Economia",
-        "sintesi": "Centrodestra moderato, sussidiarietà, economia sociale di mercato",
-        "puntiChiave": ["Economia sociale di mercato", "Sussidiarietà verticale e orizzontale", "Sostegno al terzo settore", "Responsabilità fiscale"]
-      },
-      {
-        "tema": "Famiglia",
-        "sintesi": "Famiglia tradizionale, natalità, valori cattolici",
-        "puntiChiave": ["Sostegno alla famiglia tradizionale", "Politiche per la natalità", "Scuola paritaria", "Tutela dei valori cristiani"]
-      }
+      { "tema": "Economia", "sintesi": "Economia sociale di mercato, sussidiarietà", "puntiChiave": ["Economia sociale di mercato", "Sostegno al terzo settore"] },
+      { "tema": "Famiglia", "sintesi": "Famiglia tradizionale, natalità, valori cattolici", "puntiChiave": ["Sostegno alla famiglia", "Politiche per la natalità", "Scuola paritaria"] }
     ],
-    "esponenti": ["maurizio-lupi", "antonio-de-poli"]
+    "esponenti": ["maurizio-lupi"]
   }
 ]

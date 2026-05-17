@@ -18,9 +18,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 
 const RSS_FEEDS = [
-  { fonte: "ANSA", url: "https://www.ansa.it/sito/notizie/politica/politica_rss.xml" },
-  { fonte: "Corriere della Sera", url: "https://xml2.corrieredellasera.it/rss/homepage.xml" },
-  { fonte: "Repubblica", url: "https://www.repubblica.it/rss/politica/rss2.0.xml" },
+  { fonte: "ANSA Politica", url: "https://www.ansa.it/sito/notizie/politica/politica_rss.xml" },
+  { fonte: "Repubblica Politica", url: "https://www.repubblica.it/rss/politica/rss2.0.xml" },
+  { fonte: "Corriere della Sera", url: "https://www.corriere.it/rss/politica.xml" },
+  { fonte: "Il Sole 24 Ore", url: "https://www.ilsole24ore.com/rss/italia.xml" },
+  { fonte: "Il Fatto Quotidiano", url: "https://www.ilfattoquotidiano.it/feed/" },
+  { fonte: "La Stampa", url: "https://www.lastampa.it/rss.xml" },
+  { fonte: "HuffPost Italia", url: "https://www.huffingtonpost.it/feeds/index.xml" },
 ];
 
 async function fetchRSS(url) {
