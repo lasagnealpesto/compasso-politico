@@ -25,23 +25,23 @@ const PARTITO_COLORI: Record<string, string> = {
 };
 
 const MINISTRI = [
-  { id: "giorgia-meloni",           nome: "Giorgia Meloni",           ruolo: "Presidente del Consiglio",           partito: "fdi" },
-  { id: "matteo-salvini",           nome: "Matteo Salvini",           ruolo: "Vicepres. – Infrastrutture",         partito: "lega" },
-  { id: "antonio-tajani",           nome: "Antonio Tajani",           ruolo: "Vicepres. – Esteri",                 partito: "fi" },
-  { id: "giancarlo-giorgetti",      nome: "Giancarlo Giorgetti",      ruolo: "Economia e Finanze",                 partito: "lega" },
-  { id: "guido-crosetto",           nome: "Guido Crosetto",           ruolo: "Difesa",                             partito: "fdi" },
-  { id: "carlo-nordio",             nome: "Carlo Nordio",             ruolo: "Giustizia",                          partito: "fdi" },
-  { id: "matteo-piantedosi",        nome: "Matteo Piantedosi",        ruolo: "Interno",                            partito: "fdi" },
-  { id: "daniela-santanche",        nome: "Daniela Santanchè",        ruolo: "Turismo",                            partito: "fdi" },
-  { id: "adolfo-urso",              nome: "Adolfo Urso",              ruolo: "Imprese e Made in Italy",            partito: "fdi" },
-  { id: "gilberto-pichetto-fratin", nome: "Gilberto Pichetto Fratin", ruolo: "Ambiente e Sicurezza Energetica",    partito: "fi" },
-  { id: "roberto-calderoli",        nome: "Roberto Calderoli",        ruolo: "Affari Regionali e Autonomia",       partito: "lega" },
-  { id: "francesco-lollobrigida",   nome: "Francesco Lollobrigida",   ruolo: "Agricoltura e Sovranità Alimentare", partito: "fdi" },
-  { id: "giuseppe-valditara",       nome: "Giuseppe Valditara",       ruolo: "Istruzione e Merito",                partito: "lega" },
-  { id: "orazio-schillaci",         nome: "Orazio Schillaci",         ruolo: "Salute",                             partito: "fdi" },
-  { id: "elisabetta-casellati",     nome: "Elisabetta Casellati",     ruolo: "Riforme Costituzionali",             partito: "fi" },
-  { id: "nello-musumeci",           nome: "Nello Musumeci",           ruolo: "Protezione Civile e Mare",           partito: "fdi" },
-  { id: "eugenia-roccella",         nome: "Eugenia Roccella",         ruolo: "Famiglia, Natalità e P.O.",          partito: "fdi" },
+  { id: "giorgia-meloni",           nome: "Giorgia Meloni",           ruolo: "Presidente del Consiglio",                                                              partito: "fdi" },
+  { id: "matteo-salvini",           nome: "Matteo Salvini",           ruolo: "Vicepresidente del Consiglio; Ministro delle Infrastrutture e dei Trasporti",           partito: "lega" },
+  { id: "antonio-tajani",           nome: "Antonio Tajani",           ruolo: "Vicepresidente del Consiglio; Ministro degli Affari Esteri e della Cooperazione Internazionale", partito: "fi" },
+  { id: "giancarlo-giorgetti",      nome: "Giancarlo Giorgetti",      ruolo: "Ministro dell'Economia e delle Finanze",                                                partito: "lega" },
+  { id: "guido-crosetto",           nome: "Guido Crosetto",           ruolo: "Ministro della Difesa",                                                                 partito: "fdi" },
+  { id: "carlo-nordio",             nome: "Carlo Nordio",             ruolo: "Ministro della Giustizia",                                                              partito: "fdi" },
+  { id: "matteo-piantedosi",        nome: "Matteo Piantedosi",        ruolo: "Ministro dell'Interno",                                                                 partito: "fdi" },
+  { id: "daniela-santanche",        nome: "Daniela Santanchè",        ruolo: "Ministro del Turismo",                                                                  partito: "fdi" },
+  { id: "adolfo-urso",              nome: "Adolfo Urso",              ruolo: "Ministro delle Imprese e del Made in Italy",                                            partito: "fdi" },
+  { id: "gilberto-pichetto-fratin", nome: "Gilberto Pichetto Fratin", ruolo: "Ministro dell'Ambiente e della Sicurezza Energetica",                                  partito: "fi" },
+  { id: "roberto-calderoli",        nome: "Roberto Calderoli",        ruolo: "Ministro per gli Affari Regionali e l'Autonomia",                                       partito: "lega" },
+  { id: "francesco-lollobrigida",   nome: "Francesco Lollobrigida",   ruolo: "Ministro dell'Agricoltura, della Sovranità Alimentare e delle Foreste",                 partito: "fdi" },
+  { id: "giuseppe-valditara",       nome: "Giuseppe Valditara",       ruolo: "Ministro dell'Istruzione e del Merito",                                                 partito: "lega" },
+  { id: "orazio-schillaci",         nome: "Orazio Schillaci",         ruolo: "Ministro della Salute",                                                                 partito: "fdi" },
+  { id: "elisabetta-casellati",     nome: "Elisabetta Casellati",     ruolo: "Ministro per le Riforme Istituzionali e la Semplificazione Normativa",                  partito: "fi" },
+  { id: "nello-musumeci",           nome: "Nello Musumeci",           ruolo: "Ministro per la Protezione Civile e le Politiche del Mare",                             partito: "fdi" },
+  { id: "eugenia-roccella",         nome: "Eugenia Roccella",         ruolo: "Ministro per la Famiglia, la Natalità e le Pari Opportunità",                           partito: "fdi" },
 ];
 
 export default function EsponentiPage() {
@@ -64,9 +64,66 @@ export default function EsponentiPage() {
             🏛️ In carica
           </span>
         </div>
-        <p className="text-sm mb-6" style={{ color: "var(--muted)" }}>Dal 22 ottobre 2022 · Presidente del Consiglio: Giorgia Meloni</p>
+        <p className="text-sm mb-6" style={{ color: "var(--muted)" }}>Dal 22 ottobre 2022</p>
+
+        {/* Presidente del Consiglio */}
+        {(() => {
+          const m = MINISTRI[0];
+          const colore = PARTITO_COLORI[m.partito] ?? "#888";
+          const esp = esponenti.find((e) => e.id === m.id);
+          const card = (
+            <div
+              className="card-hover rounded-2xl border p-6 flex flex-col items-center text-center w-52"
+              style={{ background: "var(--surface)", borderColor: "var(--border)", borderTopWidth: 4, borderTopColor: colore }}
+            >
+              <EsponenteAvatar nome={m.nome} colore={colore} fotoUrl={fotos[m.id] ?? ""} size={80} />
+              <div className="mt-3 font-bold text-sm leading-tight">{m.nome}</div>
+              <div className="text-xs mt-1.5 leading-snug" style={{ color: "var(--muted)" }}>{m.ruolo}</div>
+              {partitoMap[m.partito] && (
+                <div className="mt-3 w-6 h-6 rounded overflow-hidden flex items-center justify-center" style={{ background: "var(--surface-2)" }}>
+                  <img src={partitoMap[m.partito].logoUrl} alt={partitoMap[m.partito].nomeBreve} style={{ width: 22, height: 22, objectFit: "contain" }} />
+                </div>
+              )}
+            </div>
+          );
+          return (
+            <div className="flex justify-center mb-4">
+              {esp ? <Link href={`/esponenti/${m.id}`}>{card}</Link> : <div>{card}</div>}
+            </div>
+          );
+        })()}
+
+        {/* Vicepresidenti del Consiglio */}
+        <div className="grid grid-cols-2 gap-3 max-w-xs mx-auto mb-4">
+          {MINISTRI.slice(1, 3).map((m) => {
+            const colore = PARTITO_COLORI[m.partito] ?? "#888";
+            const esp = esponenti.find((e) => e.id === m.id);
+            const card = (
+              <div
+                className="card-hover rounded-xl border p-4 flex flex-col items-center text-center"
+                style={{ background: "var(--surface)", borderColor: "var(--border)", borderTopWidth: 3, borderTopColor: colore }}
+              >
+                <EsponenteAvatar nome={m.nome} colore={colore} fotoUrl={fotos[m.id] ?? ""} size={64} />
+                <div className="mt-2 font-semibold text-xs leading-tight">{m.nome}</div>
+                <div className="text-xs mt-1 leading-tight" style={{ color: "var(--muted)" }}>{m.ruolo}</div>
+                {partitoMap[m.partito] && (
+                  <div className="mt-2 w-5 h-5 rounded overflow-hidden flex items-center justify-center" style={{ background: "var(--surface-2)" }}>
+                    <img src={partitoMap[m.partito].logoUrl} alt={partitoMap[m.partito].nomeBreve} style={{ width: 18, height: 18, objectFit: "contain" }} />
+                  </div>
+                )}
+              </div>
+            );
+            return esp ? (
+              <Link key={m.id} href={`/esponenti/${m.id}`}>{card}</Link>
+            ) : (
+              <div key={m.id}>{card}</div>
+            );
+          })}
+        </div>
+
+        {/* Altri Ministri */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-          {MINISTRI.map((m) => {
+          {MINISTRI.slice(3).map((m) => {
             const colore = PARTITO_COLORI[m.partito] ?? "#888";
             const esp = esponenti.find((e) => e.id === m.id);
             const card = (
@@ -79,11 +136,7 @@ export default function EsponentiPage() {
                 <div className="text-xs mt-1 leading-tight" style={{ color: "var(--muted)" }}>{m.ruolo}</div>
                 {partitoMap[m.partito] && (
                   <div className="mt-2 w-6 h-6 rounded overflow-hidden flex items-center justify-center" style={{ background: "var(--surface-2)" }}>
-                    <img
-                      src={partitoMap[m.partito].logoUrl}
-                      alt={partitoMap[m.partito].nomeBreve}
-                      style={{ width: 22, height: 22, objectFit: "contain" }}
-                    />
+                    <img src={partitoMap[m.partito].logoUrl} alt={partitoMap[m.partito].nomeBreve} style={{ width: 22, height: 22, objectFit: "contain" }} />
                   </div>
                 )}
               </div>

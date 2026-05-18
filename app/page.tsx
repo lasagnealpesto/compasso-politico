@@ -72,10 +72,6 @@ export default function HomePage() {
           }}
         />
 
-        <div className="hero-badge section-tag mb-5" style={{ letterSpacing: "0.18em" }}>
-          🧭 Compasso Politico
-        </div>
-
         <h1
           className="hero-title font-bold leading-tight mb-5"
           style={{ fontSize: "clamp(2.8rem, 5vw, 4.5rem)", maxWidth: 820 }}
@@ -199,18 +195,19 @@ export default function HomePage() {
           {partiti.map((p) => (
             <Link
               key={p.id}
-              href={`/partiti/${p.id}`}
+              href={`/partiti/${p.id}#esponenti`}
               className="card-hover p-4 rounded-xl border flex items-center gap-3"
               style={{ background: "var(--surface)", borderColor: "var(--border)", borderLeftWidth: 3, borderLeftColor: p.colore }}
             >
               <PartitoLogo nome={p.nome} nomeBreve={p.nomeBreve} colore={p.colore} logoUrl={p.logoUrl} size={36} className="rounded-md flex-shrink-0" />
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <div className="font-semibold text-sm truncate">{p.nome}</div>
                 <div className="text-xs truncate" style={{ color: "var(--muted)" }}>{p.segretario}</div>
-                <div className="flex items-center gap-1 mt-1">
+                <div className="flex items-center justify-between mt-1">
                   <span className="text-xs px-1.5 py-0.5 rounded-full font-medium" style={p.coalizione === "governo" ? { background: "#dcfce7", color: "#15803d", border: "1px solid #86efac", fontSize: 10 } : { background: "var(--surface-2)", color: "var(--muted)", border: "1px solid var(--border)", fontSize: 10 }}>
                     {p.coalizione === "governo" ? "Governo" : "Opposizione"}
                   </span>
+                  <span className="text-xs font-medium" style={{ color: p.colore, fontSize: 10 }}>esponenti →</span>
                 </div>
               </div>
             </Link>

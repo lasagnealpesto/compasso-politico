@@ -59,6 +59,38 @@ async function loadFonts() {
   ];
 }
 
+async function fetchNewsImage(articleUrl) {
+  if (!articleUrl) return null;
+  try {
+    const html = await fetch(articleUrl, {
+      signal: AbortSignal.timeout(7000),
+      headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36" },
+    }).then((r) => r.text());
+
+    const patterns = [
+      /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i,
+      /<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i,
+      /<meta[^>]+name=["']twitter:image(?::src)?["'][^>]+content=["']([^"']+)["']/i,
+      /<meta[^>]+content=["']([^"']+)["'][^>]+name=["']twitter:image(?::src)?["']/i,
+    ];
+    let imgUrl = null;
+    for (const p of patterns) {
+      const m = html.match(p);
+      if (m?.[1]?.startsWith("http")) { imgUrl = m[1]; break; }
+    }
+    if (!imgUrl) return null;
+
+    const imgRes = await fetch(imgUrl, { signal: AbortSignal.timeout(9000) });
+    if (!imgRes.ok) return null;
+    const ct = imgRes.headers.get("content-type") ?? "image/jpeg";
+    if (!ct.startsWith("image/")) return null;
+    const buf = Buffer.from(await imgRes.arrayBuffer()).toString("base64");
+    return `data:${ct};base64,${buf}`;
+  } catch {
+    return null;
+  }
+}
+
 async function renderSlide(element, fonts) {
   const svg = await satori(element, { width: W, height: H, fonts });
   const resvg = new Resvg(svg, { background: "rgba(255,255,255,1)" });
@@ -149,13 +181,18 @@ function slide1(content) {
 
 // ──────────────────── SLIDES 2–4: Notizia ────────────────────
 
-function slideNotizia(n, idx) {
+function slideNotizia(n, idx, imgSrc) {
   const isLast = idx === 2;
   const headerBg = isLast ? RED : SURFACE;
   const headerNumColor = isLast ? "#FFF" : RED;
   const headerColor = isLast ? "#FFF" : DARK;
   const headerMuted = isLast ? "rgba(255,255,255,0.7)" : MUTED;
   const perché = n["perchéRilevante"] ?? n.perche ?? "";
+
+  // Altezze proporzionate: header 108, footer 68, contenuto 904
+  // Con immagine: titolo ~130, img 340, spieg ~130, perché ~110, margini ~194
+  // Senza immagine: titolo ~130, spieg flex, perché ~110
+  const IMG_H = 340;
 
   return h("div", {
     style: {
@@ -186,29 +223,59 @@ function slideNotizia(n, idx) {
     h("div", {
       style: {
         flex: 1, display: "flex", flexDirection: "column",
-        padding: "48px 80px 0 80px",
+        padding: imgSrc ? "36px 80px 0 80px" : "48px 80px 0 80px",
       },
     },
       // Titolo notizia
-      txt({ fontSize: 50, fontWeight: 700, color: DARK, lineHeight: 1.16, marginBottom: "28px" },
-        trunc(n.titolo, 80)),
+      txt({
+        fontSize: imgSrc ? 44 : 50,
+        fontWeight: 700, color: DARK,
+        lineHeight: 1.16,
+        marginBottom: imgSrc ? "20px" : "28px",
+      }, trunc(n.titolo, imgSrc ? 70 : 80)),
+
+      // Immagine centrale con bordi stondati
+      imgSrc
+        ? h("div", {
+            style: {
+              width: "100%", height: `${IMG_H}px`,
+              borderRadius: "20px",
+              overflow: "hidden",
+              display: "flex",
+              marginBottom: "22px",
+              flexShrink: 0,
+            },
+          },
+            h("img", {
+              src: imgSrc,
+              style: { width: "100%", height: "100%", objectFit: "cover" },
+            }),
+          )
+        : null,
 
       // Spiegazione
-      txt({ fontSize: 27, color: MUTED, lineHeight: 1.55, flex: 1 },
-        trunc(n.spiegazione, 210)),
+      txt({
+        fontSize: imgSrc ? 23 : 27,
+        color: MUTED,
+        lineHeight: 1.52,
+        flex: imgSrc ? 0 : 1,
+        marginBottom: imgSrc ? "auto" : "0",
+      }, trunc(n.spiegazione, imgSrc ? 150 : 210)),
 
       // Box perché rilevante
       h("div", {
         style: {
           backgroundColor: SURFACE, borderRadius: "14px",
-          padding: "22px 28px",
+          padding: "20px 26px",
           display: "flex", gap: "14px", alignItems: "flex-start",
-          marginTop: "auto", marginBottom: "28px",
+          marginTop: "auto", marginBottom: "24px",
         },
       },
         txt({ fontSize: 20, color: RED, fontWeight: 700 }, "→"),
-        txt({ fontSize: 24, color: DARK, fontWeight: 500, lineHeight: 1.4, flex: 1 },
-          trunc(perché, 140)),
+        txt({
+          fontSize: imgSrc ? 21 : 24,
+          color: DARK, fontWeight: 500, lineHeight: 1.4, flex: 1,
+        }, trunc(perché, imgSrc ? 110 : 140)),
       ),
     ),
 
@@ -283,11 +350,19 @@ export async function generateCarousel(content) {
 
   const fonts = await loadFonts();
 
+  // Fetch immagini degli articoli in parallelo
+  process.stdout.write("   Recuperando immagini articoli... ");
+  const images = await Promise.all(
+    content.top3.map((n) => fetchNewsImage(n.fonteUrl))
+  );
+  const found = images.filter(Boolean).length;
+  console.log(`${found}/3 trovate`);
+
   const slides = [
     slide1(content),
-    slideNotizia(content.top3[0], 0),
-    slideNotizia(content.top3[1], 1),
-    slideNotizia(content.top3[2], 2),
+    slideNotizia(content.top3[0], 0, images[0]),
+    slideNotizia(content.top3[1], 1, images[1]),
+    slideNotizia(content.top3[2], 2, images[2]),
     slide5(),
   ];
 

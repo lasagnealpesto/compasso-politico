@@ -208,7 +208,7 @@ export default async function PartitoPage({ params }: Props) {
 
       {/* Esponenti */}
       {esponenti.length > 0 && (
-        <section>
+        <section id="esponenti">
           <h2 className="text-xl font-bold mb-4">Esponenti principali</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {esponenti.map((e) => (

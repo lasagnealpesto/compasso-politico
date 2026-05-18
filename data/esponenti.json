@@ -599,5 +599,55 @@
     "cambiRotta": [],
     "falsita": [],
     "wikipedia": "https://it.wikipedia.org/wiki/Maurizio_Lupi"
+  },
+  {
+    "id": "michele-boldrin",
+    "nome": "Michele Boldrin",
+    "partito": "ora",
+    "ruolo": "Fondatore e leader di Ora!",
+    "foto": "",
+    "asseOrizzontale": 0.7,
+    "asseVerticale": -0.9,
+    "bio": "Nato a Padova nel 1956. Economista, professore alla Washington University in St. Louis. Fondatore di Ora!, partito liberale italiano. Conduce il canale YouTube MiBO dedicato all'economia. Critico del reddito di cittadinanza, dei sussidi pubblici e del dirigismo economico.",
+    "storiaPolit": [
+      { "partito": "Ora!", "ruolo": "Fondatore e leader", "dalAnno": 2024, "alAnno": null }
+    ],
+    "governi": [],
+    "posizioniChiave": [
+      { "tema": "Economia", "posizione": "Liberalismo classico, riduzione della spesa pubblica, privatizzazioni, flat tax" },
+      { "tema": "Welfare", "posizione": "Critico del reddito di cittadinanza. Favorevole a voucher per scuola e sanità" },
+      { "tema": "Europa", "posizione": "Europeismo convinto, pro-mercato unico, contro il protezionismo" },
+      { "tema": "Lavoro", "posizione": "Flessibilità del mercato del lavoro, meno tutele rigide, più mobilità" }
+    ],
+    "dichiarazioni": [
+      { "testo": "Il reddito di cittadinanza è una polpetta avvelenata che distrugge l'incentivo al lavoro.", "contesto": "Video YouTube MiBO", "anno": 2019 },
+      { "testo": "L'Italia non crescerà finché non ridurrà lo Stato e libererà i mercati.", "contesto": "Intervista online", "anno": 2022 }
+    ],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Michele_Boldrin"
+  },
+  {
+    "id": "alberto-forchielli",
+    "nome": "Alberto Forchielli",
+    "partito": "ora",
+    "ruolo": "Co-fondatore di Ora!, imprenditore e investitore",
+    "foto": "",
+    "asseOrizzontale": 0.65,
+    "asseVerticale": -0.75,
+    "bio": "Imprenditore e investitore, socio fondatore di Mandarin Capital Partners, fondo di private equity focalizzato su Europa e Cina. Co-fondatore di Ora! insieme a Michele Boldrin. Noto commentatore economico sui media italiani.",
+    "storiaPolit": [
+      { "partito": "Ora!", "ruolo": "Co-fondatore", "dalAnno": 2024, "alAnno": null }
+    ],
+    "governi": [],
+    "posizioniChiave": [
+      { "tema": "Economia", "posizione": "Liberalismo economico, apertura ai mercati globali, meno regolamentazione" },
+      { "tema": "Geopolitica", "posizione": "Pragmatismo nei rapporti commerciali internazionali, focus su Cina e Asia" },
+      { "tema": "Impresa", "posizione": "Sostegno all'imprenditoria privata, riduzione della burocrazia, meno Stato" }
+    ],
+    "dichiarazioni": [],
+    "cambiRotta": [],
+    "falsita": [],
+    "wikipedia": "https://it.wikipedia.org/wiki/Alberto_Forchielli"
   }
 ]

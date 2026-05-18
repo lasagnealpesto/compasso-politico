@@ -32,10 +32,17 @@ jobs:
       - name: Genera carosello Instagram
         run: node scripts/daily-carousel.mjs
 
-      - name: Commit e push JSON + slide PNG
+      - name: Genera e invia newsletter
+        continue-on-error: true
+        env:
+          MAILERLITE_API_KEY: ${{ secrets.MAILERLITE_API_KEY }}
+          MAILERLITE_GROUP_ID: ${{ secrets.MAILERLITE_GROUP_ID }}
+        run: node scripts/daily-newsletter.mjs
+
+      - name: Commit e push JSON + slide PNG + newsletter HTML
         run: |
           git config user.name "Compasso Bot"
           git config user.email "bot@compasso-politico.it"
-          git add data/daily/ public/carousels/
-          git diff --staged --quiet || git commit -m "chore: recap + carosello $(date +%Y-%m-%d)"
+          git add data/daily/ public/carousels/ data/newsletters/
+          git diff --staged --quiet || git commit -m "chore: recap + carosello + newsletter $(date +%Y-%m-%d)"
           git push

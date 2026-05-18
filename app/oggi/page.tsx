@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { readdir, readFile, access } from "fs/promises";
+import { readdir, readFile } from "fs/promises";
 import path from "path";
 import type { DailyContent } from "@/types";
 
@@ -7,15 +7,6 @@ export const metadata: Metadata = {
   title: "Oggi in Politica",
   description: "Le 3 notizie di politica italiana da sapere oggi e il recap del giorno.",
 };
-
-async function hasCarousel(dateStr: string): Promise<boolean> {
-  try {
-    await access(path.join(process.cwd(), "public", "carousels", dateStr, "slide-1.png"));
-    return true;
-  } catch {
-    return false;
-  }
-}
 
 async function getDailyContent(): Promise<DailyContent | null> {
   try {
@@ -32,7 +23,6 @@ async function getDailyContent(): Promise<DailyContent | null> {
 
 export default async function OggiPage() {
   const content = await getDailyContent();
-  const carouselReady = content ? await hasCarousel(content.data) : false;
   const oggi = new Date().toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 
   if (!content) {
@@ -107,44 +97,6 @@ export default async function OggiPage() {
         </div>
       </section>
 
-      {/* Carosello Instagram */}
-      {carouselReady && (
-        <section>
-          <h2 className="text-lg font-semibold mb-2">📱 Carosello Instagram</h2>
-          <p className="text-sm mb-5" style={{ color: "var(--muted)" }}>
-            5 slide pronte da postare. Clicca su una slide per scaricarla.
-          </p>
-          <div style={{ display: "flex", gap: 12, overflowX: "auto", paddingBottom: 8 }}>
-            {[1, 2, 3, 4, 5].map((i) => (
-              <a
-                key={i}
-                href={`/carousels/${content.data}/slide-${i}.png`}
-                download={`compasso-${content.data}-slide-${i}.png`}
-                style={{ flexShrink: 0, display: "block" }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`/carousels/${content.data}/slide-${i}.png`}
-                  alt={`Slide ${i}`}
-                  width={180}
-                  height={180}
-                  style={{
-                    borderRadius: 10,
-                    border: "1px solid var(--border)",
-                    display: "block",
-                    objectFit: "cover",
-                    transition: "transform 150ms ease",
-                  }}
-                  className="hover:scale-105"
-                />
-              </a>
-            ))}
-          </div>
-          <p className="text-xs mt-3" style={{ color: "var(--muted)" }}>
-            Slide 1080×1080px · formato Instagram
-          </p>
-        </section>
-      )}
     </div>
   );
 }

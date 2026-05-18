@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compasso Politico — Brand Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red:     #C41230;
+      --dark:    #111111;
+      --muted:   #777777;
+      --border:  #E5E5E5;
+      --surface: #F5F4F2;
+      --white:   #FFFFFF;
+    }
+    body { font-family: 'Inter', sans-serif; background: #FAFAFA; color: var(--dark); line-height: 1.6; }
+    .page { max-width: 900px; margin: 0 auto; padding: 64px 32px; }
+    .section { margin-bottom: 80px; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .22em; color: var(--red);
+      text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* Header */
+    .header {
+      display: flex; align-items: center; gap: 16px;
+      padding-bottom: 48px; border-bottom: 1px solid var(--border); margin-bottom: 80px;
+    }
+    .header-text h1 { font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+    .header-text p  { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+    /* Logo */
+    .logo-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .logo-card { border-radius: 16px; padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
+    .logo-card.on-white   { background: var(--white); border: 1px solid var(--border); }
+    .logo-card.on-surface { background: var(--surface); border: 1px solid var(--border); }
+    .logo-card.on-red     { background: var(--red); }
+    .logo-card-label { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+    .logo-card.on-white .logo-card-label,
+    .logo-card.on-surface .logo-card-label { color: var(--muted); }
+    .logo-card.on-red .logo-card-label     { color: rgba(255,255,255,.6); }
+    .wordmark { display: flex; align-items: center; gap: 12px; }
+    .wordmark-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .wordmark-text .w1 { font-size: 18px; font-weight: 700; }
+    .wordmark-text .w2 { font-size: 18px; font-weight: 400; }
+    .logo-card.on-white .wordmark-text,
+    .logo-card.on-surface .wordmark-text { color: var(--dark); }
+    .logo-card.on-red .wordmark-text     { color: white; }
+
+    /* Colors */
+    .color-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .color-swatch { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .swatch-fill  { height: 80px; }
+    .swatch-info  { background: white; padding: 12px 14px; }
+    .swatch-name  { font-size: 12px; font-weight: 700; color: var(--dark); }
+    .swatch-hex   { font-size: 11px; color: var(--muted); font-family: 'SF Mono', monospace; margin-top: 2px; }
+
+    /* Typography */
+    .type-specimen { margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 32px; }
+    .type-specimen:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .type-meta { display: flex; gap: 24px; margin-bottom: 12px; }
+    .type-meta span { font-size: 11px; color: var(--muted); letter-spacing: .05em; }
+    .type-meta strong { color: var(--dark); }
+    .t-hero    { font-size: 52px; font-weight: 700; line-height: 1.08; letter-spacing: -.02em; }
+    .t-h1      { font-size: 32px; font-weight: 700; line-height: 1.15; }
+    .t-h2      { font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .t-body    { font-size: 16px; font-weight: 400; line-height: 1.65; color: var(--dark); }
+    .t-caption { font-size: 13px; font-weight: 400; line-height: 1.5; color: var(--muted); }
+    .t-label   { font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+
+    /* Voice rules */
+    .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; }
+    .rule-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; }
+    .rule-card .rule-icon  { font-size: 18px; margin-bottom: 8px; display: block; }
+    .rule-card .rule-title { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .rule-card .rule-body  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .rule-card ul { margin-top: 6px; padding-left: 16px; }
+    .rule-card ul li { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* Examples */
+    .examples { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .example { border-radius: 12px; padding: 20px 22px; }
+    .example.bad  { background: #FEF2F2; border: 1px solid #FECACA; }
+    .example.good { background: #F0FDF4; border: 1px solid #BBF7D0; }
+    .example-tag { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 10px; }
+    .example.bad  .example-tag { color: #DC2626; }
+    .example.good .example-tag { color: #16A34A; }
+    .example p { font-size: 14px; line-height: 1.55; color: var(--dark); }
+    .example ul { padding-left: 16px; }
+    .example ul li { font-size: 14px; line-height: 1.7; color: var(--dark); }
+
+    /* Sample card */
+    .sample-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+    .sample-card .tag { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+    .sample-card h2 { font-size: 22px; font-weight: 700; line-height: 1.25; margin-bottom: 12px; }
+    .sample-card .body-text { font-size: 15px; line-height: 1.65; color: var(--muted); margin-bottom: 12px; }
+    .sample-card ul { padding-left: 18px; margin-bottom: 16px; }
+    .sample-card ul li { font-size: 15px; line-height: 1.7; color: var(--muted); }
+    .sample-card .perche { background: var(--surface); border-radius: 8px; padding: 12px 16px; font-size: 14px; color: var(--dark); border-left: 3px solid var(--red); }
+    .sample-card .fonte { font-size: 12px; color: var(--muted); margin-top: 16px; }
+    .sample-card .fonte a { color: var(--red); text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <svg width="32" height="46" viewBox="0 0 40 58" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <circle cx="20" cy="18" r="16" fill="#C41230"/>
+      <rect x="11" y="26" width="18" height="24" fill="#C41230"/>
+      <path d="M11 50 Q11 58 20 58 Q29 58 29 50Z" fill="#C41230"/>
+      <rect x="11" y="36" width="18" height="2.5" fill="white"/>
+      <rect x="11" y="43" width="18" height="2.5" fill="white"/>
+    </svg>
+    <div class="header-text">
+      <h1>Compasso Politico</h1>
+      <p>Brand Guide — v1.1</p>
+    </div>
+  </div>
+
+  <!-- LOGO -->
+  <div class="section">
+    <div class="section-label">Logo</div>
+    <div class="logo-grid">
+
+      <div class="logo-card on-white">
+        <div class="logo-card-label">Su bianco</div>
+        <div class="wordmark">
+          <svg width="28" height="40" viewBox="0 0 40 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="18" r="16" fill="#C41230"/>
+            <rect x="11" y="26" width="18" height="24" fill="#C41230"/>
+            <path d="M11 50 Q11 58 20 58 Q29 58 29 50Z" fill="#C41230"/>
+            <rect x="11" y="36" width="18" height="2.5" fill="white"/>
+            <rect x="11" y="43" width="18" height="2.5" fill="white"/>
+          </svg>
+          <div class="wordmark-text"><span class="w1">Compasso</span><span class="w2">Politico</span></div>
+        </div>
+      </div>
+
+      <div class="logo-card on-surface">
+        <div class="logo-card-label">Su grigio</div>
+        <div class="wordmark">
+          <svg width="28" height="40" viewBox="0 0 40 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="18" r="16" fill="#C41230"/>
+            <rect x="11" y="26" width="18" height="24" fill="#C41230"/>
+            <path d="M11 50 Q11 58 20 58 Q29 58 29 50Z" fill="#C41230"/>
+            <rect x="11" y="36" width="18" height="2.5" fill="#F5F4F2"/>
+            <rect x="11" y="43" width="18" height="2.5" fill="#F5F4F2"/>
+          </svg>
+          <div class="wordmark-text"><span class="w1">Compasso</span><span class="w2">Politico</span></div>
+        </div>
+      </div>
+
+      <div class="logo-card on-red">
+        <div class="logo-card-label">Su rosso</div>
+        <div class="wordmark">
+          <svg width="28" height="40" viewBox="0 0 40 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="18" r="16" fill="white"/>
+            <rect x="11" y="26" width="18" height="24" fill="white"/>
+            <path d="M11 50 Q11 58 20 58 Q29 58 29 50Z" fill="white"/>
+            <rect x="11" y="36" width="18" height="2.5" fill="#C41230"/>
+            <rect x="11" y="43" width="18" height="2.5" fill="#C41230"/>
+          </svg>
+          <div class="wordmark-text" style="color:white;"><span class="w1">Compasso</span><span class="w2">Politico</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COLORI -->
+  <div class="section">
+    <div class="section-label">Colori</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-fill" style="background:#C41230;"></div>
+        <div class="swatch-info"><div class="swatch-name">Rosso Compasso</div><div class="swatch-hex">#C41230</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-fill" style="background:#111111;"></div>
+        <div class="swatch-info"><div class="swatch-name">Quasi nero</div><div class="swatch-hex">#111111</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-fill" style="background:#777777;"></div>
+        <div class="swatch-info"><div class="swatch-name">Grigio testo</div><div class="swatch-hex">#777777</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-fill" style="background:#F5F4F2; border-bottom:1px solid #E5E5E5;"></div>
+        <div class="swatch-info"><div class="swatch-name">Superficie</div><div class="swatch-hex">#F5F4F2</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-fill" style="background:#FFFFFF; border-bottom:1px solid #E5E5E5;"></div>
+        <div class="swatch-info"><div class="swatch-name">Bianco</div><div class="swatch-hex">#FFFFFF</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPOGRAFIA -->
+  <div class="section">
+    <div class="section-label">Tipografia — Inter</div>
+    <div class="type-specimen">
+      <div class="type-meta"><span><strong>Hero</strong></span><span>52px · 700 · tracking -0.02em</span><span>Titolo pagina principale</span></div>
+      <div class="t-hero">La politica italiana<br><span style="color:#C41230;">spiegata bene.</span></div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span><strong>H1</strong></span><span>32px · 700</span><span>Headline notizia</span></div>
+      <div class="t-h1">Meloni chiede deroga al Patto UE per difesa ed energia</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span><strong>H2</strong></span><span>22px · 700</span><span>Sottotitolo, titolo card</span></div>
+      <div class="t-h2">Le 3 notizie politiche di oggi</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span><strong>Body</strong></span><span>16px · 400 · leading 1.65</span><span>Corpo testo, spiegazione</span></div>
+      <div class="t-body">La presidente del Consiglio ha scritto alla Commissione europea chiedendo che le spese per la difesa vengano escluse dal calcolo del deficit. Se accettata, la deroga darebbe all'Italia margini di manovra significativi senza rischiare procedure di infrazione.</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span><strong>Caption</strong></span><span>13px · 400</span><span>Note, fonte, metadata</span></div>
+      <div class="t-caption">Fonte: Repubblica · Aggiornato 18 maggio 2026</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span><strong>Label</strong></span><span>11px · 700 · uppercase · tracking 0.2em</span><span>Badge, etichette sezione</span></div>
+      <div class="t-label">La più importante · Economia · Notizia</div>
+    </div>
+  </div>
+
+  <!-- TONO DI VOCE -->
+  <div class="section">
+    <div class="section-label">Tono di voce e stile di comunicazione</div>
+
+    <div class="rules-grid">
+
+      <div class="rule-card">
+        <span class="rule-icon">✦</span>
+        <div class="rule-title">Giornalista, non commentatore</div>
+        <div class="rule-body">Racconta i fatti. Il lettore trae le sue conclusioni. Vietato: "purtroppo", "fortunatamente", "come al solito", "scandalosamene".</div>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-icon">✦</span>
+        <div class="rule-title">Bullet point e schemi sempre</div>
+        <div class="rule-body">Ogni volta che ci sono 3 o più elementi, si usano i bullet point. Non si scrivono liste in prosa. Si schematizza il più possibile:
+          <ul>
+            <li>Chi ha fatto cosa</li>
+            <li>Cosa cambia</li>
+            <li>Cosa succede dopo</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-icon">✦</span>
+        <div class="rule-title">Frasi corte. Punto.</div>
+        <div class="rule-body">Massimo 20 parole per frase. Se hai voglia di aggiungere una subordinata, fermati. Togli. Riscrivi in due frasi separate.</div>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-icon">✦</span>
+        <div class="rule-title">Mai il trattino lungo</div>
+        <div class="rule-body">Il carattere — (em dash) non esiste in Compasso Politico. Usa la virgola, il punto, oppure apri una nuova frase.</div>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-icon">✦</span>
+        <div class="rule-title">Il perché è obbligatorio</div>
+        <div class="rule-body">Ogni notizia deve rispondere a: perché mi riguarda? Se non riesci a dirlo in una frase, la notizia non entra nel recap.</div>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-icon">✦</span>
+        <div class="rule-title">Zero gergo non spiegato</div>
+        <div class="rule-body">"Patto di Stabilità", "fiducia al Senato", "DL sicurezza": se lo usi, lo spieghi subito. Tra parentesi o nella frase dopo.</div>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-icon">✦</span>
+        <div class="rule-title">Titolo: fatto, non click</div>
+        <div class="rule-body">Il titolo dice cosa è successo, non incuriosisce. "Meloni chiede deroga UE sulla difesa" funziona. "La mossa di Meloni che cambia tutto" no.</div>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-icon">✦</span>
+        <div class="rule-title">Accenti e apostrofi sempre corretti</div>
+        <div class="rule-body">Si scrive con caratteri italiani corretti, senza abbreviazioni da tastiera:
+          <ul>
+            <li>può, è, perché, più, già, però, così</li>
+            <li>non "può", "e'", "perche'", "più"</li>
+            <li>l'apostrofo (') è diverso dall'accento (`)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <span class="rule-icon">✦</span>
+        <div class="rule-title">Struttura standard notizia</div>
+        <div class="rule-body">Ogni notizia segue questo schema:
+          <ul>
+            <li><strong>Titolo</strong> — max 8 parole, fatto secco</li>
+            <li><strong>Spiegazione</strong> — 2-3 frasi, cosa è successo</li>
+            <li><strong>Perché conta</strong> — 1 frase, impatto pratico</li>
+            <li><strong>Fonte</strong> — testata + link</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Esempi buono/cattivo -->
+    <div class="examples">
+      <div class="example bad">
+        <div class="example-tag">No — prosa con trattini</div>
+        <p>Il governo ha annunciato oggi — come era ampiamente atteso — una serie di misure che, purtroppo, potrebbero avere conseguenze significative per i cittadini, soprattutto quelli più vulnerabili.</p>
+      </div>
+      <div class="example good">
+        <div class="example-tag">Si — schematizzato</div>
+        <p>Il governo ha annunciato tre misure fiscali:</p>
+        <ul>
+          <li>Taglio IVA beni di prima necessita: 10% → 5%</li>
+          <li>Proroga bonus affitti under 35</li>
+          <li>Aumento detrazioni per figli a carico</li>
+        </ul>
+        <p style="margin-top:8px;">Entrano in vigore a luglio.</p>
+      </div>
+      <div class="example bad">
+        <div class="example-tag">No — opinione mascherata</div>
+        <p>La premier ha fatto capire — con le sue parole — che non intende cedere alle pressioni dell'opposizione, che da settimane tenta di bloccare il DDL.</p>
+      </div>
+      <div class="example good">
+        <div class="example-tag">Si — fatti diretti</div>
+        <p>Meloni ha confermato che il DDL va avanti. "Non ci fermiamo", ha detto in conferenza stampa. L'opposizione chiedeva uno stop da tre settimane.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESEMPIO CARD -->
+  <div class="section">
+    <div class="section-label">Esempio — Card notizia completa</div>
+    <div class="sample-card">
+      <div class="tag">Notizia 1 di 3</div>
+      <h2>Meloni chiede deroga al Patto UE per difesa ed energia</h2>
+      <p class="body-text">La presidente del Consiglio ha scritto alla Commissione europea con due richieste specifiche:</p>
+      <ul>
+        <li>Escludere le spese per la difesa dal calcolo del deficit</li>
+        <li>Estendere la stessa deroga agli investimenti nel settore energetico</li>
+      </ul>
+      <div class="perche">Se accettata, l'Italia può aumentare la spesa militare senza rischiare procedure di infrazione da parte di Bruxelles.</div>
+      <div class="fonte">Fonte: <a href="#">Repubblica</a></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

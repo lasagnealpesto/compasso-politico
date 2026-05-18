@@ -292,6 +292,36 @@
     "esponenti": ["angelo-bonelli", "nicola-fratoianni"]
   },
   {
+    "id": "ora",
+    "nome": "Ora!",
+    "nomeBreve": "Ora!",
+    "colore": "#C9A000",
+    "logoUrl": "/loghi/ora.svg",
+    "coalizione": "opposizione",
+    "fondazione": 2024,
+    "segretario": "Michele Boldrin",
+    "parlamentari": 0,
+    "seggiCamera": 0,
+    "seggiSenato": 0,
+    "asseOrizzontale": 0.7,
+    "asseVerticale": -0.9,
+    "descrizione": "Partito liberale fondato da Michele Boldrin e Pietro Forchielli nel 2024. Propone riforme strutturali, economia di mercato libero e liberalismo classico.",
+    "storia": "Ora! nasce nel 2024 dall'iniziativa di Michele Boldrin e Pietro Forchielli, economisti e divulgatori. Il progetto vuole portare in Italia un'agenda liberale classica: riduzione dello Stato, mercato libero, meno burocrazia. Boldrin è professore alla Washington University in St. Louis e conduttore del canale MiBO.",
+    "fondatori": [
+      { "nome": "Michele Boldrin", "fotoId": "michele-boldrin", "wikiUrl": "https://it.wikipedia.org/wiki/Michele_Boldrin" },
+      { "nome": "Alberto Forchielli", "fotoId": "alberto-forchielli", "wikiUrl": "https://it.wikipedia.org/wiki/Alberto_Forchielli" }
+    ],
+    "milestones": [
+      { "anno": 2024, "evento": "Fondazione di Ora! da Michele Boldrin e Pietro Forchielli. Obiettivo: portare il liberalismo classico nella politica italiana.", "tipo": "fondazione", "fonteUrl": "https://it.wikipedia.org/wiki/Ora!_(partito_politico)", "fonteLabel": "Wikipedia — Ora!" }
+    ],
+    "programma": [
+      { "tema": "Economia", "sintesi": "Liberalismo classico, meno Stato, più mercato", "puntiChiave": ["Riduzione della spesa pubblica", "Privatizzazioni", "Flat tax su tutti i redditi", "Liberalizzazione dei mercati protetti"] },
+      { "tema": "Welfare", "sintesi": "Riforma del welfare verso modelli liberali", "puntiChiave": ["Voucher per scuola e sanità", "Pensioni a capitalizzazione", "Riduzione del perimetro statale"] },
+      { "tema": "Istituzioni", "sintesi": "Meno burocrazia, Stato leggero ed efficiente", "puntiChiave": ["Taglio della burocrazia", "Semplificazione normativa", "Federalismo fiscale"] }
+    ],
+    "esponenti": ["michele-boldrin", "alberto-forchielli"]
+  },
+  {
     "id": "nm",
     "nome": "Noi Moderati",
     "nomeBreve": "NM",

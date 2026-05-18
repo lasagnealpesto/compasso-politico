@@ -11,20 +11,25 @@ export const metadata: Metadata = {
 function PartitoCard({ p }: { p: (typeof partiti)[0] }) {
   return (
     <Link
-      href={`/partiti/${p.id}`}
+      href={`/partiti/${p.id}#esponenti`}
       className="card-hover rounded-xl border p-5 flex gap-4 items-start"
       style={{ background: "var(--surface)", borderColor: "var(--border)", borderLeftWidth: 4, borderLeftColor: p.colore }}
     >
-      <PartitoLogo nome={p.nome} nomeBreve={p.nomeBreve} colore={p.colore} logoUrl={p.logoUrl} size={48} />
+      <PartitoLogo nome={p.nome} nomeBreve={p.nomeBreve} colore={p.colore} logoUrl={p.logoUrl} size={48} className="flex-shrink-0" />
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
           <div className="font-bold">{p.nome}</div>
-          <span className="text-xs flex-shrink-0" style={{ color: "var(--muted)" }}>{p.parlamentari} parlamentari</span>
+          {p.parlamentari > 0 && (
+            <span className="text-xs flex-shrink-0" style={{ color: "var(--muted)" }}>{p.parlamentari} parlamentari</span>
+          )}
         </div>
         <p className="text-sm mt-1 line-clamp-2" style={{ color: "var(--muted)" }}>{p.descrizione}</p>
-        <div className="mt-2 text-xs" style={{ color: "var(--muted)" }}>
-          Segretario: <span style={{ color: "var(--foreground)" }}>{p.segretario}</span>
-          {" · "}Fondato nel {p.fondazione}
+        <div className="mt-2 flex items-center justify-between">
+          <div className="text-xs" style={{ color: "var(--muted)" }}>
+            Segretario: <span style={{ color: "var(--foreground)" }}>{p.segretario}</span>
+            {" · "}Fondato nel {p.fondazione}
+          </div>
+          <span className="text-xs font-semibold" style={{ color: p.colore }}>Esponenti →</span>
         </div>
       </div>
     </Link>

@@ -87,17 +87,44 @@ Rispondi con un JSON valido con questa struttura esatta:
 }
 
 Regole:
-- top3: le 3 notizie più importanti del giorno, ORDINATE dalla meno alla più importante (la più rilevante deve essere l'ultima, in posizione 3). Titolo max 8 parole. Spiegazione 2-3 frasi semplici. PerchéRilevante: 1 frase sul perché conta. Fonte e fonteUrl: usa il nome e il link originale della notizia (dal campo "link:" sopra).
+- top3: le 3 notizie più importanti del giorno, ORDINATE dalla meno alla più importante (la più rilevante deve essere l'ultima, in posizione 3). Titolo max 8 parole. Spiegazione 2-3 frasi semplici. PerchéRilevante: 1 frase sul perché conta.
+- Fonte: nome breve della testata (es. "Repubblica", "ANSA", "Corriere"). fonteUrl: DEVE essere l'URL completo dell'articolo originale preso esattamente dal campo "link:" della notizia sopra. NON usare la homepage del giornale. NON inventare URL. Se il link non è disponibile lascia fonteUrl vuoto "".
 - recap: riassunto delle notizie del giorno in 250-300 parole. Tono giornalistico, imparziale, chiaro.
+- VIETATO il trattino lungo (—) in qualsiasi campo. Usa virgola, punto o nuova frase al suo posto.
 - Rispondi SOLO con il JSON, nessun testo aggiuntivo.`,
       },
     ],
   });
 
   const raw = response.content[0].type === "text" ? response.content[0].text.trim() : "";
-  // Pulisci eventuali backtick di markdown
   const clean = raw.replace(/^```json?\n?/, "").replace(/\n?```$/, "");
-  return JSON.parse(clean);
+  const parsed = JSON.parse(clean);
+
+  // Post-processing: rimuovi em-dash, valida URL articoli
+  const sanitize = (s) => (s ?? "").replace(/\s*—\s*/g, ", ").replace(/^,\s*/, "").trim();
+  parsed.top3 = parsed.top3.map((n) => {
+    // Se fonteUrl è una homepage (pathname corto), cerca il link RSS corretto per titolo
+    let fonteUrl = n.fonteUrl ?? "";
+    try {
+      const u = new URL(fonteUrl);
+      if (u.pathname.length < 5) {
+        const match = notizie.find((rss) =>
+          rss.titolo.toLowerCase().includes(n.titolo.toLowerCase().slice(0, 15)) ||
+          n.titolo.toLowerCase().includes(rss.titolo.toLowerCase().slice(0, 15))
+        );
+        if (match?.link) fonteUrl = match.link;
+      }
+    } catch { fonteUrl = ""; }
+    return {
+      ...n,
+      titolo: sanitize(n.titolo),
+      spiegazione: sanitize(n.spiegazione),
+      perchéRilevante: sanitize(n.perchéRilevante),
+      fonteUrl,
+    };
+  });
+  parsed.recap = sanitize(parsed.recap);
+  return parsed;
 }
 
 async function main() {

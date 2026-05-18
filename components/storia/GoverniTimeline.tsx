@@ -42,6 +42,32 @@ function formatData(iso: string): string {
   return new Date(iso).toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
 }
 
+const PARTY_DETAIL: Record<string, { nome: string; desc: string; colore: string }> = {
+  "AN":             { nome: "Alleanza Nazionale",                  desc: "Destra nazionale, erede del MSI. Attivo 1995-2009, poi confluito nel PDL.",         colore: "#003087" },
+  "PDL":            { nome: "Il Popolo della Libertà",             desc: "Coalizione di centrodestra guidata da Berlusconi (2009-2013).",                      colore: "#005EA5" },
+  "PdL":            { nome: "Il Popolo della Libertà",             desc: "Coalizione di centrodestra guidata da Berlusconi (2009-2013).",                      colore: "#005EA5" },
+  "DS":             { nome: "Democratici di Sinistra",             desc: "Centro-sinistra, erede del PCI via PDS. Fondato nel 1998, confluito nel PD nel 2007.", colore: "#C41230" },
+  "Margherita":     { nome: "La Margherita",                       desc: "Centro, fondato nel 2002, confluito nel PD nel 2007.",                               colore: "#F5A623" },
+  "UDC":            { nome: "Unione di Centro",                    desc: "Partito cattolico centrista, fondato nel 2002.",                                     colore: "#005EA5" },
+  "RC":             { nome: "Rifondazione Comunista",              desc: "Sinistra radicale, fondata nel 1991 dopo la fine del PCI.",                          colore: "#C41230" },
+  "CCD-CDU":        { nome: "CCD-CDU",                             desc: "Centro democratico cristiano e Cristiani Democratici Uniti.",                        colore: "#005EA5" },
+  "SC":             { nome: "Scelta Civica",                       desc: "Partito centrista fondato da Mario Monti nel 2013.",                                 colore: "#009FD4" },
+  "NCD":            { nome: "Nuovo Centrodestra",                  desc: "Scissione dal PDL guidata da Alfano (2012-2017).",                                   colore: "#0055A5" },
+  "LeU":            { nome: "Liberi e Uguali",                     desc: "Coalizione di sinistra formata nel 2017 da scissioni PD.",                           colore: "#C41230" },
+  "PDCI":           { nome: "Partito dei Comunisti Italiani",      desc: "Scissione di Rifondazione Comunista nel 1998.",                                      colore: "#C41230" },
+  "SDI":            { nome: "Socialisti Democratici Italiani",     desc: "Partito socialdemocratico, attivo 1998-2007.",                                       colore: "#C41230" },
+  "AP":             { nome: "Alternativa Popolare",                desc: "Centro, nato dal NCD di Alfano nel 2017.",                                           colore: "#0055A5" },
+  "Art.1":          { nome: "Articolo Uno",                        desc: "Sinistra, scissione del PD nel 2017, poi confluita in PD.",                          colore: "#C41230" },
+  "UDEUR":          { nome: "Unione Democratica per l'Europa",     desc: "Partito centrista di Clemente Mastella, attivo 1999-2013.",                          colore: "#008F55" },
+  "Verdi":          { nome: "Federazione dei Verdi",               desc: "Partito ambientalista, fondato nel 1986. Confluito in AVS nel 2022.",                colore: "#008F55" },
+  "Rosa nel Pugno": { nome: "La Rosa nel Pugno",                   desc: "Coalizione laica e radicale (Socialisti e Radicali), attiva 2006-2008.",             colore: "#C41230" },
+  "MPA":            { nome: "Movimento per le Autonomie",          desc: "Partito autonomista siciliano fondato da Lombardo nel 2005.",                        colore: "#009FDA" },
+  "Democratici":    { nome: "I Democratici",                       desc: "Partito centrista di Romano Prodi, attivo 1999-2002, poi nella Margherita.",         colore: "#E5A000" },
+  "PPI":            { nome: "Partito Popolare Italiano",           desc: "Cattolici centristi, erede della DC. Attivo 1994-2002.",                             colore: "#005EA5" },
+  "Nuovo PSI":      { nome: "Nuovo Partito Socialista Italiano",   desc: "Partito socialista, fondato nel 2000.",                                              colore: "#C41230" },
+  "NCI":            { nome: "Nuovo Centro Italiano",               desc: "Piccolo partito centrista cattolico.",                                               colore: "#005EA5" },
+};
+
 const LOGO_MAP: Record<string, { logoUrl: string; id: string; colore: string }> = {
   "FdI":      { logoUrl: "/loghi/fdi.svg",    id: "fdi",        colore: "#1A3A5C" },
   "Lega":     { logoUrl: "/loghi/lega.png",   id: "lega",       colore: "#008000" },
@@ -59,6 +85,50 @@ const LOGO_MAP: Record<string, { logoUrl: string; id: string; colore: string }> 
   "Az":       { logoUrl: "/loghi/azione.jpg", id: "azione",     colore: "#E05C00" },
   "Azione":   { logoUrl: "/loghi/azione.jpg", id: "azione",     colore: "#E05C00" },
 };
+
+function PartyBadge({ name, size = "md" }: { name: string; size?: "sm" | "md" }) {
+  const [open, setOpen] = useState(false);
+  const info = LOGO_MAP[name];
+  const detail = PARTY_DETAIL[name];
+  const imgSize = size === "sm" ? 16 : 20;
+
+  if (info) {
+    return (
+      <Link
+        href={`/partiti/${info.id}`}
+        className="flex items-center gap-1.5 px-2 py-1 rounded-lg border transition-all hover:scale-105"
+        style={{ background: info.colore + "15", borderColor: info.colore + "40" }}
+      >
+        <img src={info.logoUrl} alt={name} style={{ width: imgSize, height: imgSize, objectFit: "contain" }} />
+        <span className="text-xs font-medium" style={{ color: info.colore }}>{name}</span>
+      </Link>
+    );
+  }
+
+  const colore = detail?.colore ?? "#888";
+  return (
+    <div className="relative">
+      <button
+        className="px-2 py-1 rounded-lg text-xs transition-all hover:scale-105 cursor-default"
+        style={{ background: colore + "18", border: `1px solid ${colore}40`, color: colore }}
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        onClick={() => setOpen((v) => !v)}
+      >
+        {name}
+      </button>
+      {open && detail && (
+        <div
+          className="absolute z-50 bottom-full left-0 mb-1 rounded-lg border p-2.5 text-left pointer-events-none"
+          style={{ background: "var(--surface)", borderColor: "var(--border)", boxShadow: "0 4px 20px rgba(0,0,0,0.15)", minWidth: 180, maxWidth: 260 }}
+        >
+          <div className="font-bold text-xs mb-1" style={{ color: colore }}>{detail.nome}</div>
+          <div className="text-xs leading-snug" style={{ color: "var(--muted)" }}>{detail.desc}</div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 function GovernoModal({ governo, onClose }: { governo: GovernoRow; onClose: () => void }) {
   const col = getCols(governo.coalizione);
@@ -112,25 +182,7 @@ function GovernoModal({ governo, onClose }: { governo: GovernoRow; onClose: () =
           <div className="mb-4">
             <div className="text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: "var(--muted)" }}>Partiti</div>
             <div className="flex flex-wrap gap-2">
-              {partitiList.map((p) => {
-                const info = LOGO_MAP[p];
-                if (info) {
-                  return (
-                    <Link
-                      key={p}
-                      href={`/partiti/${info.id}`}
-                      className="flex items-center gap-1.5 px-2 py-1 rounded-lg border transition-all hover:scale-105"
-                      style={{ background: info.colore + "15", borderColor: info.colore + "40" }}
-                    >
-                      <img src={info.logoUrl} alt={p} style={{ width: 20, height: 20, objectFit: "contain" }} />
-                      <span className="text-xs font-medium" style={{ color: info.colore }}>{p}</span>
-                    </Link>
-                  );
-                }
-                return (
-                  <span key={p} className="px-2 py-1 rounded-lg text-xs" style={{ background: "var(--surface-2)", color: "var(--muted)" }}>{p}</span>
-                );
-              })}
+              {partitiList.map((p) => <PartyBadge key={p} name={p} />)}
             </div>
           </div>
 
@@ -277,7 +329,7 @@ export default function GoverniTimeline({ governi, dalInizio, totaleMs }: Props)
                   return info ? (
                     <img key={p} src={info.logoUrl} alt={p} title={p} style={{ width: 20, height: 20, objectFit: "contain", borderRadius: 3 }} />
                   ) : (
-                    <span key={p} className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--surface-2)", color: "var(--muted)" }}>{p}</span>
+                    <span key={p} className="text-xs px-1.5 py-0.5 rounded font-medium" style={{ background: (PARTY_DETAIL[p]?.colore ?? "#888") + "20", color: PARTY_DETAIL[p]?.colore ?? "var(--muted)" }}>{p}</span>
                   );
                 })}
               </div>
@@ -309,21 +361,7 @@ export default function GoverniTimeline({ governi, dalInizio, totaleMs }: Props)
                   <div className="font-bold">{g.nome}</div>
                   <div className="text-sm mt-0.5" style={{ color: "var(--muted)" }}>{g.coalizione}</div>
                   <div className="flex flex-wrap gap-1.5 mt-2">
-                    {partitiList.slice(0, 8).map((p) => {
-                      const info = LOGO_MAP[p];
-                      return info ? (
-                        <span
-                          key={p}
-                          className="flex items-center gap-1 px-1.5 py-0.5 rounded"
-                          style={{ background: info.colore + "18", border: `1px solid ${info.colore}40` }}
-                        >
-                          <img src={info.logoUrl} alt={p} style={{ width: 16, height: 16, objectFit: "contain" }} />
-                          <span className="text-xs font-medium" style={{ color: info.colore }}>{p}</span>
-                        </span>
-                      ) : (
-                        <span key={p} className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--surface-2)", color: "var(--muted)" }}>{p}</span>
-                      );
-                    })}
+                    {partitiList.slice(0, 8).map((p) => <PartyBadge key={p} name={p} size="sm" />)}
                   </div>
                   {g.note && <p className="text-xs mt-2 line-clamp-2" style={{ color: "var(--muted)" }}>{g.note}</p>}
                   {g.motivo_fine && (
