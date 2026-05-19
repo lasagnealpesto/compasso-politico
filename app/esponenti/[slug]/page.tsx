@@ -17,6 +17,22 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+const PARTITO_LOGO_MAP: Record<string, { logoUrl: string; colore: string }> = {
+  "Fratelli d'Italia":         { logoUrl: "/loghi/fdi.svg",    colore: "#1A3A5C" },
+  "Partito Democratico":       { logoUrl: "/loghi/pd.png",     colore: "#C8001E" },
+  "MoVimento 5 Stelle":        { logoUrl: "/loghi/m5s.png",    colore: "#C8A800" },
+  "Movimento 5 Stelle":        { logoUrl: "/loghi/m5s.png",    colore: "#C8A800" },
+  "Lega":                      { logoUrl: "/loghi/lega.png",   colore: "#009A3E" },
+  "Lega Nord":                 { logoUrl: "/loghi/lega.png",   colore: "#009A3E" },
+  "Lega Salvini Premier":      { logoUrl: "/loghi/lega.png",   colore: "#009A3E" },
+  "Forza Italia":              { logoUrl: "/loghi/fi.png",     colore: "#0066CC" },
+  "Azione":                    { logoUrl: "/loghi/azione.jpg", colore: "#E05C00" },
+  "Italia Viva":               { logoUrl: "/loghi/iv.svg",     colore: "#E91B72" },
+  "Alleanza Verdi e Sinistra": { logoUrl: "/loghi/avs.png",    colore: "#6AB04C" },
+  "Noi Moderati":              { logoUrl: "/loghi/nm.svg",     colore: "#003087" },
+  "Ora!":                      { logoUrl: "/loghi/ora.svg",    colore: "#C9A000" },
+};
+
 export async function generateStaticParams() {
   return esponenti.map((e) => ({ slug: e.id }));
 }
@@ -106,20 +122,29 @@ export default async function EsponentePage({ params }: Props) {
         <h2 className="text-xl font-bold mb-5">Carriera politica</h2>
 
         {/* Barra colori proporzionale agli anni */}
-        <div className="rounded-xl overflow-hidden mb-2" style={{ height: 28 }}>
+        <div className="rounded-xl overflow-hidden mb-2" style={{ height: 32 }}>
           <div className="flex h-full">
             {esp.storiaPolit.map((s, i) => {
               const durata = (s.alAnno ?? new Date().getFullYear()) - s.dalAnno;
               const pct = totaleAnni ? (durata / totaleAnni) * 100 : 100 / esp.storiaPolit.length;
               const opacity = 0.35 + (i / (esp.storiaPolit.length || 1)) * 0.65;
+              const logoInfo = PARTITO_LOGO_MAP[s.partito];
+              const bgColor = logoInfo?.colore ?? col;
               return (
                 <div
                   key={i}
-                  className="relative group flex items-center justify-center text-white text-xs font-bold"
-                  style={{ width: `${pct}%`, background: col, opacity, minWidth: 6 }}
-                  title={`${s.partito}: ${durata} anni`}
+                  className="relative group flex items-center justify-center"
+                  style={{ width: `${pct}%`, background: bgColor, opacity: logoInfo ? 0.85 + (i / (esp.storiaPolit.length || 1)) * 0.15 : opacity, minWidth: 6 }}
+                  title={`${s.partito}: ${s.dalAnno}–${s.alAnno ?? "oggi"}`}
                 >
-                  {pct > 12 && <span style={{ fontSize: 10 }}>{s.dalAnno}</span>}
+                  {pct > 16 && logoInfo ? (
+                    <div style={{ background: "rgba(255,255,255,0.92)", borderRadius: 4, padding: 2, width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={logoInfo.logoUrl} alt={s.partito} style={{ width: 16, height: 16, objectFit: "contain" }} />
+                    </div>
+                  ) : pct > 10 ? (
+                    <span style={{ fontSize: 9, color: "white", fontWeight: 700 }}>{s.dalAnno}</span>
+                  ) : null}
                 </div>
               );
             })}
@@ -143,7 +168,15 @@ export default async function EsponentePage({ params }: Props) {
               return (
                 <div key={i}>
                   <div className="flex items-center justify-between text-xs mb-1" style={{ color: "var(--muted)" }}>
-                    <span className="font-medium" style={{ color: "var(--foreground)" }}>{s.partito}</span>
+                    <div className="flex items-center gap-1.5">
+                      {PARTITO_LOGO_MAP[s.partito] && (
+                        <div style={{ width: 20, height: 20, background: "#fff", border: "1px solid var(--border)", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", padding: 2, flexShrink: 0 }}>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={PARTITO_LOGO_MAP[s.partito].logoUrl} alt={s.partito} style={{ width: 14, height: 14, objectFit: "contain" }} />
+                        </div>
+                      )}
+                      <span className="font-medium" style={{ color: "var(--foreground)" }}>{s.partito}</span>
+                    </div>
                     <span>{s.dalAnno}–{s.alAnno ?? "oggi"} ({durata} {durata === 1 ? "anno" : "anni"})</span>
                   </div>
                   <div className="h-4 rounded-full overflow-hidden" style={{ background: "var(--surface-2)" }}>
@@ -165,12 +198,20 @@ export default async function EsponentePage({ params }: Props) {
             <div key={i} className="relative mb-5 last:mb-0">
               <div className="absolute -left-4 top-2 w-3 h-3 rounded-full border-2" style={{ background: col, borderColor: "var(--background)" }} />
               <div className="rounded-xl border p-4" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <div className="font-semibold text-sm">{s.partito}</div>
-                    <div className="text-xs mt-0.5" style={{ color: "var(--muted)" }}>{s.ruolo}</div>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-start gap-2.5">
+                    {PARTITO_LOGO_MAP[s.partito] && (
+                      <div style={{ width: 30, height: 30, background: "#fff", border: "1px solid var(--border)", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", padding: 3, flexShrink: 0 }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={PARTITO_LOGO_MAP[s.partito].logoUrl} alt={s.partito} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                      </div>
+                    )}
+                    <div>
+                      <div className="font-semibold text-sm">{s.partito}</div>
+                      <div className="text-xs mt-0.5" style={{ color: "var(--muted)" }}>{s.ruolo}</div>
+                    </div>
                   </div>
-                  <div className="text-xs font-mono" style={{ color: "var(--muted)" }}>
+                  <div className="text-xs font-mono flex-shrink-0" style={{ color: "var(--muted)" }}>
                     {s.dalAnno}–{s.alAnno ?? "oggi"}
                   </div>
                 </div>
