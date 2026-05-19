@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NewsletterForm from "@/components/ui/NewsletterForm";
 
 export const metadata: Metadata = {
   title: "Newsletter",
@@ -25,34 +26,9 @@ export default function NewsletterPage() {
         ))}
       </ul>
 
-      {/* Form iscrizione Ghost */}
-      <div className="rounded-2xl border p-8" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+      <div className="rounded-2xl border p-8 flex flex-col items-center" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
         <p className="font-semibold mb-4">Iscriviti gratis</p>
-        <form
-          action="https://compassopolitico.ghost.io/members/api/send-magic-link/"
-          method="POST"
-          className="flex flex-col sm:flex-row gap-3"
-        >
-          <input type="hidden" name="emailType" value="subscribe" />
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="la-tua@email.it"
-            className="flex-1 px-4 py-3 rounded-lg text-sm outline-none"
-            style={{ background: "var(--surface-2)", border: "1px solid var(--border)", color: "var(--foreground)" }}
-          />
-          <button
-            type="submit"
-            className="px-6 py-3 rounded-lg font-semibold text-sm text-white"
-            style={{ background: "var(--accent)" }}
-          >
-            Iscriviti →
-          </button>
-        </form>
-        <p className="text-xs mt-4" style={{ color: "var(--muted)" }}>
-          Niente spam. Disiscrizione in un click. Powered by Ghost.
-        </p>
+        <NewsletterForm />
       </div>
     </div>
   );
