@@ -8,6 +8,7 @@ import { getDb, type GovernoRow, type LeggeRow } from "@/lib/db";
 import PartitoLogo from "@/components/ui/PartitoLogo";
 import EsponenteAvatar from "@/components/ui/EsponenteAvatar";
 import FondatoreCard from "@/components/ui/FondatoreCard";
+import ProgrammaComparatore from "@/components/ui/ProgrammaComparatore";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -157,22 +158,12 @@ export default async function PartitoPage({ params }: Props) {
       {/* Programma */}
       <section className="mb-10">
         <h2 className="text-xl font-bold mb-4">Programma politico</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {partito.programma.map((tema) => (
-            <div key={tema.tema} className="rounded-xl border p-5" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-              <div className="font-semibold mb-2" style={{ color: partito.colore }}>{tema.tema}</div>
-              <p className="text-sm mb-3" style={{ color: "var(--muted)" }}>{tema.sintesi}</p>
-              <ul className="space-y-1">
-                {tema.puntiChiave.map((punto) => (
-                  <li key={punto} className="text-sm flex gap-2">
-                    <span style={{ color: partito.colore }}>·</span>
-                    <span style={{ color: "var(--foreground)" }}>{punto}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <ProgrammaComparatore
+          partito={{ id: partito.id, nome: partito.nome, nomeBreve: partito.nomeBreve, colore: partito.colore, programma: partito.programma }}
+          altriPartiti={partiti
+            .filter((p) => p.id !== partito.id)
+            .map((p) => ({ id: p.id, nome: p.nome, nomeBreve: p.nomeBreve, colore: p.colore, programma: p.programma }))}
+        />
       </section>
 
       {/* Governi */}

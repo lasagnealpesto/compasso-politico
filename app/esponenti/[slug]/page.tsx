@@ -265,12 +265,21 @@ export default async function EsponentePage({ params }: Props) {
         <section className="mb-10">
           <h2 className="text-xl font-bold mb-4">Posizioni chiave</h2>
           <div className="space-y-2">
-            {esp.posizioniChiave.map((pos) => (
-              <div key={pos.tema} className="rounded-xl border p-4 flex gap-4" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-                <div className="text-sm font-semibold min-w-[90px]" style={{ color: col }}>{pos.tema}</div>
-                <p className="text-sm" style={{ color: "var(--muted)" }}>{pos.posizione}</p>
-              </div>
-            ))}
+            {esp.posizioniChiave.map((pos) => {
+              const temaSlug = pos.tema.toLowerCase().replace(/\s+/g, "-");
+              return (
+                <Link
+                  key={pos.tema}
+                  href={`/esponenti/${esp.id}/posizioni/${temaSlug}`}
+                  className="rounded-xl border p-4 flex gap-4 hover:border-current transition-colors block"
+                  style={{ background: "var(--surface)", borderColor: "var(--border)" }}
+                >
+                  <div className="text-sm font-semibold min-w-[90px]" style={{ color: col }}>{pos.tema}</div>
+                  <p className="text-sm flex-1" style={{ color: "var(--muted)" }}>{pos.posizione}</p>
+                  <div className="text-xs flex-shrink-0 self-center" style={{ color: col }}>Approfondisci →</div>
+                </Link>
+              );
+            })}
           </div>
         </section>
       )}
