@@ -3,6 +3,7 @@ import Link from "next/link";
 import { readdir, readFile } from "fs/promises";
 import path from "path";
 import type { DailyContent } from "@/types";
+import LiveSwiper from "@/components/ui/LiveSwiper";
 
 export const metadata: Metadata = {
   title: "Parlamento Live",
@@ -138,12 +139,20 @@ export default async function LivePage() {
   const [news, daily] = await Promise.all([getNews(), getDaily()]);
 
   const ora = new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Rome" });
+  const oggiISO = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Rome" }); // YYYY-MM-DD
   const dataOggi = daily
     ? new Date(daily.data).toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Rome" })
     : null;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <>
+      {/* Mobile: swiper */}
+      <div className="block md:hidden">
+        <LiveSwiper news={news} oggi={oggiISO} />
+      </div>
+
+      {/* Desktop: layout classico */}
+      <div className="hidden md:block max-w-6xl mx-auto px-4 py-8">
       {/* ── Header ── */}
       <div className="flex flex-wrap items-center gap-3 mb-8 pb-6" style={{ borderBottom: "1px solid var(--border)" }}>
         <div className="flex items-center gap-2">
@@ -313,5 +322,6 @@ export default async function LivePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
