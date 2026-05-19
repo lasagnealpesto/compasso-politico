@@ -256,14 +256,14 @@ function slideNotizia(n, idx, imgSrc) {
           )
         : null,
 
-      // Spiegazione
+      // Spiegazione: usa il testo breve se disponibile, altrimenti tronca
       txt({
         fontSize: imgSrc ? 23 : 27,
         color: MUTED,
         lineHeight: 1.52,
         flex: imgSrc ? 0 : 1,
         marginBottom: imgSrc ? "auto" : "0",
-      }, trunc(n.spiegazione, imgSrc ? 150 : 210)),
+      }, n.spiegazioneBreve ? n.spiegazioneBreve : trunc(n.spiegazione, imgSrc ? 150 : 210)),
 
       // Box perché rilevante
       h("div", {
