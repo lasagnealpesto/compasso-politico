@@ -31,7 +31,10 @@ const FONT = "Inter";
 
 function trunc(text, max) {
   if (!text) return "";
-  return text.length > max ? text.slice(0, max - 1) + "…" : text;
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > max * 0.65 ? cut.slice(0, lastSpace) : cut) + "…";
 }
 
 function formatDate(dateStr) {
