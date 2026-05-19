@@ -32,9 +32,16 @@ const FONT = "Inter";
 function trunc(text, max) {
   if (!text) return "";
   if (text.length <= max) return text;
-  const cut = text.slice(0, max);
-  const lastSpace = cut.lastIndexOf(" ");
-  return (lastSpace > max * 0.65 ? cut.slice(0, lastSpace) : cut) + "…";
+  // Taglia sempre a fine frase (., !, ?)
+  const sub = text.slice(0, max);
+  for (let i = sub.length - 1; i >= max * 0.4; i--) {
+    if (sub[i] === "." || sub[i] === "!" || sub[i] === "?") {
+      return text.slice(0, i + 1);
+    }
+  }
+  // Fallback: ultima parola completa
+  const lastSpace = sub.lastIndexOf(" ");
+  return (lastSpace > max * 0.6 ? sub.slice(0, lastSpace) : sub) + "…";
 }
 
 function formatDate(dateStr) {
@@ -256,14 +263,14 @@ function slideNotizia(n, idx, imgSrc) {
           )
         : null,
 
-      // Spiegazione: usa il testo breve se disponibile, altrimenti tronca
+      // Spiegazione
       txt({
         fontSize: imgSrc ? 23 : 27,
         color: MUTED,
         lineHeight: 1.52,
         flex: imgSrc ? 0 : 1,
         marginBottom: imgSrc ? "auto" : "0",
-      }, n.spiegazioneBreve ? n.spiegazioneBreve : trunc(n.spiegazione, imgSrc ? 150 : 210)),
+      }, trunc(n.spiegazione, imgSrc ? 380 : 500)),
 
       // Box perché rilevante
       h("div", {

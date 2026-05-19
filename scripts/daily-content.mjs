@@ -66,7 +66,7 @@ async function generateDailyContent(notizie) {
 
   const response = await client.messages.create({
     model: "claude-sonnet-4-6",
-    max_tokens: 1500,
+    max_tokens: 2500,
     system: "Sei un giornalista politico italiano esperto e imparziale. Scrivi sempre in italiano. Sii chiaro, diretto e accessibile anche per chi non segue la politica quotidianamente.",
     messages: [
       {
@@ -79,15 +79,15 @@ Rispondi con un JSON valido con questa struttura esatta:
 {
   "data": "${today}",
   "top3": [
-    { "titolo": "...", "spiegazione": "...", "spiegazioneBreve": "...", "perchéRilevante": "...", "fonte": "Nome testata", "fonteUrl": "https://..." },
-    { "titolo": "...", "spiegazione": "...", "spiegazioneBreve": "...", "perchéRilevante": "...", "fonte": "Nome testata", "fonteUrl": "https://..." },
-    { "titolo": "...", "spiegazione": "...", "spiegazioneBreve": "...", "perchéRilevante": "...", "fonte": "Nome testata", "fonteUrl": "https://..." }
+    { "titolo": "...", "spiegazione": "...", "perchéRilevante": "...", "fonte": "Nome testata", "fonteUrl": "https://..." },
+    { "titolo": "...", "spiegazione": "...", "perchéRilevante": "...", "fonte": "Nome testata", "fonteUrl": "https://..." },
+    { "titolo": "...", "spiegazione": "...", "perchéRilevante": "...", "fonte": "Nome testata", "fonteUrl": "https://..." }
   ],
   "recap": "..."
 }
 
 Regole:
-- top3: le 3 notizie più importanti del giorno, ORDINATE dalla meno alla più importante (la più rilevante deve essere l'ultima, in posizione 3). Titolo max 8 parole. Spiegazione 2-3 frasi semplici. SpiegazioneBreve: 1 frase sola, max 100 caratteri, sempre completa (no puntini di sospensione), scritta per Instagram. PerchéRilevante: 1 frase sul perché conta.
+- top3: le 3 notizie più importanti del giorno, ORDINATE dalla meno alla più importante (la più rilevante deve essere l'ultima, in posizione 3). Titolo max 8 parole. Spiegazione: 3-4 frasi complete e informative, circa 300-380 caratteri, spiega bene il contesto per chi non segue la politica. PerchéRilevante: 1 frase sul perché conta.
 - Fonte: nome breve della testata (es. "Repubblica", "ANSA", "Corriere"). fonteUrl: DEVE essere l'URL completo dell'articolo originale preso esattamente dal campo "link:" della notizia sopra. NON usare la homepage del giornale. NON inventare URL. Se il link non è disponibile lascia fonteUrl vuoto "".
 - recap: riassunto delle notizie del giorno in 250-300 parole. Tono giornalistico, imparziale, chiaro.
 - VIETATO il trattino lungo (—) in qualsiasi campo. Usa virgola, punto o nuova frase al suo posto.
@@ -119,7 +119,6 @@ Regole:
       ...n,
       titolo: sanitize(n.titolo),
       spiegazione: sanitize(n.spiegazione),
-      spiegazioneBreve: sanitize(n.spiegazioneBreve),
       perchéRilevante: sanitize(n.perchéRilevante),
       fonteUrl,
     };
