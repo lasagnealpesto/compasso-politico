@@ -9,6 +9,7 @@ const links = [
   { href: "/esponenti", label: "Esponenti", exact: false },
   { href: "/storia", label: "Storia", exact: false },
   { href: "/oggi", label: "Oggi", exact: false },
+  { href: "/live", label: "Live", exact: false, live: true },
   { href: "/newsletter", label: "Newsletter", exact: false },
 ];
 
@@ -42,19 +43,25 @@ export default function Navbar() {
 
         {/* Barra navigazione */}
         <div className="flex items-center gap-0 overflow-x-auto">
-          {links.map(({ href, label, exact }) => {
+          {links.map(({ href, label, exact, live }) => {
             const active = exact ? pathname === href : pathname.startsWith(href);
             return (
               <Link
                 key={href}
                 href={href}
-                className="flex-shrink-0 px-4 py-2.5 text-xs font-bold tracking-widest uppercase transition-colors"
+                className="flex-shrink-0 px-4 py-2.5 text-xs font-bold tracking-widest uppercase transition-colors flex items-center gap-1.5"
                 style={{
-                  color: active ? "var(--accent)" : "var(--foreground)",
+                  color: active ? "var(--accent)" : live ? "#ef4444" : "var(--foreground)",
                   borderBottom: active ? "2px solid var(--accent)" : "2px solid transparent",
                   letterSpacing: "0.1em",
                 }}
               >
+                {live && (
+                  <span
+                    className="inline-block w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0"
+                    style={{ background: "#ef4444" }}
+                  />
+                )}
                 {label}
               </Link>
             );

@@ -8,8 +8,21 @@ import EsponenteAvatar from "@/components/ui/EsponenteAvatar";
 import MappaItalia from "@/components/ui/MappaItalia";
 
 export const metadata: Metadata = {
-  title: "Esponenti",
-  description: "I principali politici italiani con storia, governi, dichiarazioni e posizioni.",
+  title: "Politici Italiani — Ministri, Esponenti e Parlamentari",
+  description: "I principali politici italiani: ministri del Governo Meloni, presidenti di regione, deputati e senatori. Storia, carriera, dichiarazioni e posizioni per partito.",
+  keywords: ["politici italiani", "ministri governo Meloni", "deputati", "senatori", "esponenti politici", "parlamento italiano"],
+  openGraph: {
+    title: "Politici Italiani — Ministri, Esponenti e Parlamentari",
+    description: "Ministri del Governo Meloni, presidenti di regione e tutti i principali politici italiani per partito.",
+    type: "website",
+    url: "/esponenti",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Politici Italiani — Ministri, Esponenti e Parlamentari",
+    description: "Ministri del Governo Meloni, presidenti di regione e tutti i principali politici italiani per partito.",
+  },
+  alternates: { canonical: "/esponenti" },
 };
 
 function loadFotos(): Record<string, string> {

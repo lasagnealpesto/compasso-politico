@@ -5,8 +5,21 @@ import GoverniTimeline from "@/components/storia/GoverniTimeline";
 import EventiTimeline from "@/components/storia/EventiTimeline";
 
 export const metadata: Metadata = {
-  title: "Storia Politica",
-  description: "La politica italiana dal 2000 ad oggi: governi, elezioni, eventi storici e leggi chiave.",
+  title: "Storia Politica Italiana — Governi, Elezioni ed Eventi dal 2000",
+  description: "La storia politica italiana dal 2000 ad oggi: tutti i governi, le elezioni, gli eventi storici e le leggi chiave. Berlusconi, Prodi, Monti, Letta, Renzi, Gentiloni, Conte, Draghi, Meloni.",
+  keywords: ["storia politica italiana", "governi italiani", "elezioni politiche Italia", "Berlusconi", "Prodi", "Renzi", "Conte", "Draghi", "Meloni", "seconda repubblica"],
+  openGraph: {
+    title: "Storia Politica Italiana — Governi, Elezioni ed Eventi dal 2000",
+    description: "Tutti i governi, le elezioni e gli eventi storici della politica italiana dal 2000 ad oggi.",
+    type: "website",
+    url: "/storia",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Storia Politica Italiana — Governi, Elezioni ed Eventi dal 2000",
+    description: "Tutti i governi e le elezioni italiane dal 2000: Berlusconi, Prodi, Monti, Renzi, Conte, Draghi, Meloni.",
+  },
+  alternates: { canonical: "/storia" },
 };
 
 const CATEGORIA_COLORI: Record<string, string> = {

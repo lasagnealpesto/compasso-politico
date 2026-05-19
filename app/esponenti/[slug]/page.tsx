@@ -41,7 +41,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const esp = getEsponente(slug);
   if (!esp) return {};
-  return { title: esp.nome, description: esp.bio.slice(0, 160) };
+  const partito = getPartito(esp.partito);
+  const partitoLabel = partito ? ` · ${partito.nome}` : "";
+  const desc = `${esp.ruolo}${partitoLabel}. ${esp.bio}`.slice(0, 160);
+  const anni = new Date().getFullYear() - (esp.storiaPolit[0]?.dalAnno ?? new Date().getFullYear());
+  const keywords = [esp.nome, esp.ruolo, partito?.nome ?? "", "politico italiano", `${anni} anni in politica`].filter(Boolean);
+  return {
+    title: esp.nome,
+    description: desc,
+    keywords,
+    openGraph: {
+      title: `${esp.nome}${partitoLabel} | Compasso Politico`,
+      description: desc,
+      type: "profile",
+      url: `/esponenti/${slug}`,
+    },
+    twitter: {
+      card: "summary",
+      title: `${esp.nome} — ${esp.ruolo}`,
+      description: desc,
+    },
+    alternates: { canonical: `/esponenti/${slug}` },
+  };
 }
 
 export default async function EsponentePage({ params }: Props) {

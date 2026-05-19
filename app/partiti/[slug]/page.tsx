@@ -21,9 +21,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const partito = getPartito(slug);
   if (!partito) return {};
+  const desc = `${partito.nome} (${partito.nomeBreve}): ${partito.descrizione} Segretario: ${partito.segretario}. ${partito.parlamentari} parlamentari.`.slice(0, 160);
+  const keywords = [partito.nome, partito.nomeBreve, partito.segretario, "partito politico italiano", partito.coalizione === "governo" ? "governo italiano" : "opposizione"];
   return {
     title: partito.nome,
-    description: partito.descrizione,
+    description: desc,
+    keywords,
+    openGraph: {
+      title: `${partito.nome} | Compasso Politico`,
+      description: desc,
+      type: "website",
+      url: `/partiti/${slug}`,
+    },
+    twitter: {
+      card: "summary",
+      title: `${partito.nome} — ${partito.nomeBreve}`,
+      description: desc,
+    },
+    alternates: { canonical: `/partiti/${slug}` },
   };
 }
 

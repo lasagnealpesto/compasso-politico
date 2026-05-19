@@ -4,8 +4,21 @@ import { partiti } from "@/lib/data";
 import PartitoLogo from "@/components/ui/PartitoLogo";
 
 export const metadata: Metadata = {
-  title: "Partiti",
-  description: "Tutti i partiti politici italiani con programmi, storia ed esponenti.",
+  title: "Partiti Politici Italiani — Programmi, Seggi e Storia",
+  description: "Tutti i partiti politici italiani: Fratelli d'Italia, Partito Democratico, Movimento 5 Stelle, Lega, Forza Italia e altri. Programmi, coalizioni, seggi e storia.",
+  keywords: ["partiti politici italiani", "FdI", "PD", "M5S", "Lega", "Forza Italia", "coalizioni", "governo", "opposizione"],
+  openGraph: {
+    title: "Partiti Politici Italiani — Programmi, Seggi e Storia",
+    description: "FdI, PD, Lega, M5S, Forza Italia: programmi, coalizioni e numero di parlamentari di tutti i partiti italiani.",
+    type: "website",
+    url: "/partiti",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Partiti Politici Italiani — Programmi, Seggi e Storia",
+    description: "FdI, PD, Lega, M5S, Forza Italia: programmi, coalizioni e numero di parlamentari.",
+  },
+  alternates: { canonical: "/partiti" },
 };
 
 function PartitoCard({ p }: { p: (typeof partiti)[0] }) {

@@ -3,10 +3,38 @@ import { readdir, readFile } from "fs/promises";
 import path from "path";
 import type { DailyContent } from "@/types";
 
-export const metadata: Metadata = {
-  title: "Oggi in Politica",
-  description: "Le 3 notizie di politica italiana da sapere oggi e il recap del giorno.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getDailyContent();
+  if (!content) {
+    return {
+      title: "Oggi in Politica",
+      description: "Le 3 notizie di politica italiana più importanti di oggi, spiegate in modo chiaro. Aggiornato ogni mattina alle 7.",
+      alternates: { canonical: "/oggi" },
+    };
+  }
+  const data = new Date(content.data + "T12:00:00Z").toLocaleDateString("it-IT", {
+    weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Rome",
+  });
+  const titoli = content.top3.map((n) => n.titolo).join("; ");
+  const desc = `Politica italiana ${data}: ${titoli}.`.slice(0, 160);
+  return {
+    title: `Oggi in Politica — ${data}`,
+    description: desc,
+    keywords: ["notizie politica oggi", "politica italiana oggi", data],
+    openGraph: {
+      title: `Oggi in Politica — ${data} | Compasso Politico`,
+      description: desc,
+      type: "article",
+      url: "/oggi",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Oggi in Politica — ${data}`,
+      description: desc,
+    },
+    alternates: { canonical: "/oggi" },
+  };
+}
 
 async function getDailyContent(): Promise<DailyContent | null> {
   try {
