@@ -1,5 +1,5 @@
 /**
- * Genera il carosello Instagram (5 slide PNG 1080×1080) dal JSON delle notizie.
+ * Genera il carosello Instagram (5 slide PNG 1080×1350, formato 4:5) dal JSON delle notizie.
  * Usa satori per il rendering e @resvg/resvg-js per convertire SVG → PNG.
  *
  * Output: public/carousels/YYYY-MM-DD/slide-1.png … slide-5.png
@@ -16,7 +16,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 
 const W = 1080;
-const H = 1080;
+const H = 1350;
 
 // Brand colors
 const RED = "#C41230";
@@ -126,11 +126,11 @@ function slide1(content) {
     // Brand bar rossa
     h("div", {
       style: {
-        height: 90, backgroundColor: RED,
+        height: 100, backgroundColor: RED,
         display: "flex", alignItems: "center", justifyContent: "center",
       },
     },
-      txt({ fontSize: 24, fontWeight: 700, color: "#FFF", letterSpacing: "0.28em" },
+      txt({ fontSize: 28, fontWeight: 700, color: "#FFF", letterSpacing: "0.28em" },
         "COMPASSO POLITICO"),
     ),
 
@@ -139,40 +139,40 @@ function slide1(content) {
       style: {
         flex: 1, display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
-        padding: "0 96px", gap: "0px",
+        padding: "0 88px", gap: "0px",
       },
     },
       // Data
-      txt({ fontSize: 23, color: MUTED, fontWeight: 400, marginBottom: "32px" }, dateStr),
+      txt({ fontSize: 27, color: MUTED, fontWeight: 400, marginBottom: "40px" }, dateStr),
 
       // Titolo su due righe
       h("div", {
         style: {
           display: "flex", flexDirection: "column", alignItems: "center",
-          marginBottom: "44px",
+          marginBottom: "52px",
         },
       },
-        txt({ fontSize: 74, fontWeight: 700, color: DARK, lineHeight: 1.12 }, "Le 3 notizie"),
-        txt({ fontSize: 74, fontWeight: 700, color: DARK, lineHeight: 1.12 }, "politiche di oggi"),
+        txt({ fontSize: 92, fontWeight: 700, color: DARK, lineHeight: 1.1 }, "Le 3 notizie"),
+        txt({ fontSize: 92, fontWeight: 700, color: DARK, lineHeight: 1.1 }, "politiche di oggi"),
       ),
 
       // Linea rossa
       h("div", {
-        style: { width: "72px", height: "5px", backgroundColor: RED, borderRadius: "3px", marginBottom: "48px" },
+        style: { width: "80px", height: "6px", backgroundColor: RED, borderRadius: "3px", marginBottom: "56px" },
       }),
 
       // Card notizia principale
       h("div", {
         style: {
-          backgroundColor: SURFACE_RED, borderRadius: "18px",
-          padding: "28px 36px",
-          borderLeftWidth: 5, borderLeftColor: RED, borderLeftStyle: "solid",
-          display: "flex", flexDirection: "column", gap: "12px",
+          backgroundColor: SURFACE_RED, borderRadius: "22px",
+          padding: "34px 44px",
+          borderLeftWidth: 6, borderLeftColor: RED, borderLeftStyle: "solid",
+          display: "flex", flexDirection: "column", gap: "14px",
         },
       },
-        txt({ fontSize: 14, color: RED, fontWeight: 700, letterSpacing: "0.22em" },
+        txt({ fontSize: 16, color: RED, fontWeight: 700, letterSpacing: "0.22em" },
           "LA PIU' IMPORTANTE"),
-        txt({ fontSize: 36, color: DARK, fontWeight: 700, lineHeight: 1.28 },
+        txt({ fontSize: 44, color: DARK, fontWeight: 700, lineHeight: 1.25 },
           trunc(main.titolo, 80)),
       ),
     ),
@@ -180,11 +180,11 @@ function slide1(content) {
     // Footer
     h("div", {
       style: {
-        height: "70px", backgroundColor: SURFACE,
+        height: "80px", backgroundColor: SURFACE,
         display: "flex", alignItems: "center", justifyContent: "center",
       },
     },
-      txt({ fontSize: 19, color: MUTED }, "scorri per leggere  →"),
+      txt({ fontSize: 23, color: MUTED }, "scorri per leggere  →"),
     ),
   );
 }
@@ -199,10 +199,7 @@ function slideNotizia(n, idx, imgSrc) {
   const headerMuted = isLast ? "rgba(255,255,255,0.7)" : MUTED;
   const perché = n["perchéRilevante"] ?? n.perche ?? "";
 
-  // Altezze proporzionate: header 108, footer 68, contenuto 904
-  // Con immagine: titolo ~130, img 340, spieg ~130, perché ~110, margini ~194
-  // Senza immagine: titolo ~130, spieg flex, perché ~110
-  const IMG_H = 340;
+  const IMG_H = 380;
 
   return h("div", {
     style: {
@@ -214,18 +211,18 @@ function slideNotizia(n, idx, imgSrc) {
     // Header con numero
     h("div", {
       style: {
-        height: "108px", backgroundColor: headerBg,
+        height: "120px", backgroundColor: headerBg,
         display: "flex", alignItems: "center",
-        padding: "0 80px", gap: "24px",
+        padding: "0 80px", gap: "26px",
       },
     },
-      txt({ fontSize: 58, fontWeight: 700, color: headerNumColor, lineHeight: 1 },
+      txt({ fontSize: 72, fontWeight: 700, color: headerNumColor, lineHeight: 1 },
         String(idx + 1)),
       h("div", {
-        style: { display: "flex", flexDirection: "column", gap: "3px" },
+        style: { display: "flex", flexDirection: "column", gap: "4px" },
       },
-        txt({ fontSize: 12, color: headerMuted, letterSpacing: "0.24em", fontWeight: 700 }, "NOTIZIA"),
-        txt({ fontSize: 17, color: headerColor, fontWeight: 700 }, "COMPASSO POLITICO"),
+        txt({ fontSize: 14, color: headerMuted, letterSpacing: "0.24em", fontWeight: 700 }, "NOTIZIA"),
+        txt({ fontSize: 20, color: headerColor, fontWeight: 700 }, "COMPASSO POLITICO"),
       ),
     ),
 
@@ -233,15 +230,15 @@ function slideNotizia(n, idx, imgSrc) {
     h("div", {
       style: {
         flex: 1, display: "flex", flexDirection: "column",
-        padding: imgSrc ? "36px 80px 0 80px" : "48px 80px 0 80px",
+        padding: imgSrc ? "38px 80px 0 80px" : "52px 80px 0 80px",
       },
     },
       // Titolo notizia
       txt({
-        fontSize: imgSrc ? 44 : 50,
+        fontSize: imgSrc ? 50 : 62,
         fontWeight: 700, color: DARK,
         lineHeight: 1.16,
-        marginBottom: imgSrc ? "20px" : "28px",
+        marginBottom: imgSrc ? "22px" : "32px",
       }, trunc(n.titolo, imgSrc ? 70 : 80)),
 
       // Immagine centrale con bordi stondati
@@ -252,7 +249,7 @@ function slideNotizia(n, idx, imgSrc) {
               borderRadius: "20px",
               overflow: "hidden",
               display: "flex",
-              marginBottom: "22px",
+              marginBottom: "24px",
               flexShrink: 0,
             },
           },
@@ -265,41 +262,41 @@ function slideNotizia(n, idx, imgSrc) {
 
       // Spiegazione
       txt({
-        fontSize: imgSrc ? 23 : 27,
+        fontSize: imgSrc ? 26 : 32,
         color: MUTED,
         lineHeight: 1.52,
         flex: imgSrc ? 0 : 1,
         marginBottom: imgSrc ? "auto" : "0",
-      }, trunc(n.spiegazione, imgSrc ? 380 : 500)),
+      }, trunc(n.spiegazione, imgSrc ? 320 : 480)),
 
       // Box perché rilevante
       h("div", {
         style: {
-          backgroundColor: SURFACE, borderRadius: "14px",
-          padding: "20px 26px",
-          display: "flex", gap: "14px", alignItems: "flex-start",
-          marginTop: "auto", marginBottom: "24px",
+          backgroundColor: SURFACE, borderRadius: "16px",
+          padding: "22px 30px",
+          display: "flex", gap: "16px", alignItems: "flex-start",
+          marginTop: "auto", marginBottom: "28px",
         },
       },
-        txt({ fontSize: 20, color: RED, fontWeight: 700 }, "→"),
+        txt({ fontSize: 24, color: RED, fontWeight: 700 }, "→"),
         txt({
-          fontSize: imgSrc ? 21 : 24,
+          fontSize: imgSrc ? 24 : 28,
           color: DARK, fontWeight: 500, lineHeight: 1.4, flex: 1,
-        }, trunc(perché, imgSrc ? 110 : 140)),
+        }, trunc(perché, imgSrc ? 155 : 195)),
       ),
     ),
 
     // Footer
     h("div", {
       style: {
-        height: "68px",
+        height: "76px",
         borderTopWidth: 1, borderTopColor: "#E8E8E8", borderTopStyle: "solid",
         display: "flex", alignItems: "center",
         padding: "0 80px", justifyContent: "space-between",
       },
     },
-      txt({ fontSize: 17, color: MUTED }, n.fonte ? `Fonte: ${n.fonte}` : ""),
-      txt({ fontSize: 17, color: MUTED }, "compassopolitico.it"),
+      txt({ fontSize: 20, color: MUTED }, n.fonte ? `Fonte: ${n.fonte}` : ""),
+      txt({ fontSize: 20, color: MUTED }, "compassopolitico.it"),
     ),
   );
 }
@@ -312,41 +309,41 @@ function slide5() {
       width: W, height: H,
       display: "flex", flexDirection: "column",
       fontFamily: FONT, backgroundColor: RED,
-      padding: "80px",
+      padding: "90px",
       justifyContent: "space-between",
     },
   },
     // Brand
     h("div", { style: { display: "flex", flexDirection: "column" } },
-      txt({ color: "rgba(255,255,255,0.75)", fontSize: 20, letterSpacing: "0.28em", fontWeight: 700 },
+      txt({ color: "rgba(255,255,255,0.75)", fontSize: 24, letterSpacing: "0.28em", fontWeight: 700 },
         "COMPASSO POLITICO"),
       h("div", {
-        style: { width: "52px", height: "4px", backgroundColor: "#FFF", borderRadius: "2px", marginTop: "14px" },
+        style: { width: "60px", height: "5px", backgroundColor: "#FFF", borderRadius: "2px", marginTop: "18px" },
       }),
     ),
 
     // Messaggio principale
-    h("div", { style: { display: "flex", flexDirection: "column", gap: "28px" } },
+    h("div", { style: { display: "flex", flexDirection: "column", gap: "34px" } },
       h("div", { style: { display: "flex", flexDirection: "column" } },
-        txt({ fontSize: 66, fontWeight: 700, color: "#FFF", lineHeight: 1.1 }, "La politica italiana"),
-        txt({ fontSize: 66, fontWeight: 700, color: "#FFF", lineHeight: 1.1 }, "spiegata bene."),
+        txt({ fontSize: 80, fontWeight: 700, color: "#FFF", lineHeight: 1.1 }, "La politica italiana"),
+        txt({ fontSize: 80, fontWeight: 700, color: "#FFF", lineHeight: 1.1 }, "spiegata bene."),
       ),
-      txt({ fontSize: 27, color: "rgba(255,255,255,0.85)", lineHeight: 1.55, fontWeight: 400 },
+      txt({ fontSize: 32, color: "rgba(255,255,255,0.85)", lineHeight: 1.55, fontWeight: 400 },
         "Ogni mattina le 3 notizie piu' importanti del giorno, spiegate in modo chiaro e senza schieramenti."),
     ),
 
     // CTA
-    h("div", { style: { display: "flex", flexDirection: "column", gap: "18px" } },
+    h("div", { style: { display: "flex", flexDirection: "column", gap: "22px" } },
       h("div", {
         style: {
-          backgroundColor: "#FFF", borderRadius: "14px",
-          padding: "22px 0",
+          backgroundColor: "#FFF", borderRadius: "16px",
+          padding: "28px 0",
           display: "flex", alignItems: "center", justifyContent: "center",
         },
       },
-        txt({ fontSize: 30, fontWeight: 700, color: RED }, "compassopolitico.it"),
+        txt({ fontSize: 36, fontWeight: 700, color: RED }, "compassopolitico.it"),
       ),
-      txt({ color: "rgba(255,255,255,0.7)", fontSize: 20, textAlign: "center" },
+      txt({ color: "rgba(255,255,255,0.7)", fontSize: 24, textAlign: "center" },
         "Seguici per il recap ogni mattina"),
     ),
   );
