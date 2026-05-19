@@ -159,10 +159,10 @@ export default async function PartitoPage({ params }: Props) {
       <section className="mb-10">
         <h2 className="text-xl font-bold mb-4">Programma politico</h2>
         <ProgrammaComparatore
-          partito={{ id: partito.id, nome: partito.nome, nomeBreve: partito.nomeBreve, colore: partito.colore, programma: partito.programma }}
+          partito={{ id: partito.id, nome: partito.nome, nomeBreve: partito.nomeBreve, colore: partito.colore, logoUrl: partito.logoUrl, programma: partito.programma }}
           altriPartiti={partiti
             .filter((p) => p.id !== partito.id)
-            .map((p) => ({ id: p.id, nome: p.nome, nomeBreve: p.nomeBreve, colore: p.colore, programma: p.programma }))}
+            .map((p) => ({ id: p.id, nome: p.nome, nomeBreve: p.nomeBreve, colore: p.colore, logoUrl: p.logoUrl, programma: p.programma }))}
         />
       </section>
 

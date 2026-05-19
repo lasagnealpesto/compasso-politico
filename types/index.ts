@@ -52,6 +52,7 @@ export interface ProgrammaTema {
   tema: string;
   sintesi: string;
   puntiChiave: string[];
+  stance?: "pro" | "contro";
 }
 
 export interface Fondatore {

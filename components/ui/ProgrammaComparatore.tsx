@@ -1,7 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import type { ProgrammaTema, Partito } from "@/types";
+import { slugify } from "@/lib/slugify";
+
+function temaSlug(tema: string): string {
+  return tema.toLowerCase().replace(/\s+/g, "-");
+}
 
 type PartitoSlim = Pick<Partito, "id" | "nome" | "nomeBreve" | "colore" | "logoUrl" | "programma">;
 
@@ -41,12 +47,14 @@ export default function ProgrammaComparatore({ partito, altriPartiti }: Props) {
 
           return (
             <div key={tema} className="rounded-xl border overflow-hidden" style={{ borderColor: "var(--border)" }}>
-              <div
-                className="px-4 py-2 text-xs font-bold uppercase tracking-wide"
-                style={{ background: "var(--surface-2, #ebebea)", color: "var(--muted)" }}
+              <Link
+                href={`/partiti/temi/${temaSlug(tema)}`}
+                className="flex items-center justify-between px-4 py-2 group hover:opacity-80 transition-opacity"
+                style={{ background: "var(--surface-2, #ebebea)" }}
               >
-                {tema}
-              </div>
+                <span className="text-xs font-bold uppercase tracking-wide" style={{ color: "var(--muted)" }}>{tema}</span>
+                <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "var(--muted)" }}>Vedi tutti →</span>
+              </Link>
               <div className="grid divide-x" style={{ gridTemplateColumns: confronto ? "1fr 1fr" : "1fr" }}>
                 <ColonnaTema tema={bloA} colore={partito.colore} />
                 {confronto && <ColonnaTema tema={bloB} colore={confronto.colore} />}
@@ -202,9 +210,15 @@ function ColonnaTema({ tema, colore }: { tema: ProgrammaTema | undefined; colore
       <p className="text-xs mb-3" style={{ color: "var(--muted)" }}>{tema.sintesi}</p>
       <ul className="space-y-1">
         {tema.puntiChiave.map((punto) => (
-          <li key={punto} className="text-xs flex gap-2">
-            <span className="flex-shrink-0 font-bold" style={{ color: colore }}>·</span>
-            <span style={{ color: "var(--foreground)" }}>{punto}</span>
+          <li key={punto} className="text-xs flex gap-2 items-start">
+            <span className="flex-shrink-0 font-bold mt-0.5" style={{ color: colore }}>·</span>
+            <Link
+              href={`/punti/${slugify(punto)}`}
+              className="hover:underline leading-snug"
+              style={{ color: "var(--foreground)" }}
+            >
+              {punto}
+            </Link>
           </li>
         ))}
       </ul>
