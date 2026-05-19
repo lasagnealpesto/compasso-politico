@@ -32,16 +32,15 @@ const FONT = "Inter";
 function trunc(text, max) {
   if (!text) return "";
   if (text.length <= max) return text;
-  // Taglia sempre a fine frase (., !, ?)
+  // Cerca fine frase (., !, ?) dal limite in poi fino all'inizio — mai "…"
   const sub = text.slice(0, max);
-  for (let i = sub.length - 1; i >= max * 0.4; i--) {
+  for (let i = sub.length - 1; i >= 0; i--) {
     if (sub[i] === "." || sub[i] === "!" || sub[i] === "?") {
       return text.slice(0, i + 1);
     }
   }
-  // Fallback: ultima parola completa
-  const lastSpace = sub.lastIndexOf(" ");
-  return (lastSpace > max * 0.6 ? sub.slice(0, lastSpace) : sub) + "…";
+  // Nessun punto: frase unica, mostra il testo completo
+  return text;
 }
 
 function formatDate(dateStr) {
@@ -282,7 +281,7 @@ function slideNotizia(n, idx, imgSrc) {
         txt({
           fontSize: imgSrc ? 24 : 28,
           color: DARK, fontWeight: 500, lineHeight: 1.4, flex: 1,
-        }, trunc(perché, imgSrc ? 155 : 195)),
+        }, trunc(perché, imgSrc ? 350 : 400)),
       ),
     ),
 
