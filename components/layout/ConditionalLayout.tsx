@@ -15,7 +15,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
   return (
     <>
       <Navbar />
-      <main className="flex-1 page-enter">{children}</main>
+      <main key={pathname} className="flex-1 page-enter">{children}</main>
       <Footer />
     </>
   );
