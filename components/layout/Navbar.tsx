@@ -103,6 +103,7 @@ export default function Navbar() {
 
             {open && (
               <div
+                className="dropdown-enter"
                 style={{
                   position: "absolute",
                   top: "100%",
@@ -115,6 +116,7 @@ export default function Navbar() {
                   zIndex: 600,
                   overflow: "hidden",
                   paddingTop: 4,
+                  paddingBottom: 4,
                 }}
               >
                 {CULTURA_LINKS.map(({ href, label }) => {
@@ -124,6 +126,7 @@ export default function Navbar() {
                       key={href}
                       href={href}
                       onClick={() => setOpen(false)}
+                      className="dropdown-item"
                       style={{
                         display: "block",
                         padding: "10px 16px",
