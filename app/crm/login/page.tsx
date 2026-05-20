@@ -18,7 +18,7 @@ export default function LoginPage({ searchParams }: { searchParams: Promise<{ er
         <h1 style={{ fontSize: 20, fontWeight: 700, textAlign: "center", marginBottom: 4 }}>Compasso CRM</h1>
         <p style={{ fontSize: 13, color: "#888", textAlign: "center", marginBottom: 32 }}>Accedi per continuare</p>
 
-        <form action="/api/crm/login" method="POST">
+        <form action="/api/crm/login" method="POST" id="loginForm">
           <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "#555", marginBottom: 6 }}>Utente</label>
           <input
             type="text"

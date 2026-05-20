@@ -1,9 +1,48 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const CRM_DOMAIN = "crm.compassopolitico.it";
+
 export function middleware(req: NextRequest) {
+  const host = req.headers.get("host") ?? "";
+  const isCrm = host === CRM_DOMAIN;
   const { pathname } = req.nextUrl;
 
-  // Proteggi tutto /crm tranne /crm/login e le API di auth
+  // ── Sottodominio crm.compassopolitico.it ──────────────────────────────────
+  if (isCrm) {
+    const auth = req.cookies.get("crm_auth")?.value;
+    const isAuth = auth === "crm_authenticated";
+
+    // Mappa path esterni → path interni
+    const internalMap: Record<string, string> = {
+      "/":        "/crm",
+      "/login":   "/crm/login",
+      "/api/login":  "/api/crm/login",
+      "/api/logout": "/api/crm/logout",
+    };
+
+    const internalPath = internalMap[pathname] ?? `/crm${pathname}`;
+
+    // Non autenticato → login
+    if (!isAuth && pathname !== "/login" && pathname !== "/api/login") {
+      const url = req.nextUrl.clone();
+      url.pathname = "/login";
+      return NextResponse.redirect(url);
+    }
+
+    // Già autenticato su /login → home
+    if (isAuth && pathname === "/login") {
+      const url = req.nextUrl.clone();
+      url.pathname = "/";
+      return NextResponse.redirect(url);
+    }
+
+    // Rewrite verso il path interno Next.js
+    const url = req.nextUrl.clone();
+    url.pathname = internalPath;
+    return NextResponse.rewrite(url);
+  }
+
+  // ── Dominio principale: proteggi /crm/* ───────────────────────────────────
   if (
     pathname.startsWith("/crm") &&
     !pathname.startsWith("/crm/login") &&
@@ -19,5 +58,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/crm/:path*", "/api/crm/:path*"],
+  matcher: ["/((?!_next/static|_next/image|favicon\\.ico|loghi|politici|carousels|newsletters).*)"],
 };
