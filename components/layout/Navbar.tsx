@@ -11,8 +11,9 @@ const CULTURA_LINKS = [
 ];
 
 const TOP_LINKS = [
-  { href: "/grandi-temi", label: "Grandi Temi", exact: false },
-  { href: "/oggi",        label: "Oggi",         exact: false },
+  { href: "/",            label: "Home",          exact: true },
+  { href: "/grandi-temi", label: "Grandi Temi",   exact: false },
+  { href: "/oggi",        label: "Oggi",          exact: false },
   { href: "/live",        label: "Live",          exact: false, live: true },
   { href: "/newsletter",  label: "Newsletter",    exact: false },
 ];
@@ -53,16 +54,21 @@ export default function Navbar() {
         <div className="flex items-center gap-0 overflow-x-auto">
 
           {/* Dropdown Cultura */}
-          <div ref={ref} style={{ position: "relative" }}>
+          <div
+            ref={ref}
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => setOpen(false)}
+            style={{ position: "relative" }}
+          >
             <button
               onClick={() => setOpen((v) => !v)}
-              onMouseEnter={() => setOpen(true)}
-              className="flex-shrink-0 px-4 py-2.5 text-xs font-bold tracking-widest uppercase transition-colors flex items-center gap-1"
+              className="flex-shrink-0 px-4 py-2.5 text-xs font-bold tracking-widest uppercase flex items-center gap-1"
               style={{
                 color: culturaActive || open ? "var(--accent)" : "var(--foreground)",
                 borderBottom: culturaActive || open ? "2px solid var(--accent)" : "2px solid transparent",
                 background: "none",
                 border: "none",
+                borderBottom: culturaActive || open ? "2px solid var(--accent)" : "2px solid transparent",
                 cursor: "pointer",
                 letterSpacing: "0.1em",
               }}
@@ -73,7 +79,6 @@ export default function Navbar() {
 
             {open && (
               <div
-                onMouseLeave={() => setOpen(false)}
                 style={{
                   position: "absolute",
                   top: "100%",
@@ -85,6 +90,7 @@ export default function Navbar() {
                   minWidth: 160,
                   zIndex: 100,
                   overflow: "hidden",
+                  paddingTop: 4,
                 }}
               >
                 {CULTURA_LINKS.map(({ href, label }) => {
