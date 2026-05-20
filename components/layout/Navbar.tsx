@@ -54,7 +54,7 @@ export default function Navbar() {
         </div>
 
         {/* Barra navigazione */}
-        <div className="flex items-center gap-0 overflow-x-auto">
+        <div className="flex items-center gap-0" style={{ overflowX: "visible" }}>
 
           {/* Link sinistri: Home, Grandi Temi, Oggi, Live */}
           {TOP_LINKS_LEFT.map(({ href, label, exact, live }) => {
