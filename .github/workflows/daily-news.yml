@@ -9,6 +9,8 @@ on:
 jobs:
   genera-oggi:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -45,4 +47,5 @@ jobs:
           git config user.email "bot@compasso-politico.it"
           git add data/daily/ public/carousels/ data/newsletters/
           git diff --staged --quiet || git commit -m "chore: recap + carosello + newsletter $(date +%Y-%m-%d)"
+          git pull --rebase origin main
           git push
