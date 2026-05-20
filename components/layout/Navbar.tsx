@@ -60,10 +60,9 @@ export default function Navbar() {
               className="flex-shrink-0 px-4 py-2.5 text-xs font-bold tracking-widest uppercase transition-colors flex items-center gap-1"
               style={{
                 color: culturaActive || open ? "var(--accent)" : "var(--foreground)",
-                borderBottom: culturaActive ? "2px solid var(--accent)" : "2px solid transparent",
+                borderBottom: culturaActive || open ? "2px solid var(--accent)" : "2px solid transparent",
                 background: "none",
                 border: "none",
-                borderBottom: culturaActive ? "2px solid var(--accent)" : open ? "2px solid var(--accent)" : "2px solid transparent",
                 cursor: "pointer",
                 letterSpacing: "0.1em",
               }}
