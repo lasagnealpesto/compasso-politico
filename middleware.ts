@@ -14,10 +14,13 @@ export function middleware(req: NextRequest) {
 
     // Mappa path esterni → path interni
     const internalMap: Record<string, string> = {
-      "/":        "/crm",
-      "/login":   "/crm/login",
-      "/api/login":  "/api/crm/login",
-      "/api/logout": "/api/crm/logout",
+      "/":              "/crm",
+      "/login":         "/crm/login",
+      "/api/login":     "/api/crm/login",
+      "/api/logout":    "/api/crm/logout",
+      // passthrough: form posta direttamente a questi path
+      "/api/crm/login":  "/api/crm/login",
+      "/api/crm/logout": "/api/crm/logout",
     };
 
     const internalPath = internalMap[pathname] ?? `/crm${pathname}`;
