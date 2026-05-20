@@ -25,8 +25,9 @@ export function middleware(req: NextRequest) {
 
     const internalPath = internalMap[pathname] ?? `/crm${pathname}`;
 
-    // Non autenticato → login
-    if (!isAuth && pathname !== "/login" && pathname !== "/api/login") {
+    // Non autenticato → login (escludi le rotte di auth stesse)
+    const isAuthRoute = ["/login", "/api/login", "/api/crm/login", "/api/crm/logout"].includes(pathname);
+    if (!isAuth && !isAuthRoute) {
       const url = req.nextUrl.clone();
       url.pathname = "/login";
       return NextResponse.redirect(url);
