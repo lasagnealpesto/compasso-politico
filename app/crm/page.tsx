@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import SendNewsletterButton from "@/components/crm/SendNewsletterButton";
 
 const DATA_DIR     = path.join(process.cwd(), "data", "daily");
 const NL_DIR       = path.join(process.cwd(), "data", "newsletters");
@@ -128,7 +129,7 @@ export default async function CrmPage({ searchParams }: Props) {
           <nav className="sid">
             <div className="sid-lbl">Archivio</div>
             {dailies.map(({ date }) => (
-              <a key={date} href={`/crm?date=${date}`} className={`sid-item${date === sel ? " active" : ""}`}>
+              <a key={date} href={`?date=${date}`} className={`sid-item${date === sel ? " active" : ""}`}>
                 <span>{date}</span>
                 {hasCarousel(date) && <span>📱</span>}
               </a>
@@ -165,9 +166,12 @@ export default async function CrmPage({ searchParams }: Props) {
                 <div className="blk-hdr">
                   <span className="blk-icon">📧</span>
                   <span className="blk-title">Newsletter</span>
-                  {content && hasNewsletter(content.data)
-                    ? <a href={`/api/newsletter/${content.data}`} target="_blank" className="blk-action">Apri HTML</a>
-                    : <span className="blk-badge">Non generata</span>}
+                  {content && hasNewsletter(content.data) ? (
+                    <>
+                      <a href={`/api/newsletter/${content.data}`} target="_blank" className="blk-action">Apri HTML</a>
+                      <SendNewsletterButton date={content.data} />
+                    </>
+                  ) : <span className="blk-badge">Non generata</span>}
                 </div>
                 <div className="blk-body">
                   {content && hasNewsletter(content.data)

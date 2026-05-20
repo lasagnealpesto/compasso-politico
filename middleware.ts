@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+  const host = req.headers.get("host") ?? "";
+  const isCrmHost = host === "crm.compassopolitico.it";
 
-  // Proteggi /crm/* (escludi login e API di auth)
   if (
     pathname.startsWith("/crm") &&
     !pathname.startsWith("/crm/login") &&
@@ -12,7 +13,10 @@ export function middleware(req: NextRequest) {
   ) {
     const auth = req.cookies.get("crm_auth")?.value;
     if (auth !== "crm_authenticated") {
-      return NextResponse.redirect(new URL("/crm/login", req.url));
+      // Su subdomain redirect a /login (Vercel lo riscrive a /crm/login)
+      // Su main domain redirect a /crm/login direttamente
+      const loginPath = isCrmHost ? "/login" : "/crm/login";
+      return NextResponse.redirect(new URL(loginPath, req.url));
     }
   }
 

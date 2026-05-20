@@ -1,10 +1,14 @@
 {
-  "redirects": [
+  "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/login",
       "has": [{ "type": "host", "value": "crm.compassopolitico.it" }],
-      "destination": "https://www.compassopolitico.it/crm/$1",
-      "permanent": false
+      "destination": "/crm/login"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "crm.compassopolitico.it" }],
+      "destination": "/crm"
     }
   ]
 }
