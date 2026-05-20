@@ -107,6 +107,11 @@ a { color: inherit; }
 .hero-scroll  { animation: fade-in var(--duration-slow) var(--ease-out) 500ms  both,
                             scroll-bounce 2.2s var(--ease-in-out) 1200ms infinite; }
 
+/* ── Page entrance ─────────────────────────────────────────────────────── */
+.page-enter {
+  animation: fade-up var(--duration-slow) var(--ease-out) both;
+}
+
 /* ── Card hover system ─────────────────────────────────────────────────── */
 .card-hover {
   transition:

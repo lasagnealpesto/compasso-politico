@@ -2,37 +2,45 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useRef, useEffect } from "react";
 
-const links = [
-  { href: "/", label: "Home", exact: true },
-  { href: "/partiti", label: "Partiti", exact: false },
-  { href: "/esponenti", label: "Esponenti", exact: false },
-  { href: "/storia", label: "Storia", exact: false },
-  { href: "/oggi", label: "Oggi", exact: false },
-  { href: "/live", label: "Live", exact: false, live: true },
-  { href: "/newsletter", label: "Newsletter", exact: false },
+const CULTURA_LINKS = [
+  { href: "/partiti",   label: "Partiti" },
+  { href: "/esponenti", label: "Esponenti" },
+  { href: "/storia",    label: "Storia" },
+];
+
+const TOP_LINKS = [
+  { href: "/grandi-temi", label: "Grandi Temi", exact: false },
+  { href: "/oggi",        label: "Oggi",         exact: false },
+  { href: "/live",        label: "Live",          exact: false, live: true },
+  { href: "/newsletter",  label: "Newsletter",    exact: false },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const culturaActive = CULTURA_LINKS.some((l) => pathname.startsWith(l.href));
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
 
   return (
     <nav className="sticky top-0 z-50" style={{ background: "var(--surface)", borderBottom: "1px solid var(--border)" }}>
-      {/* Striscia rossa editoriale */}
       <div style={{ height: 3, background: "var(--accent)" }} />
 
       <div className="max-w-6xl mx-auto px-4">
         {/* Testata */}
         <div className="py-3 flex items-center justify-between border-b" style={{ borderColor: "var(--border)" }}>
           <Link href="/" style={{ color: "var(--foreground)", textDecoration: "none" }}>
-            <span
-              style={{
-                fontFamily: "Georgia, 'Times New Roman', serif",
-                fontSize: 22,
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
-              }}
-            >
+            <span style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: 22, fontWeight: 700, letterSpacing: "-0.02em" }}>
               Compasso Politico
             </span>
           </Link>
@@ -43,7 +51,71 @@ export default function Navbar() {
 
         {/* Barra navigazione */}
         <div className="flex items-center gap-0 overflow-x-auto">
-          {links.map(({ href, label, exact, live }) => {
+
+          {/* Dropdown Cultura */}
+          <div ref={ref} style={{ position: "relative" }}>
+            <button
+              onClick={() => setOpen((v) => !v)}
+              onMouseEnter={() => setOpen(true)}
+              className="flex-shrink-0 px-4 py-2.5 text-xs font-bold tracking-widest uppercase transition-colors flex items-center gap-1"
+              style={{
+                color: culturaActive || open ? "var(--accent)" : "var(--foreground)",
+                borderBottom: culturaActive ? "2px solid var(--accent)" : "2px solid transparent",
+                background: "none",
+                border: "none",
+                borderBottom: culturaActive ? "2px solid var(--accent)" : open ? "2px solid var(--accent)" : "2px solid transparent",
+                cursor: "pointer",
+                letterSpacing: "0.1em",
+              }}
+            >
+              Cultura
+              <span style={{ fontSize: 9, marginLeft: 2, opacity: 0.7 }}>{open ? "▲" : "▼"}</span>
+            </button>
+
+            {open && (
+              <div
+                onMouseLeave={() => setOpen(false)}
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  left: 0,
+                  background: "var(--surface)",
+                  border: "1px solid var(--border)",
+                  borderRadius: 10,
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
+                  minWidth: 160,
+                  zIndex: 100,
+                  overflow: "hidden",
+                }}
+              >
+                {CULTURA_LINKS.map(({ href, label }) => {
+                  const active = pathname.startsWith(href);
+                  return (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={() => setOpen(false)}
+                      style={{
+                        display: "block",
+                        padding: "10px 16px",
+                        fontSize: 13,
+                        fontWeight: active ? 700 : 500,
+                        color: active ? "var(--accent)" : "var(--foreground)",
+                        textDecoration: "none",
+                        background: active ? "var(--surface-2)" : "transparent",
+                        borderLeft: active ? "3px solid var(--accent)" : "3px solid transparent",
+                      }}
+                    >
+                      {label}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Link normali */}
+          {TOP_LINKS.map(({ href, label, exact, live }) => {
             const active = exact ? pathname === href : pathname.startsWith(href);
             return (
               <Link
@@ -57,10 +129,7 @@ export default function Navbar() {
                 }}
               >
                 {live && (
-                  <span
-                    className="inline-block w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0"
-                    style={{ background: "#ef4444" }}
-                  />
+                  <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style={{ background: "#ef4444" }} />
                 )}
                 {label}
               </Link>
