@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import SendNewsletterButton from "@/components/crm/SendNewsletterButton";
 
@@ -36,7 +36,10 @@ interface Props {
 export default async function CrmPage({ searchParams }: Props) {
   const cookieStore = await cookies();
   if (cookieStore.get("crm_auth")?.value !== "crm_authenticated") {
-    redirect("/crm/login");
+    // Sul subdomain il middleware gestisce già l'auth; questo è solo un fallback
+    const hdrs = await headers();
+    const isCrmHost = (hdrs.get("host") ?? "") === "crm.compassopolitico.it";
+    redirect(isCrmHost ? "/login" : "/crm/login");
   }
 
   const { date: qDate } = await searchParams;

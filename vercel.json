@@ -1,14 +1,1 @@
-{
-  "rewrites": [
-    {
-      "source": "/login",
-      "has": [{ "type": "host", "value": "crm.compassopolitico.it" }],
-      "destination": "/crm/login"
-    },
-    {
-      "source": "/",
-      "has": [{ "type": "host", "value": "crm.compassopolitico.it" }],
-      "destination": "/crm"
-    }
-  ]
-}
+{}
