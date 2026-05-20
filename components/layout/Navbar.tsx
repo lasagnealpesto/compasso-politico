@@ -10,12 +10,15 @@ const CULTURA_LINKS = [
   { href: "/storia",    label: "Storia" },
 ];
 
-const TOP_LINKS = [
-  { href: "/",            label: "Home",          exact: true },
-  { href: "/grandi-temi", label: "Grandi Temi",   exact: false },
-  { href: "/oggi",        label: "Oggi",          exact: false },
-  { href: "/live",        label: "Live",          exact: false, live: true },
-  { href: "/newsletter",  label: "Newsletter",    exact: false },
+const TOP_LINKS_LEFT = [
+  { href: "/",            label: "Home",        exact: true },
+  { href: "/grandi-temi", label: "Grandi Temi", exact: false },
+  { href: "/oggi",        label: "Oggi",        exact: false },
+  { href: "/live",        label: "Live",        exact: false, live: true },
+];
+
+const TOP_LINKS_RIGHT = [
+  { href: "/newsletter", label: "Newsletter", exact: false },
 ];
 
 export default function Navbar() {
@@ -34,7 +37,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50" style={{ background: "var(--surface)", borderBottom: "1px solid var(--border)" }}>
+    <nav className="sticky top-0" style={{ background: "var(--surface)", borderBottom: "1px solid var(--border)", zIndex: 500 }}>
       <div style={{ height: 3, background: "var(--accent)" }} />
 
       <div className="max-w-6xl mx-auto px-4">
@@ -53,7 +56,29 @@ export default function Navbar() {
         {/* Barra navigazione */}
         <div className="flex items-center gap-0 overflow-x-auto">
 
-          {/* Dropdown Cultura */}
+          {/* Link sinistri: Home, Grandi Temi, Oggi, Live */}
+          {TOP_LINKS_LEFT.map(({ href, label, exact, live }) => {
+            const active = exact ? pathname === href : pathname.startsWith(href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className="flex-shrink-0 px-4 py-2.5 text-xs font-bold tracking-widest uppercase transition-colors flex items-center gap-1.5"
+                style={{
+                  color: active ? "var(--accent)" : live ? "#ef4444" : "var(--foreground)",
+                  borderBottom: active ? "2px solid var(--accent)" : "2px solid transparent",
+                  letterSpacing: "0.1em",
+                }}
+              >
+                {live && (
+                  <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style={{ background: "#ef4444" }} />
+                )}
+                {label}
+              </Link>
+            );
+          })}
+
+          {/* Dropdown Cultura — prima di Newsletter */}
           <div
             ref={ref}
             onMouseEnter={() => setOpen(true)}
@@ -85,9 +110,9 @@ export default function Navbar() {
                   background: "var(--surface)",
                   border: "1px solid var(--border)",
                   borderRadius: 10,
-                  boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
                   minWidth: 160,
-                  zIndex: 100,
+                  zIndex: 600,
                   overflow: "hidden",
                   paddingTop: 4,
                 }}
@@ -118,23 +143,20 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Link normali */}
-          {TOP_LINKS.map(({ href, label, exact, live }) => {
+          {/* Newsletter */}
+          {TOP_LINKS_RIGHT.map(({ href, label, exact }) => {
             const active = exact ? pathname === href : pathname.startsWith(href);
             return (
               <Link
                 key={href}
                 href={href}
-                className="flex-shrink-0 px-4 py-2.5 text-xs font-bold tracking-widest uppercase transition-colors flex items-center gap-1.5"
+                className="flex-shrink-0 px-4 py-2.5 text-xs font-bold tracking-widest uppercase transition-colors"
                 style={{
-                  color: active ? "var(--accent)" : live ? "#ef4444" : "var(--foreground)",
+                  color: active ? "var(--accent)" : "var(--foreground)",
                   borderBottom: active ? "2px solid var(--accent)" : "2px solid transparent",
                   letterSpacing: "0.1em",
                 }}
               >
-                {live && (
-                  <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style={{ background: "#ef4444" }} />
-                )}
                 {label}
               </Link>
             );
