@@ -166,12 +166,12 @@ export default async function CrmPage({ searchParams }: Props) {
                   <span className="blk-icon">📧</span>
                   <span className="blk-title">Newsletter</span>
                   {content && hasNewsletter(content.data)
-                    ? <a href={`/newsletters/${content.data}.html`} target="_blank" className="blk-action">Apri HTML</a>
+                    ? <a href={`/api/newsletter/${content.data}`} target="_blank" className="blk-action">Apri HTML</a>
                     : <span className="blk-badge">Non generata</span>}
                 </div>
                 <div className="blk-body">
                   {content && hasNewsletter(content.data)
-                    ? <div className="nl-frame"><iframe src={`/newsletters/${content.data}.html`} className="nl-iframe" title="Newsletter" /></div>
+                    ? <div className="nl-frame"><iframe src={`/api/newsletter/${content.data}`} className="nl-iframe" title="Newsletter" /></div>
                     : <div className="empty">Newsletter non ancora generata.</div>}
                 </div>
               </div>
