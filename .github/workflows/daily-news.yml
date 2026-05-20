@@ -34,6 +34,10 @@ jobs:
       - name: Genera carosello Instagram
         run: node scripts/daily-carousel.mjs
 
+      - name: Genera Reel Instagram (richiede FFmpeg, pre-installato su ubuntu-latest)
+        continue-on-error: true
+        run: node scripts/daily-reel.mjs
+
       - name: Genera e invia newsletter
         continue-on-error: true
         env:
@@ -45,7 +49,7 @@ jobs:
         run: |
           git config user.name "Compasso Bot"
           git config user.email "bot@compasso-politico.it"
-          git add data/daily/ public/carousels/ data/newsletters/
-          git diff --staged --quiet || git commit -m "chore: recap + carosello + newsletter $(date +%Y-%m-%d)"
+          git add data/daily/ public/carousels/ public/reels/ data/newsletters/
+          git diff --staged --quiet || git commit -m "chore: recap + carosello + reel + newsletter $(date +%Y-%m-%d)"
           git pull --rebase origin main
           git push

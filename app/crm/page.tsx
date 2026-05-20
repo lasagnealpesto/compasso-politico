@@ -7,6 +7,7 @@ import SendNewsletterButton from "@/components/crm/SendNewsletterButton";
 const DATA_DIR     = path.join(process.cwd(), "data", "daily");
 const NL_DIR       = path.join(process.cwd(), "data", "newsletters");
 const CAROUSEL_DIR = path.join(process.cwd(), "public", "carousels");
+const REELS_DIR    = path.join(process.cwd(), "public", "reels");
 
 function getAllDailies() {
   try {
@@ -21,6 +22,10 @@ function hasNewsletter(d: string) {
 
 function hasCarousel(d: string) {
   try { fs.accessSync(path.join(CAROUSEL_DIR, d, "slide-1.png")); return true; } catch { return false; }
+}
+
+function hasReel(d: string) {
+  try { fs.accessSync(path.join(REELS_DIR, d, "reel.mp4")); return true; } catch { return false; }
 }
 
 interface DailyContent {
@@ -202,13 +207,32 @@ export default async function CrmPage({ searchParams }: Props) {
                           </div>
                         ))}
                       </div>
-                      <p className="slides-note">1080×1080px · ↓ per scaricare</p>
+                      <p className="slides-note">1080×1350px · ↓ per scaricare</p>
                     </>
                   ) : <div className="empty">📱 Carosello non generato.</div>}
                 </div>
               </div>
 
             </div>
+
+            {/* Reel Instagram */}
+            {content && hasReel(content.data) && (
+              <div className="post-block" style={{ marginTop: 20 }}>
+                <div className="blk-hdr">
+                  <span className="blk-icon">🎬</span>
+                  <span className="blk-title">Reel Instagram</span>
+                  <span className="blk-badge">20s · MP4</span>
+                  <a href={`/reels/${content.data}/reel.mp4`} download className="blk-action">↓ Scarica</a>
+                </div>
+                <div className="blk-body" style={{ padding: "16px 18px" }}>
+                  <video
+                    src={`/reels/${content.data}/reel.mp4`}
+                    controls
+                    style={{ width: "100%", maxWidth: 360, borderRadius: 10, display: "block" }}
+                  />
+                </div>
+              </div>
+            )}
 
             {/* Caption Instagram */}
             <div className="post-block">
