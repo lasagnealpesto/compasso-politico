@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "crm.compassopolitico.it" }],
+      "destination": "/crm/$1"
+    }
+  ]
+}
