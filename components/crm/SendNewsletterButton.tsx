@@ -34,8 +34,12 @@ export default function SendNewsletterButton({ date }: { date: string }) {
 
   if (state === "error") {
     return (
-      <span style={{ fontSize: 11, fontWeight: 600, color: "#ef4444" }} title={errMsg}>
-        ✗ Errore
+      <span
+        style={{ fontSize: 11, fontWeight: 600, color: "#ef4444", maxWidth: 260, lineHeight: 1.4, cursor: "pointer" }}
+        onClick={() => setState("idle")}
+        title="Clicca per riprovare"
+      >
+        ✗ {errMsg || "Errore sconosciuto"}
       </span>
     );
   }
